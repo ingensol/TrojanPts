@@ -52,5 +52,32 @@
       <key>NSAllowsArbitraryLoads</key>
       <true/>
     </dict>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>msauth</string>
+    </array>
+    <key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+        <key>CFBundleTypeRole</key>
+        <string>Editor</string>
+        <key>CFBundleURLName</key>
+        <string>$(CFBundleIdentifier)</string>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>x-msauth-$(CFBundleIdentifier:rfc1034identifier)</string>
+        </array>
+      </dict>
+      <dict>
+        <key>CFBundleTypeRole</key>
+        <string>Editor</string>
+        <key>CFBundleURLName</key>
+        <string>$(CFBundleIdentifier)</string>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>x-msauth-$(CFBundleIdentifier:rfc1034identifier)</string>
+        </array>
+      </dict>
+    </array>
   </dict>
 </plist>

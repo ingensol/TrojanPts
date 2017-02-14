@@ -253,6 +253,45 @@ module.exports = [
         "id": "cordova-plugin-device-motion.AccelerometerProxy",
         "pluginId": "cordova-plugin-device-motion",
         "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-ms-adal/www/utility.js",
+        "id": "cordova-plugin-ms-adal.utility",
+        "pluginId": "cordova-plugin-ms-adal",
+        "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-ms-adal/www/AuthenticationContext.js",
+        "id": "cordova-plugin-ms-adal.AuthenticationContext",
+        "pluginId": "cordova-plugin-ms-adal",
+        "clobbers": [
+            "Microsoft.ADAL.AuthenticationContext"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-ms-adal/www/CordovaBridge.js",
+        "id": "cordova-plugin-ms-adal.CordovaBridge",
+        "pluginId": "cordova-plugin-ms-adal"
+    },
+    {
+        "file": "plugins/cordova-plugin-ms-adal/www/AuthenticationResult.js",
+        "id": "cordova-plugin-ms-adal.AuthenticationResult",
+        "pluginId": "cordova-plugin-ms-adal"
+    },
+    {
+        "file": "plugins/cordova-plugin-ms-adal/www/TokenCache.js",
+        "id": "cordova-plugin-ms-adal.TokenCache",
+        "pluginId": "cordova-plugin-ms-adal"
+    },
+    {
+        "file": "plugins/cordova-plugin-ms-adal/www/TokenCacheItem.js",
+        "id": "cordova-plugin-ms-adal.TokenCacheItem",
+        "pluginId": "cordova-plugin-ms-adal"
+    },
+    {
+        "file": "plugins/cordova-plugin-ms-adal/www/UserInfo.js",
+        "id": "cordova-plugin-ms-adal.UserInfo",
+        "pluginId": "cordova-plugin-ms-adal"
     }
 ];
 module.exports.metadata = 
@@ -263,7 +302,9 @@ module.exports.metadata =
     "cordova-plugin-console": "1.0.3",
     "cordova-plugin-contacts": "2.0.1",
     "cordova-plugin-device": "1.1.2",
-    "cordova-plugin-device-motion": "1.2.1"
+    "cordova-plugin-device-motion": "1.2.1",
+    "cordova-plugin-compat": "1.1.0",
+    "cordova-plugin-ms-adal": "0.8.1"
 }
 // BOTTOM OF METADATA
 });

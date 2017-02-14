@@ -249,6 +249,7 @@ dependencies {
     // SUB-PROJECT DEPENDENCIES START
     debugCompile project(path: "CordovaLib", configuration: "debug")
     releaseCompile project(path: "CordovaLib", configuration: "release")
+    compile "com.microsoft.aad:adal:1.1.18"
     // SUB-PROJECT DEPENDENCIES END
 }
 

@@ -52,6 +52,7 @@ var app = {
          app.receivedEvent('deviceready');
         app.logArea = document.getElementById("log-area");
         app.log("Cordova initialized, 'deviceready' event was fired");
+        alert("Cordova initialized, 'deviceready' event was fired");
         AuthenticationContext = Microsoft.ADAL.AuthenticationContext;
         app.createContext();
         

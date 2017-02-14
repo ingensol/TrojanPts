@@ -53,6 +53,7 @@ var app = {
         app.logArea = document.getElementById("log-area");
         app.log("Cordova initialized, 'deviceready' event was fired");
         AuthenticationContext = Microsoft.ADAL.AuthenticationContext;
+        app.createContext();
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {
@@ -86,7 +87,6 @@ var app = {
         }, app.error);
     },
     acquireToken: function () {
-        app.createContext();
         if (app.authContext == null) {
             app.error('Authentication context isn\'t created yet. Create context first');
             return;

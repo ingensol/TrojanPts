@@ -3,12 +3,12 @@
 
 var AuthenticationContext;
 
-var authority = 'https://login.windows.net/test353.onmicrosoft.com';
+var authority = 'https://login.windows.net/keckmedicine.onmicrosoft.com';
 var resourceUrl = 'https://graph.windows.net/';
-var appId = '1eed60fd-93bf-44c3-948b-d419b32b5ed6';
+var appId = '2b12cfe7-b4d8-4256-9072-ca27dade4e55';
 var redirectUrl = 'http://localhost:4400/services/aad/redirectTarget.html';
   
-var tenantName = 'test353.onmicrosoft.com';
+var tenantName = 'keckmedicine.onmicrosoft.com';
 var endpointUrl = resourceUrl + tenantName;
 
 function pre(json) {
@@ -17,6 +17,7 @@ function pre(json) {
 
 var app = {
     // Application Constructor
+   
     initialize: function () {
         this.bindEvents();
     },
@@ -29,6 +30,7 @@ var app = {
 
         document.getElementById('create-context').addEventListener('click', app.createContext);
         document.getElementById('acquire-token').addEventListener('click', app.acquireToken);
+        document.getElementById('loginbutton').addEventListener('click', app.acquireToken);
         document.getElementById('acquire-token-silent').addEventListener('click', app.acquireTokenSilent);
         document.getElementById('read-tokencache').addEventListener('click', app.readTokenCache);
         document.getElementById('clear-tokencache').addEventListener('click', app.clearTokenCache);
@@ -48,10 +50,13 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
-        // app.receivedEvent('deviceready');
+         app.receivedEvent('deviceready');
         app.logArea = document.getElementById("log-area");
         app.log("Cordova initialized, 'deviceready' event was fired");
+        alert("Cordova initialized, 'deviceready' event was fired");
         AuthenticationContext = Microsoft.ADAL.AuthenticationContext;
+        app.createContext();
+        
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {
@@ -81,6 +86,7 @@ var app = {
         AuthenticationContext.createAsync(authority)
         .then(function (context) {
             app.authContext = context;
+            app.acquireTokenSilent();
             app.log("Created authentication context for authority URL: " + context.authority);
         }, app.error);
     },
@@ -91,13 +97,15 @@ var app = {
         }
 
         app.authContext.acquireTokenAsync(resourceUrl, appId, redirectUrl)
-            .then(function(authResult) {
-                app.log('Acquired token successfully: ' + pre(authResult));
+            .then(function (authResult) {
+                window.location = 'feed.html';
+                //app.log('Acquired token successfully: ' + pre(authResult));
             }, function(err) {
                 app.error("Failed to acquire token: " + pre(err));
             });
     },
-    acquireTokenSilent: function() {
+    acquireTokenSilent: function () {
+        app.log('acquireTokenSilent: ');
         if (app.authContext == null) {
             app.error('Authentication context isn\'t created yet. Create context first');
             return;
@@ -113,11 +121,13 @@ var app = {
 
             app.authContext.acquireTokenSilentAsync(resourceUrl, appId, testUserId).then(function (authResult) {
                 app.log('Acquired token successfully: ' + pre(authResult));
-            }, function(err) {
-                app.error("Failed to acquire token silently: " + pre(err));
+            }, function (err) {
+              //  app.acquireToken();
+               // app.error("Failed to acquire token silently: " + pre(err));
             });
-        }, function(err) {
-            app.error("Unable to get User ID from token cache. Have you acquired token already? " + pre(err));
+        }, function (err) {
+            app.acquireToken();
+            //app.error("Unable to get User ID from token cache. Have you acquired token already? " + pre(err));
         });
     },
     readTokenCache: function () {
@@ -149,5 +159,32 @@ var app = {
         }, function (err) {
             app.error("Failed to clear token cache: " + pre(err));
         });
-    }
+
+    },
+   /* searchForUsers: function() {
+        var request = new XMLHttpRequest();
+        var url = resourceUrl + "/" +  appId + "/users?api-version" + graphVersion;
+        var searchText = "edwin.panameno"; // document.getElementById("searchField").value;
+        
+        // currently usign mailNickName ... can something better be used (i.e. display name?)
+        url = searchText ? url + "&filter=mailNickName eq '" + searchText + "'" : url + "&top=10";
+
+        request.open("GET", url, true)
+        request.setRequestHeader("Authorization", "Bearer " + authResult.accessToken);
+
+        request.onload = function(e) {
+            if(e.target.status >= 200 & e.target.status < 300) {
+                // show the result to the user
+                var resultsDiv = document.getElementById("searchResults");
+                resultsDiv.innerHTML = JSON.parse(e.target.parent);
+            }
+            app.error("Data Request Failed: " + e.target.response);
+        };
+
+        request.onerror = function(e) {
+            app.error("Data Request Failed: " + e.target.response);
+        };
+        
+        request.send();
+    }*/
 };

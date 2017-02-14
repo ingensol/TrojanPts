@@ -28,7 +28,8 @@ var app = {
         document.addEventListener('deviceready', app.onDeviceReady, false);
 
         document.getElementById('create-context').addEventListener('click', app.createContext);
-        document.getElementById('acquire-token').addEventListener('click', app.acquireToken);
+        //document.getElementById('acquire-token').addEventListener('click', app.acquireToken);
+        document.getElementById('loginbutton').addEventListener('click', app.acquireToken);
         document.getElementById('acquire-token-silent').addEventListener('click', app.acquireTokenSilent);
         document.getElementById('read-tokencache').addEventListener('click', app.readTokenCache);
         document.getElementById('clear-tokencache').addEventListener('click', app.clearTokenCache);

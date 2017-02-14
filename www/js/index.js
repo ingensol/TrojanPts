@@ -94,8 +94,8 @@ var app = {
 
         app.authContext.acquireTokenAsync(resourceUrl, appId, redirectUrl)
             .then(function(authResult) {
-                app.log('Acquired token successfully: ' + pre(authResult));
-                window.location = 'feed.html';
+                app.log('XAcquired token successfully: ' + pre(authResult));
+                window.location = 'search.html';
             }, function(err) {
                 app.error("Failed to acquire token: " + pre(err));
             });
@@ -115,7 +115,7 @@ var app = {
             }
 
             app.authContext.acquireTokenSilentAsync(resourceUrl, appId, testUserId).then(function (authResult) {
-                app.log('Acquired token successfully: ' + pre(authResult));
+                app.log('YAcquired token successfully: ' + pre(authResult));
                 window.location = 'search.html';
             }, function(err) {
                 app.error("Failed to acquire token silently: " + pre(err));

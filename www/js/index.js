@@ -3,12 +3,12 @@
 
 var AuthenticationContext;
 
-var authority = 'https://login.windows.net/test353.onmicrosoft.com';
+var authority = 'https://login.windows.net/keckmedicine.onmicrosoft.com';
 var resourceUrl = 'https://graph.windows.net/';
-var appId = '1eed60fd-93bf-44c3-948b-d419b32b5ed6';
+var appId = '2b12cfe7-b4d8-4256-9072-ca27dade4e55';
 var redirectUrl = 'http://localhost:4400/services/aad/redirectTarget.html';
   
-var tenantName = 'test353.onmicrosoft.com';
+var tenantName = 'keckmedicine.onmicrosoft.com';
 var endpointUrl = resourceUrl + tenantName;
 
 function pre(json) {

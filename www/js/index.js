@@ -86,14 +86,11 @@ var app = {
         }, app.error);
     },
     acquireToken: function () {
-
+        app.createContext();
         if (app.authContext == null) {
             app.error('Authentication context isn\'t created yet. Create context first');
             return;
-        }
-        else {
-            app.createContext;
-        }
+        }      
 
         app.authContext.acquireTokenAsync(resourceUrl, appId, redirectUrl)
             .then(function(authResult) {

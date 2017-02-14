@@ -1,0 +1,30 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-battery-status": {
+            "PACKAGE_NAME": "com.kmc.trojanpts"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.kmc.trojanpts"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.kmc.trojanpts"
+        },
+        "cordova-plugin-contacts": {
+            "PACKAGE_NAME": "com.kmc.trojanpts"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.kmc.trojanpts"
+        },
+        "cordova-plugin-device-motion": {
+            "PACKAGE_NAME": "com.kmc.trojanpts"
+        }
+    },
+    "dependent_plugins": {}
+}

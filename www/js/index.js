@@ -154,22 +154,22 @@ var app = {
             app.error("Failed to clear token cache: " + pre(err));
         });
     }
-    $('form').submit(function(){
-        alert("test");
-       var landmarkID = $(this).parent().attr('data-landmark-id');
-       var postData = $(this).serialize();    
-    
-       $.ajax({
-         type: 'POST',
-         data: postData+'&amp;lid='+landmarkID,
-         url: 'http://your-domain.com/comments/save.php',
-         success: function(data){        
-            console.log(data);        
-            alert('Your comment was successfully added');        
+};
+$('form').submit(function(){
+    var landmarkID = $(this).parent().attr('data-landmark-id');
+    var postData = $(this).serialize();
+    $.ajax({
+            type: 'POST',
+    data: postData+'&amp;lid='+landmarkID,
+    url: 'http://your-domain.com/comments/save.php',
+    success: function(data){
+        console.log(data);
+        alert('Your comment was successfully added');
     },
     error: function(){
         console.log(data);
-        alert('There was an error adding your comment');        
-    }    
-    });       
-};
+        alert('There was an error adding your comment');
+    }
+});
+return false;
+});

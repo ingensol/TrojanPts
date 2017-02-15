@@ -155,6 +155,7 @@ var app = {
         });
     }
     $('form').submit(function(){
+        alert("test");
        var landmarkID = $(this).parent().attr('data-landmark-id');
        var postData = $(this).serialize();    
     

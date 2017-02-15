@@ -155,7 +155,7 @@ var app = {
         });
     }
 };
-$('form').submit(function () {
+$("#trojanPtform").submit(function () {
     alert("here");
     var landmarkID = $(this).parent().attr('data-landmark-id');
     var postData = $(this).serialize();

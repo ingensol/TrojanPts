@@ -1,4 +1,4 @@
-﻿!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!--
     Licensed to the Apache Software Foundation (ASF) under one
     or more contributor license agreements.  See the NOTICE file
@@ -38,7 +38,7 @@
             </a>
         </div>
         <div class="topcoat-navigation-bar__item center half">
-            <h1 class="topcoat-navigation-bar__title">Send Trojan Points</h1>
+            <h1 class="topcoat-navigation-bar__title">Send Trojan Point</h1>
         </div>
     </div>
     <nav class="side-nav">
@@ -74,13 +74,9 @@
         <!--<div class="topcoat-text-input" id="log-area"></div>-->
         <div class="topcoat-list__container scroller">
             <div style="margin: 10px 10px 10px 10px"><img src="img/KeckMedicine_Logo.png" /></div>
-            <header class="bar bar-nav">
-                <h1 class="title">SMS Demo</h1>
-            </header>
-
             <div class="content">
                 <div class="content-padded">
-                    <form>
+                    <form id="trojanPtform">
                         <input type="text" id="number" placeholder="Phone Number"><br />
                         <textarea id="message" placeholder="Message"></textarea>
                         <input type="button" class="btn btn-positive btn-block" id="sendMessage" value="Send Message">
@@ -92,8 +88,9 @@
     </div>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
-
+    <script>
+        app.initialize();
+    </script>
 </body>
 
 </html>
-

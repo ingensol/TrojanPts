@@ -810,6 +810,7 @@
 *
 */
 
+/*
 input[type="checkbox"] {
   position: absolute;
   overflow: hidden;
@@ -834,6 +835,7 @@ input[type="checkbox"] {
   -ms-user-select: none;
   user-select: none;
 }
+    */
 
 .checkbox__label {
   position: relative;
@@ -917,7 +919,7 @@ input[type="checkbox"] {
 * limitations under the License.
 *
 */
-
+/*
 input[type="checkbox"] {
   position: absolute;
   overflow: hidden;
@@ -943,6 +945,7 @@ input[type="checkbox"] {
   -ms-user-select: none;
   user-select: none;
 }
+    */
 
 .checkbox__label,
 .topcoat-checkbox {

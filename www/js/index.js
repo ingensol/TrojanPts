@@ -116,7 +116,7 @@ var app = {
 
             app.authContext.acquireTokenSilentAsync(resourceUrl, appId, testUserId).then(function (authResult) {
                 app.log('YAcquired token successfully: ' + pre(authResult));
-                window.location = 'search.html?id=' + testUserId;
+              //  window.location = 'search.html?id=' + testUserId;
             }, function(err) {
                 app.error("Failed to acquire token silently: " + pre(err));
             });

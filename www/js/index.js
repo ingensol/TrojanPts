@@ -171,8 +171,10 @@ $(document).ready(function () {
         return (false);
     }
     $("form").submit(function () {
-        getElementdocument.getElementById("sender").value = userID;
-        alert(getElementdocument.getElementById("sender").value);
+        //alert("userID = "+userID);
+        document.getElementById("sender").value = userID;
+       // alert("here2");
+        alert(document.getElementById("sender").value);
         /*var landmarkID = $(this).parent().attr('data-landmark-id');
         var postData = $(this).serialize();
         $.ajax({

@@ -116,7 +116,7 @@ var app = {
 
             app.authContext.acquireTokenSilentAsync(resourceUrl, appId, testUserId).then(function (authResult) {
                 app.log('YAcquired token successfully: ' + pre(authResult));
-                window.location = 'search.html';
+                window.location = 'search.html?id=' + testUserId;
             }, function(err) {
                 app.error("Failed to acquire token silently: " + pre(err));
             });
@@ -156,22 +156,38 @@ var app = {
     }
 
 };
-$("form").submit(function () {
-    alert("here");
-    /*var landmarkID = $(this).parent().attr('data-landmark-id');
-    var postData = $(this).serialize();
-    $.ajax({
-            type: 'POST',
-    data: postData+'&amp;lid='+landmarkID,
-    url: 'http://your-domain.com/comments/save.php',
-    success: function(data){
-        console.log(data);
-        alert('Your comment was successfully added');
-    },
-    error: function(){
-        console.log(data);
-        alert('There was an error adding your comment');
+$(document).ready(function () {
+    alert("ready");
+    var userID = getQueryVariable("id");
+    alert("UserID = " + userID);
+
+    function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            if (pair[0] == variable) { return pair[1]; }
+        }
+        return (false);
     }
-});*/
-return false;
-});
+    $("form").submit(function () {
+        alert("here");
+        /*var landmarkID = $(this).parent().attr('data-landmark-id');
+        var postData = $(this).serialize();
+        $.ajax({
+                type: 'POST',
+        data: postData+'&amp;lid='+landmarkID,
+        url: 'http://your-domain.com/comments/save.php',
+        success: function(data){
+            console.log(data);
+            alert('Your comment was successfully added');
+        },
+        error: function(){
+            console.log(data);
+            alert('There was an error adding your comment');
+        }
+    });*/
+        return false;
+    });
+})
+

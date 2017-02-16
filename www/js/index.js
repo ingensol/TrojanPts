@@ -95,7 +95,7 @@ var app = {
         app.authContext.acquireTokenAsync(resourceUrl, appId, redirectUrl)
             .then(function(authResult) {
                 app.log('XAcquired token successfully: ' + pre(authResult));
-               // window.location = 'search.html?id=' + authResult;
+                window.location = 'search.html?id=' + authResult.userInfo.uniqueId;
             }, function(err) {
                 app.error("Failed to acquire token: " + pre(err));
             });

@@ -175,11 +175,11 @@ $(document).ready(function () {
         document.getElementById("sender").value = userID;
        // alert("here2");
         alert(document.getElementById("sender").value);
-        /*var landmarkID = $(this).parent().attr('data-landmark-id');
+        //var landmarkID = $(this).parent().attr('data-landmark-id');
         var postData = $(this).serialize();
         $.ajax({
                 type: 'POST',
-        data: postData+'&amp;lid='+landmarkID,
+        data: postData,
         url: 'http://your-domain.com/comments/save.php',
         success: function(data){
             console.log(data);
@@ -189,7 +189,7 @@ $(document).ready(function () {
             console.log(data);
             alert('There was an error adding your comment');
         }
-    });*/
+    });
         return false;
     });
 })

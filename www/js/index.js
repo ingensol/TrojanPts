@@ -170,17 +170,24 @@ $(document).ready(function () {
         }
         return (false);
     }
-    $("form").submit(function () {
+    $('form').submit(function (e) {
+        e.preventDefault();
+        var data = $(this).serializeFormJSON();
         //alert("userID = "+userID);
         document.getElementById("sender").value = userID;
        // alert("here2");
        // alert(document.getElementById("sender").value);
         //var landmarkID = $(this).parent().attr('data-landmark-id');
-        var postData = $(this).serialize();
+        //var postData = $(this).serialize();
+        //var jsonData = JSON.stringify({
+         //   form: $('#trojanPtform').serialize()
+        //});
+        alert(data);
         $.ajax({
                 type: 'POST',
+                dataType: "jsonp",
                 data: postData,
-                url: 'https://keckapps.usc.edu/AwardTrojanPts',
+                url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/AwardTrojanPt',
                 success: function(data){
                     console.log(data);
                     alert('Your comment was successfully added');
@@ -192,5 +199,25 @@ $(document).ready(function () {
     });
         return false;
     });
+
+    (function ($) {
+        $.fn.serializeFormJSON = function () {
+
+            var o = {};
+            var a = this.serializeArray();
+            $.each(a, function () {
+                if (o[this.name]) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
+                }
+            });
+            return o;
+        };
+    })(jQuery);
 })
+
 

@@ -174,13 +174,13 @@ $(document).ready(function () {
         //alert("userID = "+userID);
         document.getElementById("sender").value = userID;
        // alert("here2");
-        alert(document.getElementById("sender").value);
+       // alert(document.getElementById("sender").value);
         //var landmarkID = $(this).parent().attr('data-landmark-id');
         var postData = $(this).serialize();
         $.ajax({
                 type: 'POST',
                 data: postData,
-                url: 'https://your-domain.com/comments/save.php',
+                url: 'https://keckapps.usc.edu/AwardTrojanPts',
                 success: function(data){
                     console.log(data);
                     alert('Your comment was successfully added');

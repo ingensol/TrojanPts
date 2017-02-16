@@ -6,25 +6,31 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-   <!-- <link rel="stylesheet" type="text/css" href="css/topcoat-mobile-dark.css">-->
+    <!-- <link rel="stylesheet" type="text/css" href="css/topcoat-mobile-dark.css">-->
     <link rel="stylesheet" type="text/css" href="css/ratchet.min.css">
-    
+
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/jquery.mobile-1.4.5.min.js"></script>
 </head>
 <body>
     <header class="bar bar-nav">
-        <h1 class="title">SMS Demo</h1>
+        <h1 class="title">Send A Trojan Point</h1>
     </header>
 
     <div class="content">
         <div class="content-padded">
-            <form>
-                <input type="text" id="number" placeholder="Phone Number"><br />
-                <textarea id="message" placeholder="Message"></textarea>
-                <input type="button" class="btn btn-positive btn-block" id="sendMessage" value="Send Message">
-            </form>
+            <form id="trojanPtform">
+                <div style="margin: 10px 10px 10px 10px;background-color:#990000"><img src="img/KeckMedicine_Logo.png" /></div>
+                    <input type="text" id="peer" placeholder="Peer Med Email"><br />
+                    <input type="checkbox" id="ownit" value="1" /> <label>Own It</label><br />
+                    <input type="checkbox" id="extraway" value="1" /> Extra Way<br />
+                    <input type="checkbox" id="teamplayer" value="1" /> Team Player<br />
+                    <input type="checkbox" id="awesome" value="1" /> Awesome<br />
+                    <input type="text" id="pts" placeholder="Number of Trojan PTs"><br />
+                    <textarea id="message" placeholder="Message"></textarea><br />
+                    <input type="submit" class="btn btn-positive btn-block" id="sendMessage" value="Send Message">
+                </form>
         </div>
     </div>
 

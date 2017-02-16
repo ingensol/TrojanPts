@@ -179,16 +179,16 @@ $(document).ready(function () {
         var postData = $(this).serialize();
         $.ajax({
                 type: 'POST',
-        data: postData,
-        url: 'http://your-domain.com/comments/save.php',
-        success: function(data){
-            console.log(data);
-            alert('Your comment was successfully added');
-        },
-        error: function(){
-            console.log(data);
-            alert('There was an error adding your comment');
-        }
+                data: postData,
+                url: 'https://your-domain.com/comments/save.php',
+                success: function(data){
+                    console.log(data);
+                    alert('Your comment was successfully added');
+                },
+                error: function(){
+                   // console.log(data);
+                    alert('There was an error adding your comment');
+                }
     });
         return false;
     });

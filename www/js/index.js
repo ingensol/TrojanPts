@@ -186,7 +186,7 @@ $(document).ready(function () {
         $.ajax({
                 type: 'POST',
                 dataType: "jsonp",
-                data: postData,
+                data: data,
                 url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/AwardTrojanPt',
                 success: function(data){
                     console.log(data);

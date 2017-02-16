@@ -157,9 +157,9 @@ var app = {
 
 };
 $(document).ready(function () {
-    alert("ready");
+   // alert("ready");
     var userID = getQueryVariable("id");
-    alert("UserID = " + userID);
+   // alert("UserID = " + userID);
 
     function getQueryVariable(variable) {
         var query = window.location.search.substring(1);
@@ -171,7 +171,8 @@ $(document).ready(function () {
         return (false);
     }
     $("form").submit(function () {
-        alert("here");
+        getElementdocument.getElementById("sender").value = userID;
+        alert(getElementdocument.getElementById("sender").value);
         /*var landmarkID = $(this).parent().attr('data-landmark-id');
         var postData = $(this).serialize();
         $.ajax({

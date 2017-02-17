@@ -184,7 +184,7 @@ $(document).ready(function () {
         var jsonData = JSON.stringify({
             form: $('#trojanPtform').serialize()
         });
-        alert(jsonData);
+        //alert(jsonData);
         $.ajax({
                 type: 'POST',
                 dataType: "jsonp",

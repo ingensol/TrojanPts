@@ -178,23 +178,41 @@ $(document).ready(function () {
        // alert("here2");
        // alert(document.getElementById("sender").value);
         //var landmarkID = $(this).parent().attr('data-landmark-id');
-        //var postData = $(this).serialize();
-        //var jsonData = JSON.stringify({
-         //   form: $('#trojanPtform').serialize()
-        //});
-        alert(data);
+        var postData = $(this).serialize();
+        var jsonData = JSON.stringify({
+            form: $('#trojanPtform').serialize()
+        });
+        alert(jsonData);
         $.ajax({
                 type: 'POST',
                 dataType: "jsonp",
-                data: data,
+                data: postData,
                 url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/AwardTrojanPt',
-                success: function(data){
+                success: function (data, text) {
                     console.log(data);
                     alert('Your comment was successfully added');
                 },
-                error: function(){
-                   // console.log(data);
-                    alert('There was an error adding your comment');
+                error: function (jqXHR, exception) {
+                    // console.log(data);
+                    var msg = '';
+                    if (jqXHR.status === 0) {
+                        msg = 'Not connect.\n Verify Network.';
+                    } else if (jqXHR.status == 404) {
+                        msg = 'Requested page not found. [404]';
+                    } else if (jqXHR.status == 500) {
+                        msg = 'Internal Server Error [500].';
+                    } else if (exception === 'parsererror') {
+                        msg = 'Requested JSON parse failed.';
+                    } else if (exception === 'timeout') {
+                        msg = 'Time out error.';
+                    } else if (exception === 'abort') {
+                        msg = 'Ajax request aborted.';
+                    } else {
+                        msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                    }
+                    //$('#post').html(msg);
+                    alert('There was an error adding your comment ' + jqXHR.status);
+
                 }
     });
         return false;

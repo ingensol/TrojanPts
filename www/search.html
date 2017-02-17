@@ -21,25 +21,33 @@
 
     <div class="content">
         <div class="content-padded">
-            <form id="trojanPtform">
+            <form id="trojanPtform" name="trojanPtform">
                 <div style="margin: 10px 10px 10px 10px;background-color:#990000"><img src="img/KeckMedicine_Logo.png" /></div>
-                    <input type="text" id="peer" placeholder="Peer Med Email"><br />
-                    <input type="checkbox" id="authenticity" value="1" /> <label>Authenticity</label><br />
-                    <input type="checkbox" id="innovative" value="1" />Innovative<br />
-                    <input type="checkbox" id="compassion" value="1" />Compassion<br />
-                    <input type="checkbox" id="professionalism" value="1" />Professionalism<br />
-                    <input type="checkbox" id="collegiality" value="1" /> <label>Collegiality</label><br />
-                    <input type="checkbox" id="courtesy" value="1" />Courtesy<br />
-                    <input type="checkbox" id="efficiency" value="1" />Efficiency<br />
-                    <input type="checkbox" id="communication" value="1" />Communication<br />
-                    <input type="checkbox" id="leadership" value="1" /> <label>Leadership</label><br />
-                    <input type="checkbox" id="teamwork" value="1" />Teamwork<br />
-                    <input type="checkbox" id="known" value="1" />KNOWN Services Standards<br />
-                    <input type="text" id="pts" placeholder="Number of Trojan PTs"><br />
-                    <textarea id="message" placeholder="Message"></textarea><br />
-                    <input type="hidden" id="sender" value=""><br />
+                <input type="text" id="peer" name="peer" placeholder="Peer Med Email" required><br />
+                <input type="checkbox" id="authenticity" name="authenticity" value="1" /> <label>Authenticity</label><br />
+                <input type="checkbox" id="innovative" name="innovative" value="1" />Innovative<br />
+                <input type="checkbox" id="compassion" name="compassion" value="1" />Compassion<br />
+                <input type="checkbox" id="professionalism" name="professionalism" value="1" />Professionalism<br />
+                <input type="checkbox" id="collegiality" name="collegiality" value="1" /> <label>Collegiality</label><br />
+                <input type="checkbox" id="courtesy" name="courtesy" value="1" />Courtesy<br />
+                <input type="checkbox" id="efficiency" name="efficiency" value="1" />Efficiency<br />
+                <input type="checkbox" id="communication" name="communication" value="1" />Communication<br />
+                <input type="checkbox" id="leadership" name="leadership" value="1" /> <label>Leadership</label><br />
+                <input type="checkbox" id="teamwork" name="teamwork" value="1" />Teamwork<br />
+                <input type="checkbox" id="known" name="known" value="1" />KNOWN Services Standards<br />
+                <select id="pts" name="pts">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select><br />
+                    <textarea id="message" name="message" placeholder="Message" required></textarea>
+                    <br />
+                    <input type="hidden" id="sender" name="sender" value="">
+                    <br />
                     <input type="submit" class="btn btn-positive btn-block" id="sendMessage" value="Send Trojan Point">
-                </form>
+</form>
         </div>
     </div>
 

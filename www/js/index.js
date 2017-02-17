@@ -157,7 +157,8 @@ var app = {
 
 };
 $(document).ready(function () {
-   // alert("ready");
+    // alert("ready");
+    $("#myPopup").popup();
     var userID = getQueryVariable("id");
    // alert("UserID = " + userID);
 
@@ -172,7 +173,7 @@ $(document).ready(function () {
     }
     $('form').submit(function (e) {
         e.preventDefault();
-
+       
         var data = $(this).serializeFormJSON();
         //alert("userID = "+userID);
         document.getElementById("sender").value = userID;
@@ -208,11 +209,14 @@ $(document).ready(function () {
                         msg = 'Time out error.';
                     } else if (exception === 'abort') {
                         msg = 'Ajax request aborted.';
-                    } else {
+                    } else if (jqXHR.status == 200) {
+                        msg = 'You successfully awarded Trojan Pts!';
+                    }
+                    else {
                         msg = 'Uncaught Error.\n' + jqXHR.responseText;
                     }
                     //$('#post').html(msg);
-                    alert('There was an error adding your comment ' + jqXHR.status);
+                    alert(msg);
 
                 }
     });

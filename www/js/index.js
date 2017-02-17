@@ -173,19 +173,45 @@ $(document).ready(function () {
     }
     $('form').submit(function (e) {
         e.preventDefault();
-       
-        var data = $(this).serializeFormJSON();
-        //alert("userID = "+userID);
-        document.getElementById("sender").value = userID;
-       // alert("here2");
-       // alert(document.getElementById("sender").value);
-        //var landmarkID = $(this).parent().attr('data-landmark-id');
-        var postData = $(this).serialize();
-        var jsonData = JSON.stringify({
-            form: $('#trojanPtform').serialize()
-        });
-        //alert(jsonData);
-        $.ajax({
+        var submitdata = true;
+        document.getElementById("peerreq").style.display = "none"
+        document.getElementById("attrireq").style.display = "none"
+        document.getElementById("messagereq").style.display = "none"
+        if (document.getElementById("peer").value == "")
+        {           
+            document.getElementById("peer").value = "";
+            document.getElementById("peerreq").style.display = "block";
+            submitdata = false;
+        }
+        if (document.getElementById("message").value == "") {
+            document.getElementById("messagereq").style.display = "block";
+            submitdata = false;
+        }
+        if (document.getElementById("authenticity").checked == false && document.getElementById("innovative").checked == false
+            && document.getElementById("compassion").checked == false && document.getElementById("professionalism").checked == false
+            && document.getElementById("collegiality").checked == false && document.getElementById("courtesy").checked == false
+            && document.getElementById("efficiency").checked == false && document.getElementById("communication").checked == false
+            && document.getElementById("leadership").checked == false && document.getElementById("teamwork").checked == false
+            && document.getElementById("known").checked == false)
+        {
+            document.getElementById("attrireq").style.display = "block";
+            submitdata = false;
+        }
+
+        if (submitdata) {
+
+            var data = $(this).serializeFormJSON();
+            //alert("userID = "+userID);
+            document.getElementById("sender").value = userID;
+            // alert("here2");
+            // alert(document.getElementById("sender").value);
+            //var landmarkID = $(this).parent().attr('data-landmark-id');
+            var postData = $(this).serialize();
+            var jsonData = JSON.stringify({
+                form: $('#trojanPtform').serialize()
+            });
+            alert(jsonData);
+            $.ajax({
                 type: 'POST',
                 dataType: "jsonp",
                 data: postData,
@@ -219,7 +245,8 @@ $(document).ready(function () {
                     alert(msg);
 
                 }
-    });
+            });
+        }
         return false;
     });
 

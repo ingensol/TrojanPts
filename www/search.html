@@ -23,18 +23,31 @@
         <div class="content-padded">
             <form id="trojanPtform" name="trojanPtform">
                 <div style="margin: 10px 10px 10px 10px;background-color:#990000"><img src="img/KeckMedicine_Logo.png" /></div>
-                <input type="text" id="peer" name="peer" placeholder="Peer Med Email" required><br />
-                <input type="checkbox" id="authenticity" name="authenticity" value="1" /> <label>Authenticity</label><br />
-                <input type="checkbox" id="innovative" name="innovative" value="1" />Innovative<br />
-                <input type="checkbox" id="compassion" name="compassion" value="1" />Compassion<br />
-                <input type="checkbox" id="professionalism" name="professionalism" value="1" />Professionalism<br />
-                <input type="checkbox" id="collegiality" name="collegiality" value="1" /> <label>Collegiality</label><br />
-                <input type="checkbox" id="courtesy" name="courtesy" value="1" />Courtesy<br />
-                <input type="checkbox" id="efficiency" name="efficiency" value="1" />Efficiency<br />
-                <input type="checkbox" id="communication" name="communication" value="1" />Communication<br />
-                <input type="checkbox" id="leadership" name="leadership" value="1" /> <label>Leadership</label><br />
-                <input type="checkbox" id="teamwork" name="teamwork" value="1" />Teamwork<br />
-                <input type="checkbox" id="known" name="known" value="1" />KNOWN Services Standards<br />
+                <span id="peerreq" style="display:none;color:red">Please enter a valid employee email</span>
+                <input type="text" id="peer" name="peer" placeholder="Peer Med Email"><br />     
+                <span id="attrireq" style="display:none;color:red">Please select one from the following:</span>           
+                <input type="checkbox" id="authenticity" name="authenticity" value="1" />
+                <input type="hidden" id="authenticity" name="authenticity" value="0" />  <label>Authenticity</label><br />
+                <input type="checkbox" id="innovative" name="innovative" value="1" />Innovative
+                <input type="hidden" id="innovative" name="innovative" value="0" /><br />
+                <input type="checkbox" id="compassion" name="compassion" value="1" />Compassion
+                <input type="hidden" id="compassion" name="compassion" value="0" /><br />
+                <input type="checkbox" id="professionalism" name="professionalism" value="1" />Professionalism
+                <input type="hidden" id="professionalism" name="professionalism" value="0" /><br />
+                <input type="checkbox" id="collegiality" name="collegiality" value="1" /> <label>Collegiality</label>
+                <input type="hidden" id="collegiality" name="collegiality" value="0" /><br />
+                <input type="checkbox" id="courtesy" name="courtesy" value="1" />Courtesy
+                <input type="hidden" id="courtesy" name="courtesy" value="0" /><br />
+                <input type="checkbox" id="efficiency" name="efficiency" value="1" />Efficiency
+                <input type="hidden" id="efficiency" name="efficiency" value="0" /><br />
+                <input type="checkbox" id="communication" name="communication" value="1" />Communication
+                <input type="hidden" id="communication" name="communication" value="0" /><br />
+                <input type="checkbox" id="leadership" name="leadership" value="1" /> <label>Leadership</label>
+                <input type="hidden" id="leadership" name="leadership" value="0" /><br />
+                <input type="checkbox" id="teamwork" name="teamwork" value="1" />Teamwork
+                <input type="hidden" id="teamwork" name="teamwork" value="0" /><br />
+                <input type="checkbox" id="known" name="known" value="1" />KNOWN Services Standards
+                <input type="hidden" id="known" name="known" value="0" /><br />
                 <select id="pts" name="pts">
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -42,7 +55,8 @@
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </select><br />
-                    <textarea id="message" name="message" placeholder="Message" required></textarea>
+                <span id="messagereq" style="display:none;color:red">Please enter a short description</span>
+                    <textarea id="message" name="message" placeholder="Message"></textarea>
                     <br />
                     <input type="hidden" id="sender" name="sender" value="">
                     <br />

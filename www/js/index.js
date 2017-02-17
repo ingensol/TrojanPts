@@ -177,7 +177,7 @@ $(document).ready(function () {
         document.getElementById("peerreq").style.display = "none"
         document.getElementById("attrireq").style.display = "none"
         document.getElementById("messagereq").style.display = "none"
-        if (document.getElementById("peer").value == "")
+        if (!validateemail(document.getElementById("peer").value))
         {           
             document.getElementById("peer").value = "";
             document.getElementById("peerreq").style.display = "block";
@@ -199,7 +199,8 @@ $(document).ready(function () {
         }
 
         if (submitdata) {
-
+            document.getElementById("mainview").style.display = "none";
+            document.getElementById("loadingdiv").style.display = "block";
             var data = $(this).serializeFormJSON();
             //alert("userID = "+userID);
             document.getElementById("sender").value = userID;
@@ -217,8 +218,23 @@ $(document).ready(function () {
                 data: postData,
                 url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/AwardTrojanPt',
                 success: function (data, text) {
-                    console.log(data);
-                    alert('Your comment was successfully added');
+                    //console.log(data);
+                    //alert('Your comment was successfully added');
+                    document.getElementById("peer").value = "";
+                    document.getElementById("message").value = "";
+                    document.getElementById("authenticity").checked = false;
+                    document.getElementById("innovative").checked = false;
+                    document.getElementById("compassion").checked = false;
+                    document.getElementById("professionalism").checked = false;
+                    document.getElementById("collegiality").checked = false;
+                    document.getElementById("courtesy").checked = false;
+                    document.getElementById("efficiency").checked = false;
+                    document.getElementById("communication").checked = false;
+                    document.getElementById("leadership").checked == false;
+                    document.getElementById("teamwork").checked = false;
+                    document.getElementById("known").checked = false;
+                    document.getElementById("loadingdiv").style.display = "none";
+                    document.getElementById("donediv").style.display = "block";
                 },
                 error: function (jqXHR, exception) {
                     // console.log(data);
@@ -268,6 +284,21 @@ $(document).ready(function () {
             return o;
         };
     })(jQuery);
+    
+    function validateemail(x) {
+        if (x == "")
+            return false;
+        var atpos = x.indexOf("@");
+        var dotpos = x.lastIndexOf(".");
+        if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= x.length) {
+            //alert("Not a valid e-mail address");
+            return false;
+        }
+        return true;
+    }
 })
-
+function CloseDoneDiv() {
+    document.getElementById("donediv").style.display = "none";
+    document.getElementById("mainview").style.display = "block";
+}
 

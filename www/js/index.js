@@ -172,6 +172,7 @@ $(document).ready(function () {
     }
     $('form').submit(function (e) {
         e.preventDefault();
+
         var data = $(this).serializeFormJSON();
         //alert("userID = "+userID);
         document.getElementById("sender").value = userID;

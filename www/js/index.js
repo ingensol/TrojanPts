@@ -158,7 +158,7 @@ var app = {
 };
 $(document).ready(function () {
     // alert("ready");
-    $("#myPopup").popup();
+   
     var userID = getQueryVariable("id");
    // alert("UserID = " + userID);
 

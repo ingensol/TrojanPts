@@ -160,12 +160,12 @@ function getPtsAwardedTtoday() {
     // alert(jsonData);
 
     //alert("userID = "+userID);
-    document.getElementById("sender").value = userID;
-    // alert("here2");
+    var userID = getQueryVariable("id");
+    // alert("getPtsAwardedTtoday");
     // alert(document.getElementById("sender").value);
     //var landmarkID = $(this).parent().attr('data-landmark-id');
-    var postData = document.getElementById("sender").value.serialize();
-
+    var postData = userID.toString().serialize;
+      
 
     $.ajax({
         type: 'POST',
@@ -182,7 +182,7 @@ function getPtsAwardedTtoday() {
             if (jqXHR.status === 0) {
                 msg = 'Not connect.\n Verify Network.';
             } else if (jqXHR.status == 404) {
-                msg = 'Requested page not found. [404]';
+                msg = 'Requested page not found. [404] X';
             } else if (jqXHR.status == 500) {
                 msg = 'Internal Server Error [500].';
             } else if (exception === 'parsererror') {
@@ -203,22 +203,21 @@ function getPtsAwardedTtoday() {
         }
     });
 }
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == variable) { return pair[1]; }
+    }
+    return (false);
+}
 $(document).ready(function () {
     // alert("ready");
    
     var userID = getQueryVariable("id");
    // alert("UserID = " + userID);
-
-    function getQueryVariable(variable) {
-        var query = window.location.search.substring(1);
-        var vars = query.split("&");
-        for (var i = 0; i < vars.length; i++) {
-            var pair = vars[i].split("=");
-            if (pair[0] == variable) { return pair[1]; }
-        }
-        return (false);
-    }
-    
+  
 
     $('form').submit(function (e) {
         e.preventDefault();

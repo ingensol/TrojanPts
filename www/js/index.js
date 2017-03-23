@@ -156,6 +156,53 @@ var app = {
     }
 
 };
+function getPtsAwardedTtoday() {
+    // alert(jsonData);
+
+    //alert("userID = "+userID);
+    document.getElementById("sender").value = userID;
+    // alert("here2");
+    // alert(document.getElementById("sender").value);
+    //var landmarkID = $(this).parent().attr('data-landmark-id');
+    var postData = document.getElementById("sender").value.serialize();
+
+
+    $.ajax({
+        type: 'POST',
+        dataType: "jsonp",
+        data: postData,
+        url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetPtsAwardedToday',
+        success: function (data, text) {
+            //console.log(data);
+            alert(text);
+        },
+        error: function (jqXHR, exception) {
+            // console.log(data);
+            var msg = '';
+            if (jqXHR.status === 0) {
+                msg = 'Not connect.\n Verify Network.';
+            } else if (jqXHR.status == 404) {
+                msg = 'Requested page not found. [404]';
+            } else if (jqXHR.status == 500) {
+                msg = 'Internal Server Error [500].';
+            } else if (exception === 'parsererror') {
+                msg = 'Requested JSON parse failed.';
+            } else if (exception === 'timeout') {
+                msg = 'Time out error.';
+            } else if (exception === 'abort') {
+                msg = 'Ajax request aborted.';
+            } else if (jqXHR.status == 200) {
+                msg = 'You successfully awarded Trojan Pts!';
+            }
+            else {
+                msg = 'Uncaught Error.\n' + jqXHR.responseText;
+            }
+            //$('#post').html(msg);
+            alert(msg);
+
+        }
+    });
+}
 $(document).ready(function () {
     // alert("ready");
    
@@ -172,53 +219,7 @@ $(document).ready(function () {
         return (false);
     }
     
-    function getPtsAwardeTtoday() {
-        // alert(jsonData);
-       
-        //alert("userID = "+userID);
-        document.getElementById("sender").value = userID;
-        // alert("here2");
-        // alert(document.getElementById("sender").value);
-        //var landmarkID = $(this).parent().attr('data-landmark-id');
-        var postData = document.getElementById("sender").value.serialize();        
-            
 
-        $.ajax({
-            type: 'POST',
-            dataType: "jsonp",
-            data: postData,
-            url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetPtsAwardedToday',
-            success: function (data, text) {
-                //console.log(data);
-                alert(text);
-            },
-            error: function (jqXHR, exception) {
-                // console.log(data);
-                var msg = '';
-                if (jqXHR.status === 0) {
-                    msg = 'Not connect.\n Verify Network.';
-                } else if (jqXHR.status == 404) {
-                    msg = 'Requested page not found. [404]';
-                } else if (jqXHR.status == 500) {
-                    msg = 'Internal Server Error [500].';
-                } else if (exception === 'parsererror') {
-                    msg = 'Requested JSON parse failed.';
-                } else if (exception === 'timeout') {
-                    msg = 'Time out error.';
-                } else if (exception === 'abort') {
-                    msg = 'Ajax request aborted.';
-                } else if (jqXHR.status == 200) {
-                    msg = 'You successfully awarded Trojan Pts!';
-                }
-                else {
-                    msg = 'Uncaught Error.\n' + jqXHR.responseText;
-                }
-                //$('#post').html(msg);
-                alert(msg);
-
-            }
-        });
-    }
     $('form').submit(function (e) {
         e.preventDefault();
         var submitdata = true;

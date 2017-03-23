@@ -14,7 +14,7 @@
     <script src="js/jquery.mobile-1.4.5.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
 </head>
-<body>
+<body onload="getPtsAwardedTtoday()">
     <header class="bar bar-nav">
         <h1 class="title">Send A Trojan PointX</h1>
     </header>
@@ -67,9 +67,7 @@
     <div id="loadingdiv" style="display:none;margin-top:50px" align="center"><img src="img/high-five_sml.gif"><p align="center">Sending Trojan Point</p></div>
     <div id="donediv" style="display:none;margin-top:50px" align="center"><img src="img/emoji_thumbs_up-200x200.gif"><p align="center"><button onclick="CloseDoneDiv()">Close</button></p></div>
     <script type="text/javascript" src="cordova.js"></script>
-    <script>
-        getPtsAwardeTtoday();
-    </script>
+
 </body>
 
 </html>

@@ -156,6 +156,7 @@ var app = {
     }
 
 };
+var Ptsleft = 5;
 function getPtsAwardedTtoday() {
     // alert(jsonData);
 
@@ -164,29 +165,37 @@ function getPtsAwardedTtoday() {
     // alert("getPtsAwardedTtoday");
     // alert(document.getElementById("sender").value);
     //var landmarkID = $(this).parent().attr('data-landmark-id');
-    var postData = userID.toString().serialize;
-      
+     var postData = $(this).serialize();
+     document.getElementById("sendMessage").disabled = true;
 
     $.ajax({
-        type: 'POST',
+        type: 'GET',
         dataType: "jsonp",
-        data: postData,
+        data: { sender: userID },
+        crossDomain: true,
         url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetPtsAwardedToday',
         success: function (data, text) {
             //console.log(data);
-            alert(text);
+            Ptsleft = 5 - Number(data);
+            //alert(Ptsleft);
+            var messege = "You have awarded " + Number(data) + " point(s) today. You have " + Ptsleft + " to award.";
+            
+            document.getElementById("PtsAllowed").innerHTML = messege;
+            document.getElementById("sendMessage").disabled = false;
+            //alert(data);
         },
-        error: function (jqXHR, exception) {
+        error: function (jqXHR, exception,err) {
             // console.log(data);
             var msg = '';
             if (jqXHR.status === 0) {
                 msg = 'Not connect.\n Verify Network.';
             } else if (jqXHR.status == 404) {
-                msg = 'Requested page not found. [404] X';
+                msg = 'Requested page not found. [404]';
             } else if (jqXHR.status == 500) {
                 msg = 'Internal Server Error [500].';
             } else if (exception === 'parsererror') {
                 msg = 'Requested JSON parse failed.';
+                alert(err);
             } else if (exception === 'timeout') {
                 msg = 'Time out error.';
             } else if (exception === 'abort') {
@@ -198,7 +207,7 @@ function getPtsAwardedTtoday() {
                 msg = 'Uncaught Error.\n' + jqXHR.responseText;
             }
             //$('#post').html(msg);
-            alert(msg);
+           // alert(msg);
 
         }
     });
@@ -221,95 +230,100 @@ $(document).ready(function () {
 
     $('form').submit(function (e) {
         e.preventDefault();
-        var submitdata = true;
-        document.getElementById("peerreq").style.display = "none"
-        document.getElementById("attrireq").style.display = "none"
-        document.getElementById("messagereq").style.display = "none"
-        if (!validateemail(document.getElementById("peer").value))
-        {           
-            document.getElementById("peer").value = "";
-            document.getElementById("peerreq").style.display = "block";
-            submitdata = false;
+        var ptsawarded = document.getElementById("pts").value;
+        if (ptsawarded > Ptsleft) {
+            var submitdata = true;
+            document.getElementById("peerreq").style.display = "none"
+            document.getElementById("attrireq").style.display = "none"
+            document.getElementById("messagereq").style.display = "none"
+            if (!validateemail(document.getElementById("peer").value)) {
+                document.getElementById("peer").value = "";
+                document.getElementById("peerreq").style.display = "block";
+                submitdata = false;
+            }
+            if (document.getElementById("message").value == "") {
+                document.getElementById("messagereq").style.display = "block";
+                submitdata = false;
+            }
+            if (document.getElementById("authenticity").checked == false && document.getElementById("innovative").checked == false
+                && document.getElementById("compassion").checked == false && document.getElementById("professionalism").checked == false
+                && document.getElementById("collegiality").checked == false && document.getElementById("courtesy").checked == false
+                && document.getElementById("efficiency").checked == false && document.getElementById("communication").checked == false
+                && document.getElementById("leadership").checked == false && document.getElementById("teamwork").checked == false
+                && document.getElementById("known").checked == false) {
+                document.getElementById("attrireq").style.display = "block";
+                submitdata = false;
+            }
+
+            if (submitdata) {
+                document.getElementById("mainview").style.display = "none";
+                document.getElementById("loadingdiv").style.display = "block";
+                var data = $(this).serializeFormJSON();
+                //alert("userID = "+userID);
+                document.getElementById("sender").value = userID;
+                // alert("here2");
+                // alert(document.getElementById("sender").value);
+                //var landmarkID = $(this).parent().attr('data-landmark-id');
+                var postData = $(this).serialize();
+                var jsonData = JSON.stringify({
+                    form: $('#trojanPtform').serialize()
+                });
+                // alert(jsonData);
+                $.ajax({
+                    type: 'POST',
+                    dataType: "jsonp",
+                    data: postData,
+                    url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/AwardTrojanPt',
+                    success: function (data, text) {
+                        //console.log(data);
+                        //alert('Your comment was successfully added');
+                        document.getElementById("peer").value = "";
+                        document.getElementById("message").value = "";
+                        document.getElementById("authenticity").checked = false;
+                        document.getElementById("innovative").checked = false;
+                        document.getElementById("compassion").checked = false;
+                        document.getElementById("professionalism").checked = false;
+                        document.getElementById("collegiality").checked = false;
+                        document.getElementById("courtesy").checked = false;
+                        document.getElementById("efficiency").checked = false;
+                        document.getElementById("communication").checked = false;
+                        document.getElementById("leadership").checked == false;
+                        document.getElementById("teamwork").checked = false;
+                        document.getElementById("known").checked = false;
+                        document.getElementById("loadingdiv").style.display = "none";
+                        document.getElementById("donediv").style.display = "block";
+                    },
+                    error: function (jqXHR, exception) {
+                        // console.log(data);
+                        var msg = '';
+                        if (jqXHR.status === 0) {
+                            msg = 'Not connect.\n Verify Network.';
+                        } else if (jqXHR.status == 404) {
+                            msg = 'Requested page not found. [404]';
+                        } else if (jqXHR.status == 500) {
+                            msg = 'Internal Server Error [500].';
+                        } else if (exception === 'parsererror') {
+                            msg = 'Requested JSON parse failed.';
+                        } else if (exception === 'timeout') {
+                            msg = 'Time out error.';
+                        } else if (exception === 'abort') {
+                            msg = 'Ajax request aborted.';
+                        } else if (jqXHR.status == 200) {
+                            msg = 'You successfully awarded Trojan Pts!';
+                        }
+                        else {
+                            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                        }
+                        //$('#post').html(msg);
+                        alert(msg);
+
+                    }
+                });
+            }
         }
-        if (document.getElementById("message").value == "") {
-            document.getElementById("messagereq").style.display = "block";
-            submitdata = false;
-        }
-        if (document.getElementById("authenticity").checked == false && document.getElementById("innovative").checked == false
-            && document.getElementById("compassion").checked == false && document.getElementById("professionalism").checked == false
-            && document.getElementById("collegiality").checked == false && document.getElementById("courtesy").checked == false
-            && document.getElementById("efficiency").checked == false && document.getElementById("communication").checked == false
-            && document.getElementById("leadership").checked == false && document.getElementById("teamwork").checked == false
-            && document.getElementById("known").checked == false)
+        else
         {
-            document.getElementById("attrireq").style.display = "block";
-            submitdata = false;
-        }
-
-        if (submitdata) {
-            document.getElementById("mainview").style.display = "none";
-            document.getElementById("loadingdiv").style.display = "block";
-            var data = $(this).serializeFormJSON();
-            //alert("userID = "+userID);
-            document.getElementById("sender").value = userID;
-            // alert("here2");
-            // alert(document.getElementById("sender").value);
-            //var landmarkID = $(this).parent().attr('data-landmark-id');
-            var postData = $(this).serialize();
-            var jsonData = JSON.stringify({
-                form: $('#trojanPtform').serialize()
-            });
-           // alert(jsonData);
-            $.ajax({
-                type: 'POST',
-                dataType: "jsonp",
-                data: postData,
-                url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/AwardTrojanPt',
-                success: function (data, text) {
-                    //console.log(data);
-                    //alert('Your comment was successfully added');
-                    document.getElementById("peer").value = "";
-                    document.getElementById("message").value = "";
-                    document.getElementById("authenticity").checked = false;
-                    document.getElementById("innovative").checked = false;
-                    document.getElementById("compassion").checked = false;
-                    document.getElementById("professionalism").checked = false;
-                    document.getElementById("collegiality").checked = false;
-                    document.getElementById("courtesy").checked = false;
-                    document.getElementById("efficiency").checked = false;
-                    document.getElementById("communication").checked = false;
-                    document.getElementById("leadership").checked == false;
-                    document.getElementById("teamwork").checked = false;
-                    document.getElementById("known").checked = false;
-                    document.getElementById("loadingdiv").style.display = "none";
-                    document.getElementById("donediv").style.display = "block";
-                },
-                error: function (jqXHR, exception) {
-                    // console.log(data);
-                    var msg = '';
-                    if (jqXHR.status === 0) {
-                        msg = 'Not connect.\n Verify Network.';
-                    } else if (jqXHR.status == 404) {
-                        msg = 'Requested page not found. [404]';
-                    } else if (jqXHR.status == 500) {
-                        msg = 'Internal Server Error [500].';
-                    } else if (exception === 'parsererror') {
-                        msg = 'Requested JSON parse failed.';
-                    } else if (exception === 'timeout') {
-                        msg = 'Time out error.';
-                    } else if (exception === 'abort') {
-                        msg = 'Ajax request aborted.';
-                    } else if (jqXHR.status == 200) {
-                        msg = 'You successfully awarded Trojan Pts!';
-                    }
-                    else {
-                        msg = 'Uncaught Error.\n' + jqXHR.responseText;
-                    }
-                    //$('#post').html(msg);
-                    alert(msg);
-
-                }
-            });
+            alert("You cannot award more points than " + Ptsleft);
         }
         return false;
     });

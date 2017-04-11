@@ -212,6 +212,54 @@ function getPtsAwardedTtoday() {
         }
     });
 }
+function getfeed() {
+    //alert("getPtsAwardedTtoday");
+
+    $.ajax({
+        type: 'GET',
+        dataType: "jsonp",
+        data: { sender: "test" },
+        crossDomain: true,
+        url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetPtsFeed',
+        success: function (data, text) {
+            for (i = 0; i < data.length; i++) {
+              
+                var TP_Row = '<tr>';
+                var TP_Details = "<td><strong>" + data[i].Employee + " - " + data[i].TotalPts + "Pts</strong><br>" + data[i].Message + "<br>From:<i>" + data[i].Sender + "</i></td>";
+                TP_Row = TP_Row + TP_Details;
+                TP_Row = TP_Row + '</tr>';
+
+                $('#TP_List > tbody:last').append(TP_Row);
+            }            
+        },
+        error: function (jqXHR, exception, err) {
+            // console.log(data);
+            var msg = '';
+            if (jqXHR.status === 0) {
+                msg = 'Not connect.\n Verify Network.';
+            } else if (jqXHR.status == 404) {
+                msg = 'Requested page not found. [404]';
+            } else if (jqXHR.status == 500) {
+                msg = 'Internal Server Error [500].';
+            } else if (exception === 'parsererror') {
+                msg = 'Requested JSON parse failed.';
+                alert(err);
+            } else if (exception === 'timeout') {
+                msg = 'Time out error.';
+            } else if (exception === 'abort') {
+                msg = 'Ajax request aborted.';
+            } else if (jqXHR.status == 200) {
+                msg = 'You successfully awarded Trojan Pts!';
+            }
+            else {
+                msg = 'Uncaught Error.\n' + jqXHR.responseText;
+            }
+            //$('#post').html(msg);
+            // alert(msg);
+
+        }
+    });
+}
 function getQueryVariable(variable) {
     var query = window.location.search.substring(1);
     var vars = query.split("&");
@@ -231,7 +279,8 @@ $(document).ready(function () {
     $('form').submit(function (e) {
         e.preventDefault();
         var ptsawarded = document.getElementById("pts").value;
-        if (ptsawarded > Ptsleft) {
+        alert("Pts awarded = " + ptsawarded + " - Pts left - " + Ptsleft);
+        if (ptsawarded < Ptsleft) {
             var submitdata = true;
             document.getElementById("peerreq").style.display = "none"
             document.getElementById("attrireq").style.display = "none"

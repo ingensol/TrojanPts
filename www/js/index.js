@@ -36,6 +36,7 @@ var app = {
 
         function toggleMenu() {
             // menu must be always shown on desktop/tablet
+            //alert("toggleMenu");
             if (document.body.clientWidth > 480) return;
             var cl = document.body.classList;
             if (cl.contains('left-nav')) { cl.remove('left-nav'); }
@@ -412,4 +413,11 @@ function CloseDoneDiv() {
     document.getElementById("donediv").style.display = "none";
     document.getElementById("mainview").style.display = "block";
 }
-
+function toggleMenu1() {
+    // menu must be always shown on desktop/tablet
+    //alert("toggleMenu");
+    if (document.body.clientWidth > 480) return;
+    var cl = document.body.classList;
+    if (cl.contains('left-nav')) { cl.remove('left-nav'); }
+    else { cl.add('left-nav'); }
+}

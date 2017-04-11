@@ -309,7 +309,7 @@ $(document).ready(function () {
                 document.getElementById("mainview").style.display = "none";
                 document.getElementById("loadingdiv").style.display = "block";
                 var data = $(this).serializeFormJSON();
-                //alert("userID = "+userID);
+                alert("userID = "+userID);
                 document.getElementById("sender").value = userID;
                 // alert("here2");
                 // alert(document.getElementById("sender").value);

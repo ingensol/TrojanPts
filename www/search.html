@@ -15,10 +15,46 @@
     <script type="text/javascript" src="js/index.js"></script>
 </head>
 <body onload="getPtsAwardedTtoday()">
-    <header class="bar bar-nav">
-        <h1 class="title">Send A Trojan PointX</h1>
-    </header>
 
+    <div class="topcoat-navigation-bar three-quarters">
+        <div class="topcoat-navigation-bar__item left quarter">
+            <a id="slide-menu-button" class="slide-menu-button">
+                <span class="topcoat-icon topcoat-icon--menu-stack"></span>
+            </a>
+        </div>
+        <div class="topcoat-navigation-bar__item center half">
+            <h1 class="topcoat-navigation-bar__title">Send A Trojan Point</h1>
+        </div>
+    </div>
+    <nav class="side-nav">
+        <div class="topcoat-list__container side-nav__list__container">
+            <ul class="topcoat-list side-nav__list">
+                <li class="topcoat-list__item side-nav__list__item">
+                    <a href="#" class="side-nav__button" id="create-context">
+                        Create authentication context
+                    </a>
+                </li>
+                <li class="topcoat-list__item side-nav__list__item">
+                    <a href="#" class="side-nav__button" id="acquire-token">Acquire token</a>
+                </li>
+                <li class="topcoat-list__item side-nav__list__item">
+                    <a href="#" class="side-nav__button" id="acquire-token-silent">
+                        Acquire token silently
+                    </a>
+                </li>
+                <li class="topcoat-list__item side-nav__list__item">
+                    <a href="#" class="side-nav__button" id="read-tokencache">
+                        Read cache items
+                    </a>
+                </li>
+                <li class="topcoat-list__item side-nav__list__item">
+                    <a href="#" class="side-nav__button" id="clear-tokencache">
+                        Clear cache
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="content" id="mainview">
         <div class="content-padded">
             <form id="trojanPtform" name="trojanPtform">

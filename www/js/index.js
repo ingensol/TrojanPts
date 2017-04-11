@@ -342,7 +342,7 @@ $(document).ready(function () {
                         document.getElementById("known").checked = false;
                         document.getElementById("loadingdiv").style.display = "none";
                         document.getElementById("donediv").style.display = "block";
-                        window.location = 'feed.html';
+                        
                     },
                     error: function (jqXHR, exception) {
                         // console.log(data);
@@ -412,7 +412,8 @@ $(document).ready(function () {
 })
 function CloseDoneDiv() {
     document.getElementById("donediv").style.display = "none";
-    document.getElementById("mainview").style.display = "block";
+    //document.getElementById("mainview").style.display = "block";
+    window.location = 'feed.html';
 }
 function toggleMenu1() {
     // menu must be always shown on desktop/tablet

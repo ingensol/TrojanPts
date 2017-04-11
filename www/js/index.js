@@ -280,7 +280,7 @@ $(document).ready(function () {
     $('form').submit(function (e) {
         e.preventDefault();
         var ptsawarded = document.getElementById("pts").value;
-        alert("Pts awarded = " + ptsawarded + " - Pts left - " + Ptsleft);
+        //alert("Pts awarded = " + ptsawarded + " - Pts left - " + Ptsleft);
         if (ptsawarded < Ptsleft) {
             var submitdata = true;
             document.getElementById("peerreq").style.display = "none"
@@ -366,7 +366,7 @@ $(document).ready(function () {
                         }
                         //$('#post').html(msg);
                         alert(msg);
-
+                        window.location = 'feed.html';
                     }
                 });
             }

@@ -6,7 +6,7 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <!-- <link rel="stylesheet" type="text/css" href="css/topcoat-mobile-dark.css">-->
+    <link rel="stylesheet" type="text/css" href="css/topcoat-mobile-dark.css">
     <link rel="stylesheet" type="text/css" href="css/ratchet.min.css">
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -15,11 +15,37 @@
     <script type="text/javascript" src="js/index.js"></script>
 </head>
 <body onload="getfeed()">
-    <header class="bar bar-nav">
-        <h1 class="title">Trojan Point Feed</h1>
-    </header>
+    <div class="topcoat-navigation-bar three-quarters">
+        <div class="topcoat-navigation-bar__item left quarter">
+            <a id="slide-menu-button" class="slide-menu-button" href="javascript:toggleMenu1()">
+                <span class="topcoat-icon topcoat-icon--menu-stack"></span>
+            </a>
+        </div>
+        <div class="topcoat-navigation-bar__item center half">
+            <h1 class="topcoat-navigation-bar__title">Trojan Point Feed</h1>
+        </div>
+    </div>
+    <nav class="side-nav">
+        <div class="topcoat-list__container side-nav__list__container">
+            <ul class="topcoat-list side-nav__list">
+                <li class="topcoat-list__item side-nav__list__item">
+                    <a href="feed.html" class="side-nav__button">
+                        Trojan Points Feed
+                    </a>
+                </li>
+                <li class="topcoat-list__item side-nav__list__item">
+                    <a href="search.html" class="side-nav__button" id="acquire-token">Award Trojan Points</a>
+                </li>
+                <li class="topcoat-list__item side-nav__list__item">
+                    <a href="#" class="side-nav__button">
+                        User profile
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-    <div class="content" id="mainview">
+    <div class="main-content" id="mainviewX">
         <div class="content-padded">
             <table id="TP_List">
                 <tbody></tbody>

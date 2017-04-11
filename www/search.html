@@ -6,7 +6,7 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <!-- <link rel="stylesheet" type="text/css" href="css/topcoat-mobile-dark.css">-->
+    <link rel="stylesheet" type="text/css" href="css/topcoat-mobile-dark.css">
     <link rel="stylesheet" type="text/css" href="css/ratchet.min.css">
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -15,7 +15,6 @@
     <script type="text/javascript" src="js/index.js"></script>
 </head>
 <body onload="getPtsAwardedTtoday()">
-
     <div class="topcoat-navigation-bar three-quarters">
         <div class="topcoat-navigation-bar__item left quarter">
             <a id="slide-menu-button" class="slide-menu-button">
@@ -23,7 +22,7 @@
             </a>
         </div>
         <div class="topcoat-navigation-bar__item center half">
-            <h1 class="topcoat-navigation-bar__title">Send A Trojan Point</h1>
+            <h1 class="topcoat-navigation-bar__title">Send Trojan Point</h1>
         </div>
     </div>
     <nav class="side-nav">
@@ -55,14 +54,14 @@
             </ul>
         </div>
     </nav>
-    <div class="content" id="mainview">
+    <div class="main-content" id="mainview">
         <div class="content-padded">
             <form id="trojanPtform" name="trojanPtform">
                 <div style="margin: 10px 10px 10px 10px;background-color:#990000"><img src="img/KeckMedicine_Logo.png" /></div>
                 <span id="PtsAllowed" style="display:block;color:red"></span>
                 <span id="peerreq" style="display:none;color:red">Please enter a valid employee email</span>
-                <input type="text" id="peer" name="peer" placeholder="Peer Med Email"><br />     
-                <span id="attrireq" style="display:none;color:red">Please select one from the following:</span>           
+                <input type="text" id="peer" name="peer" placeholder="Peer Med Email"><br />
+                <span id="attrireq" style="display:none;color:red">Please select one from the following:</span>
                 <input type="checkbox" id="authenticity" name="authenticity" value="1" />
                 <input type="hidden" id="authenticity" name="authenticity" value="0" />  <label>Authenticity</label><br />
                 <input type="checkbox" id="innovative" name="innovative" value="1" />Innovative
@@ -93,12 +92,12 @@
                     <option value="5">5</option>
                 </select><br />
                 <span id="messagereq" style="display:none;color:red">Please enter a short description</span>
-                    <textarea id="message" name="message" placeholder="Message"></textarea>
-                    <br />
-                    <input type="hidden" id="sender" name="sender" value="">
-                    <br />
-                    <input type="submit" class="btn btn-positive btn-block" id="sendMessage" value="Send Trojan Point">
-</form>
+                <textarea id="message" name="message" placeholder="Message"></textarea>
+                <br />
+                <input type="hidden" id="sender" name="sender" value="">
+                <br />
+                <input type="submit" class="btn btn-positive btn-block" id="sendMessage" value="Send Trojan Point">
+            </form>
         </div>
     </div>    
     <div id="loadingdiv" style="display:none;margin-top:50px" align="center"><img src="img/high-five_sml.gif"><p align="center">Sending Trojan Point</p></div>

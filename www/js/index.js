@@ -309,7 +309,7 @@ $(document).ready(function () {
                 document.getElementById("mainview").style.display = "none";
                 document.getElementById("loadingdiv").style.display = "block";
                 var data = $(this).serializeFormJSON();
-                alert("userID = "+userID);
+               // alert("userID = "+userID);
                 document.getElementById("sender").value = userID;
                 // alert("here2");
                 // alert(document.getElementById("sender").value);
@@ -342,6 +342,7 @@ $(document).ready(function () {
                         document.getElementById("known").checked = false;
                         document.getElementById("loadingdiv").style.display = "none";
                         document.getElementById("donediv").style.display = "block";
+                        window.location = 'feed.html';
                     },
                     error: function (jqXHR, exception) {
                         // console.log(data);
@@ -366,7 +367,7 @@ $(document).ready(function () {
                         }
                         //$('#post').html(msg);
                         alert(msg);
-                        window.location = 'feed.html';
+                       
                     }
                 });
             }

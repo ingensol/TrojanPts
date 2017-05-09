@@ -423,3 +423,7 @@ function toggleMenu1() {
     if (cl.contains('left-nav')) { cl.remove('left-nav'); }
     else { cl.add('left-nav'); }
 }
+function login() {
+    // menu must be always shown on desktop/tablet
+    alert("login");
+}

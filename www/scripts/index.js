@@ -50,6 +50,7 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
+        alert("Cordova initialized, 'deviceready' event was fired");
         // app.receivedEvent('deviceready');
         app.logArea = document.getElementById("log-area");
         app.log("Cordova initialized, 'deviceready' event was fired");
@@ -422,4 +423,9 @@ function toggleMenu1() {
     var cl = document.body.classList;
     if (cl.contains('left-nav')) { cl.remove('left-nav'); }
     else { cl.add('left-nav'); }
+}
+function login() {
+    // menu must be always shown on desktop/tablet
+    alert("Login");
+    app.acquireToken();
 }

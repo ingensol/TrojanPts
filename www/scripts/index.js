@@ -14,6 +14,7 @@ var endpointUrl = resourceUrl + tenantName;
 function pre(json) {
     return '<pre>' + JSON.stringify(json, null, 4) + '</pre>';
 }
+alert("Here");
 
 var app = {
     // Application Constructor

@@ -34,6 +34,7 @@
 <script type="text/javascript" src="scripts/jqueryui.js"></script>
 <script type="text/javascript" src="scripts/framework-plugins.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
+<script type="text/javascript" src="scripts/index.js"></script>
 </head>
 
 <body class="dual-sidebar"> 
@@ -49,10 +50,10 @@
 </div>
     
 <div id="header-fixed" class="header-dark">
-    <a class="header-icon-left open-left-sidebar" href="#"><i class="fa fa-navicon"></i></a>
+    <!---<a class="header-icon-left open-left-sidebar" href="#"><i class="fa fa-navicon"></i></a>--->
     <a class="header-icon-two open-header-menu disabled" href="#"><i class="fa fa-angle-down"></i></a>
     <a class="header-logo" href="#"></a>
-    <a class="header-icon-right open-right-sidebar" href="#"><i class="fa fa-envelope-o"></i></a>
+    <!---<a class="header-icon-right open-right-sidebar" href="#"><i class="fa fa-envelope-o"></i></a>--->
     
     <div class="header-menu-overlay"></div>
     <div class="header-menu header-menu-dark">
@@ -458,7 +459,7 @@
             <div class="header-clear"></div>
             <div class="pageapp-login bg-5 cover-screen">    
                 <div class="pageapp-login-content cover-center">
-                    <div class="unboxed-layout">
+                    <div class="unboxed-layout" >
                         <a class="pageapp-login-logo" href="#"></a>
                         <!---<div class="pageapp-login-field">
                             <i class="fa fa-user"></i>
@@ -468,7 +469,7 @@
                             <i class="fa fa-lock"></i>
                             <input type="password" value="password" onfocus="if (this.value=='password') this.value = ''" onblur="if (this.value=='') this.value = 'password'">
                         </div>--->
-                        <a href="#" class="pageapp-login-button button button-small button-green button-fullscreen">Login</a>
+                        <a href="#" class="pageapp-login-button button button-small button-green button-fullscreen" id="loginbutton">Login</a>
                         <div class="decoration"></div>
                         <!---<a href="#" class="facebook-login facebook-color"><i class="fa fa-facebook"></i>Login with Facebook</a>
                         <a href="#" class="twitter-login twitter-color no-bottom"><i class="fa fa-twitter"></i>Signin with Twitter</a>--->                    

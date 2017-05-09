@@ -14,11 +14,11 @@ var endpointUrl = resourceUrl + tenantName;
 function pre(json) {
     return '<pre>' + JSON.stringify(json, null, 4) + '</pre>';
 }
-alert("Here");
 
 var app = {
     // Application Constructor
     initialize: function () {
+        alert("app init");
         this.bindEvents();
     },
     // Bind Event Listeners
@@ -26,6 +26,7 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function () {
+        alert("bindEvents");
         document.addEventListener('deviceready', app.onDeviceReady, false);
 
         document.getElementById('create-context').addEventListener('click', app.createContext);

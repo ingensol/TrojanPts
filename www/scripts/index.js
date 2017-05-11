@@ -275,7 +275,7 @@ function getQueryVariable(variable) {
     return (false);
 }
 $(document).ready(function () {
-    // alert("ready");
+     alert("ready");
    
     var userID = getQueryVariable("id");
    // alert("UserID = " + userID);

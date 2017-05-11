@@ -19,7 +19,7 @@ var app = {
    
     // Application Constructor
     initialize: function () {
-        alert("app init");
+       // alert("app init");
         this.bindEvents();
     },
     // Bind Event Listeners
@@ -161,7 +161,7 @@ var app = {
     }
 
 };
-alert("past app");
+//alert("past app");
 var Ptsleft = 5;
 function getPtsAwardedTtoday() {
     // alert(jsonData);

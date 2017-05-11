@@ -16,7 +16,7 @@ function pre(json) {
 }
 
 var app = {
-    alert("app");
+   
     // Application Constructor
     initialize: function () {
         alert("app init");

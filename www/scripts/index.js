@@ -130,7 +130,7 @@ function getQueryVariable(variable) {
     return (false);
 }
 $(document).ready(function () {
-     alert("ready");
+     alert("ready222");
      var app = {
 
          // Application Constructor

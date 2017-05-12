@@ -30,14 +30,14 @@ var app = {
        // alert("bindEvents");
         document.addEventListener('deviceready', app.onDeviceReady, false);
 
-        document.getElementById('create-context').addEventListener('click', app.createContext);
+       // document.getElementById('create-context').addEventListener('click', app.createContext);
         //document.getElementById('acquire-token').addEventListener('click', app.acquireToken);
         document.getElementById('loginbutton').addEventListener('click', app.acquireToken);
-        document.getElementById('acquire-token-silent').addEventListener('click', app.acquireTokenSilent);
-        document.getElementById('read-tokencache').addEventListener('click', app.readTokenCache);
-        document.getElementById('clear-tokencache').addEventListener('click', app.clearTokenCache);
+       // document.getElementById('acquire-token-silent').addEventListener('click', app.acquireTokenSilent);
+       // document.getElementById('read-tokencache').addEventListener('click', app.readTokenCache);
+      //  document.getElementById('clear-tokencache').addEventListener('click', app.clearTokenCache);
 
-        function toggleMenu() {
+        /*function toggleMenu() {
             // menu must be always shown on desktop/tablet
             //alert("toggleMenu");
             if (document.body.clientWidth > 480) return;
@@ -46,7 +46,7 @@ var app = {
             else { cl.add('left-nav'); }
         }
 
-        document.getElementById('slide-menu-button').addEventListener('click', toggleMenu);
+        document.getElementById('slide-menu-button').addEventListener('click', toggleMenu);*/
     },
     // deviceready Event Handler
     //

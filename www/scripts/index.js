@@ -53,12 +53,12 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
-        alert("Cordova initialized, 'deviceready' event was fired");
+      //  alert("Cordova initialized, 'deviceready' event was fired");
         // app.receivedEvent('deviceready');
       //  app.logArea = document.getElementById("log-area");
        // app.log("Cordova initialized, 'deviceready' event was fired");
         AuthenticationContext = Microsoft.ADAL.AuthenticationContext;
-        alert("go create context");
+      //  alert("go create context");
         app.createContext();
     },
     // Update DOM on a Received Event
@@ -87,29 +87,29 @@ var app = {
         app.log(message, true);
     },
     createContext: function () {
-        alert("createContext");
+       // alert("createContext");
         AuthenticationContext.createAsync(authority)
         .then(function (context) {
             app.authContext = context;
-            app.log("Created authentication context for authority URL: " + context.authority);
-            alert("Created authentication context for authority URL: " + context.authority);
+          //  app.log("Created authentication context for authority URL: " + context.authority);
+         //   alert("Created authentication context for authority URL: " + context.authority);
         }, app.error);
     },
     acquireToken: function () {
-        alert("acquireToken22");
+      //  alert("acquireToken22");
         if (app.authContext == null) {
-            app.error('Authentication context isn\'t created yet. Create context first');
-            alert("Authentication context isn\'t created yet. Create context first");
+        //    app.error('Authentication context isn\'t created yet. Create context first');
+       //     alert("Authentication context isn\'t created yet. Create context first");
             return;
         }      
 
         app.authContext.acquireTokenAsync(resourceUrl, appId, redirectUrl)
             .then(function(authResult) {
-                app.log('XAcquired token successfully: ' + pre(authResult));
-                alert('XAcquired token successfully: ' + pre(authResult));
+           //     app.log('XAcquired token successfully: ' + pre(authResult));
+            //    alert('XAcquired token successfully: ' + pre(authResult));
                 window.location = 'search.html?id=' + authResult.userInfo.uniqueId;
             }, function(err) {
-                app.error("Failed to acquire token: " + pre(err));
+          //      app.error("Failed to acquire token: " + pre(err));
                 alert("Failed to acquire token: " + pre(err));
             });
     },

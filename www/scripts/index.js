@@ -89,13 +89,14 @@ var app = {
         .then(function (context) {
             app.authContext = context;
             app.log("Created authentication context for authority URL: " + context.authority);
+            alert("Created authentication context for authority URL: " + context.authority);
         }, app.error);
     },
     acquireToken: function () {
         alert("acquireToken");
         if (app.authContext == null) {
             app.error('Authentication context isn\'t created yet. Create context first');
-            alert("Authentication context isn\'t created yet. Create context first")
+            alert("Authentication context isn\'t created yet. Create context first");
             return;
         }      
 

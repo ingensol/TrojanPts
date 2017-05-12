@@ -14,7 +14,7 @@ var endpointUrl = resourceUrl + tenantName;
 function pre(json) {
     return '<pre>' + JSON.stringify(json, null, 4) + '</pre>';
 }
-alert("before app");
+//alert("before app");
 var app = {
    
     // Application Constructor
@@ -27,7 +27,7 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function () {
-        alert("bindEvents");
+       // alert("bindEvents");
         document.addEventListener('deviceready', app.onDeviceReady, false);
 
         document.getElementById('create-context').addEventListener('click', app.createContext);
@@ -53,7 +53,7 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
-        alert("Cordova initialized, 'deviceready' event was fired");
+      //  alert("Cordova initialized, 'deviceready' event was fired");
         // app.receivedEvent('deviceready');
         app.logArea = document.getElementById("log-area");
         app.log("Cordova initialized, 'deviceready' event was fired");

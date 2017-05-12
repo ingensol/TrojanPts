@@ -82,9 +82,11 @@ var app = {
         app.logArea.insertBefore(logItem, app.logArea.firstChild);
     },
     error: function (message) {
+        alert(message);
         app.log(message, true);
     },
-    createContext: function() {
+    createContext: function () {
+        alert("createContext");
         AuthenticationContext.createAsync(authority)
         .then(function (context) {
             app.authContext = context;

@@ -53,7 +53,7 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
-      //  alert("Cordova initialized, 'deviceready' event was fired");
+        alert("Cordova initialized, 'deviceready' event was fired");
         // app.receivedEvent('deviceready');
       //  app.logArea = document.getElementById("log-area");
         app.log("Cordova initialized, 'deviceready' event was fired");
@@ -93,7 +93,7 @@ var app = {
         }, app.error);
     },
     acquireToken: function () {
-        alert("acquireToken");
+        alert("acquireToken22");
         if (app.authContext == null) {
             app.error('Authentication context isn\'t created yet. Create context first');
             alert("Authentication context isn\'t created yet. Create context first");

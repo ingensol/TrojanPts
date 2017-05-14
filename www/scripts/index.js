@@ -291,6 +291,7 @@ $(document).ready(function () {
   
 
     $('form').submit(function (e) {
+        alert("submit");
         e.preventDefault();
         var ptsawarded = document.getElementById("pts").value;
         //alert("Pts awarded = " + ptsawarded + " - Pts left - " + Ptsleft);

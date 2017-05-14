@@ -199,7 +199,7 @@ div, a, p, img, blockquote, form, fieldset, textarea, input, label, iframe, code
 textarea, input { outline: none; }
 
 input {
-    -webkit-appearance: none!important;
+/*    -webkit-appearance: none!important; */
     border-radius: 0!important;
     -webkit-border-radius:0px!important;
 }
@@ -8533,7 +8533,14 @@ ul.tabs li.active-tab{
     background-color:rgba(255,255,255,0.05);
     transition:all 250ms ease;
 }
-
+input[type="checkbox"] {
+    height: 2rem;
+    width: 2rem;
+    margin-top: 0;
+    margin-right: -2rem;
+    margin-bottom: -2rem;
+    margin-left: 0;
+}
 
 
 

@@ -226,6 +226,7 @@ function getPtsAwardedTtoday() {
         }
     });
 }
+
 function getfeed() {
     //alert("getPtsAwardedTtoday");
 
@@ -274,6 +275,72 @@ function getfeed() {
 
         }
     });
+}
+function getmypoints() {
+    //alert("getPtsAwardedTtoday");
+
+    var mainFeedDiv = document.getElementById("TP_List");
+    var maindivcontent = mainFeedDiv.innerHTML;
+   
+        var TP_Row = '<div class="tasklist-item2 tasklist-green">';
+        var TP_Details = "<h5>Trojan Points I have recieved: 5</h5>";
+        TP_Row = TP_Row + TP_Details + "</div>";
+        TP_Row = TP_Row + '<div class="decoration"></div>';
+        maindivcontent = maindivcontent + TP_Row;
+    
+        var TP_Row = '<div class="tasklist-item2 tasklist-green">';
+        var TP_Details = "<h5>Trojan Points I have awarded: 105</h5>";
+        TP_Row = TP_Row + TP_Details + "</div>";
+        TP_Row = TP_Row + '<div class="decoration"></div>';
+        maindivcontent = maindivcontent + TP_Row;
+
+    mainFeedDiv.innerHTML = maindivcontent;
+   /* $.ajax({
+        type: 'GET',
+        dataType: "jsonp",
+        data: { sender: "test" },
+        crossDomain: true,
+        url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetPtsFeed',
+        success: function (data, text) {
+            var mainFeedDiv = document.getElementById("TP_List");
+            var maindivcontent = mainFeedDiv.innerHTML;
+            for (i = 0; i < data.length; i++) {
+                var TP_Row = '<div class="tasklist-item2 tasklist-green">';
+                var TP_Details = "<h5>" + data[i].Employee + " - " + data[i].TotalPts + "Pts<br>" + data[i].Message + "<br>From:<i>" + data[i].Sender + "</i></h5>";
+                TP_Row = TP_Row + TP_Details + "</div>";
+                TP_Row = TP_Row + '<div class="decoration"></div>';
+                maindivcontent = maindivcontent + TP_Row;
+            }
+            mainFeedDiv.innerHTML = maindivcontent;
+        },
+        error: function (jqXHR, exception, err) {
+            // console.log(data);
+            var msg = '';
+            if (jqXHR.status === 0) {
+                msg = 'Not connect.\n Verify Network.';
+            } else if (jqXHR.status == 404) {
+                msg = 'Requested page not found. [404]';
+            } else if (jqXHR.status == 500) {
+                msg = 'Internal Server Error [500].';
+            } else if (exception === 'parsererror') {
+                msg = 'Requested JSON parse failed.';
+                alert(err);
+            } else if (exception === 'timeout') {
+                msg = 'Time out error.';
+            } else if (exception === 'abort') {
+                msg = 'Ajax request aborted.';
+            } else if (jqXHR.status == 200) {
+                msg = 'You successfully awarded Trojan Pts!';
+            }
+            else {
+                msg = 'Uncaught Error.\n' + jqXHR.responseText;
+            }
+            //$('#post').html(msg);
+            // alert(msg);
+
+        }
+    });
+    */
 }
 function getQueryVariable(variable) {
     var query = window.location.search.substring(1);

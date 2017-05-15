@@ -227,7 +227,7 @@ function getPtsAwardedTtoday() {
     });
 }
 function getfeed() {
-    //alert("getPtsAwardedTtoday");
+    alert("getPtsAwardedTtoday");
 
     $.ajax({
         type: 'GET',
@@ -236,14 +236,16 @@ function getfeed() {
         crossDomain: true,
         url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetPtsFeed',
         success: function (data, text) {
+            var mainFeedDiv = document.getElementById("TP_List");
+            var maindivcontent = mainFeedDiv.innerHTML;
             for (i = 0; i < data.length; i++) {
-
                 var TP_Row = '<a href="#" class="tasklist-item tasklist-green">';
                 var TP_Details = "<h5>" + data[i].Employee + " - " + data[i].TotalPts + "Pts</h5><br>" + data[i].Message + "<br>From:<i>" + data[i].Sender + "</i>";
-                TP_Row = TP_Row + TP_Details;
+                TP_Row = TP_Row + TP_Details + "</a>";
                 TP_Row = TP_Row + '<div class="decoration"></div>';
-                 var mainFeedDiv = document.getElementById("TP_List");
+                maindivcontent = maindivcontent + TP_Row;
             }
+            mainFeedDiv.innerHTML = maindivcontent;
         },
         error: function (jqXHR, exception, err) {
             // console.log(data);

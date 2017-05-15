@@ -279,6 +279,7 @@ function getfeed() {
 function getmypoints() {
     //alert("getPtsAwardedTtoday");
     var userID = getQueryVariable("id");
+    //alert(userID);
     var mainFeedDiv = document.getElementById("TP_List");
     var maindivcontent = mainFeedDiv.innerHTML;
 
@@ -290,21 +291,21 @@ function getmypoints() {
         crossDomain: true,
         url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetMyPts',
         success: function (data, text) {
-            var mainFeedDiv = document.getElementById("TP_List");
-            var maindivcontent = mainFeedDiv.innerHTML;
-            for (i = 0; i < data.length; i++) {
-                var TP_Row = '<div class="tasklist-item2 tasklist-green">';
-                var TP_Details = "<h5>Trojan Points I have recieved: " + data[i].RecievedTotalPts + "</h5>";
-                TP_Row = TP_Row + TP_Details + "</div>";
-                TP_Row = TP_Row + '<div class="decoration"></div>';
-                maindivcontent = maindivcontent + TP_Row;
+            //alert("success " + data.RecievedTotalPts);
 
-                var TP_Row = '<div class="tasklist-item2 tasklist-green">';
-                var TP_Details = "<h5>Trojan Points I have awarded: " + data[i].AwardedTotalPts + "</h5>";
-                TP_Row = TP_Row + TP_Details + "</div>";
-                TP_Row = TP_Row + '<div class="decoration"></div>';
-                maindivcontent = maindivcontent + TP_Row;
-            }
+            var TP_Row = '<div class="tasklist-item2 tasklist-green">';
+            var TP_Details = "<h5>Trojan Points I have recieved: " + data.RecievedTotalPts + "</h5>";
+            TP_Row = TP_Row + TP_Details + "</div>";
+            TP_Row = TP_Row + '<div class="decoration"></div>';
+            maindivcontent = maindivcontent + TP_Row;
+
+            var TP_Row = '<div class="tasklist-item2 tasklist-green">';
+            var TP_Details = "<h5>Trojan Points I have awarded: " + data.AwardedTotalPts + "</h5>";
+            TP_Row = TP_Row + TP_Details + "</div>";
+            TP_Row = TP_Row + '<div class="decoration"></div>';
+            maindivcontent = maindivcontent + TP_Row;
+           
+           // alert(maindivcontent);
             mainFeedDiv.innerHTML = maindivcontent;
         },
         error: function (jqXHR, exception, err) {
@@ -330,7 +331,7 @@ function getmypoints() {
                 msg = 'Uncaught Error.\n' + jqXHR.responseText;
             }
             //$('#post').html(msg);
-            // alert(msg);
+             alert(msg);
 
         }
     });    

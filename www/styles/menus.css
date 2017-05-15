@@ -940,7 +940,8 @@
 .sidebar-dark-clean .sidebar-header{
     height:60px;
     border-bottom:solid 1px rgba(255,255,255,0.05);
-    background-color:#212429;
+    /*background-color:#212429;*/
+    background-color:#990000;
     margin-bottom:30px;
 }
 
@@ -960,9 +961,9 @@
 .sidebar-dark-clean .sidebar-logo{
     background-image:url(../images/logo-sidebar-light.png); 
     background-repeat:no-repeat;
-    background-size:170px 35px;
-    width:170px; 
-    height:35px;
+    background-size:185px 75px;
+    width:185px; 
+    height:75px;
     margin-left:30px;
     margin-top:20px;
     margin-bottom:20px;

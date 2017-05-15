@@ -227,7 +227,7 @@ function getPtsAwardedTtoday() {
     });
 }
 function getfeed() {
-    alert("getPtsAwardedTtoday");
+    //alert("getPtsAwardedTtoday");
 
     $.ajax({
         type: 'GET',
@@ -239,9 +239,9 @@ function getfeed() {
             var mainFeedDiv = document.getElementById("TP_List");
             var maindivcontent = mainFeedDiv.innerHTML;
             for (i = 0; i < data.length; i++) {
-                var TP_Row = '<a href="#" class="tasklist-item tasklist-green">';
-                var TP_Details = "<h5>" + data[i].Employee + " - " + data[i].TotalPts + "Pts</h5><br>" + data[i].Message + "<br>From:<i>" + data[i].Sender + "</i>";
-                TP_Row = TP_Row + TP_Details + "</a>";
+                var TP_Row = '<div class="tasklist-item2 tasklist-green">';
+                var TP_Details = "<h5>" + data[i].Employee + " - " + data[i].TotalPts + "Pts<br>" + data[i].Message + "<br>From:<i>" + data[i].Sender + "</i></h5>";
+                TP_Row = TP_Row + TP_Details + "</div>";
                 TP_Row = TP_Row + '<div class="decoration"></div>';
                 maindivcontent = maindivcontent + TP_Row;
             }

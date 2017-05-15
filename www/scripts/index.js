@@ -503,8 +503,8 @@ function toggleMenu1() {
 }
 function login() {
     // menu must be always shown on desktop/tablet
-    alert("Login");
-    app.acquireToken();
+    //alert("Login");
+    ///app.acquireToken();
 }
 $(window).load(function () {
     //$("#status").fadeOut(); // will first fade out the loading animation
@@ -512,6 +512,12 @@ $(window).load(function () {
     $("#status").addClass('hide-status'); // will first fade out the loading animation
     $("#preloader").addClass('hide-preloader'); // will fade out the white DIV that covers the website.
 });
+function menulink(link) {
+    // menu must be always shown on desktop/tablet
+    var userid= getQueryVariable("id");
+    var linktogo = link + "?id=" + userid;
+    window.location = linktogo;
+}
 
 
 $(document).ready(function () {

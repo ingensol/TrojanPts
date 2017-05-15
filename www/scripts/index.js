@@ -279,7 +279,7 @@ function getfeed() {
 function getmypoints() {
     //alert("getPtsAwardedTtoday");
     var userID = getQueryVariable("id");
-    //alert(userID);
+    alert(userID);
     var mainFeedDiv = document.getElementById("TP_List");
     var maindivcontent = mainFeedDiv.innerHTML;
 

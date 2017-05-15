@@ -279,7 +279,7 @@ function getfeed() {
 function getmypoints() {
     //alert("getPtsAwardedTtoday");
     var userID = getQueryVariable("id");
-    alert(userID);
+  //  alert(userID);
     var mainFeedDiv = document.getElementById("TP_List");
     var maindivcontent = mainFeedDiv.innerHTML;
 
@@ -294,13 +294,15 @@ function getmypoints() {
             //alert("success " + data.RecievedTotalPts);
 
             var TP_Row = '<div class="tasklist-item2 tasklist-green">';
-            var TP_Details = "<h5>Trojan Points I have recieved: " + data.RecievedTotalPts + "</h5>";
+            //var TP_Details = "<h5>Trojan Points I have recieved: " + data.RecievedTotalPts + "</h5>";
+            var TP_Details = "<h5>Trojan Points I have recieved: 22</h5>";
             TP_Row = TP_Row + TP_Details + "</div>";
             TP_Row = TP_Row + '<div class="decoration"></div>';
             maindivcontent = maindivcontent + TP_Row;
 
             var TP_Row = '<div class="tasklist-item2 tasklist-green">';
-            var TP_Details = "<h5>Trojan Points I have awarded: " + data.AwardedTotalPts + "</h5>";
+            //var TP_Details = "<h5>Trojan Points I have awarded: " + data.AwardedTotalPts + "</h5>";
+            var TP_Details = "<h5>Trojan Points I have awarded: 29</h5>";
             TP_Row = TP_Row + TP_Details + "</div>";
             TP_Row = TP_Row + '<div class="decoration"></div>';
             maindivcontent = maindivcontent + TP_Row;

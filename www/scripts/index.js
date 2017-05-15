@@ -278,35 +278,29 @@ function getfeed() {
 }
 function getmypoints() {
     //alert("getPtsAwardedTtoday");
-
+    var userID = getQueryVariable("id");
     var mainFeedDiv = document.getElementById("TP_List");
     var maindivcontent = mainFeedDiv.innerHTML;
-   
-        var TP_Row = '<div class="tasklist-item2 tasklist-green">';
-        var TP_Details = "<h5>Trojan Points I have recieved: 5</h5>";
-        TP_Row = TP_Row + TP_Details + "</div>";
-        TP_Row = TP_Row + '<div class="decoration"></div>';
-        maindivcontent = maindivcontent + TP_Row;
-    
-        var TP_Row = '<div class="tasklist-item2 tasklist-green">';
-        var TP_Details = "<h5>Trojan Points I have awarded: 105</h5>";
-        TP_Row = TP_Row + TP_Details + "</div>";
-        TP_Row = TP_Row + '<div class="decoration"></div>';
-        maindivcontent = maindivcontent + TP_Row;
 
     mainFeedDiv.innerHTML = maindivcontent;
-   /* $.ajax({
+    $.ajax({
         type: 'GET',
         dataType: "jsonp",
-        data: { sender: "test" },
+        data: { sender: userID },
         crossDomain: true,
-        url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetPtsFeed',
+        url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetMyPts',
         success: function (data, text) {
             var mainFeedDiv = document.getElementById("TP_List");
             var maindivcontent = mainFeedDiv.innerHTML;
             for (i = 0; i < data.length; i++) {
                 var TP_Row = '<div class="tasklist-item2 tasklist-green">';
-                var TP_Details = "<h5>" + data[i].Employee + " - " + data[i].TotalPts + "Pts<br>" + data[i].Message + "<br>From:<i>" + data[i].Sender + "</i></h5>";
+                var TP_Details = "<h5>Trojan Points I have recieved: " + data[i].RecievedTotalPts + "</h5>";
+                TP_Row = TP_Row + TP_Details + "</div>";
+                TP_Row = TP_Row + '<div class="decoration"></div>';
+                maindivcontent = maindivcontent + TP_Row;
+
+                var TP_Row = '<div class="tasklist-item2 tasklist-green">';
+                var TP_Details = "<h5>Trojan Points I have awarded: " + data[i].AwardedTotalPts + "</h5>";
                 TP_Row = TP_Row + TP_Details + "</div>";
                 TP_Row = TP_Row + '<div class="decoration"></div>';
                 maindivcontent = maindivcontent + TP_Row;
@@ -339,8 +333,7 @@ function getmypoints() {
             // alert(msg);
 
         }
-    });
-    */
+    });    
 }
 function getQueryVariable(variable) {
     var query = window.location.search.substring(1);

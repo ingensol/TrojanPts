@@ -1751,7 +1751,8 @@
 }
 
 .sidebar-dark, .sidebar-dark .snap-drawer{
-    background-color:#272c2e!important;
+    /*background-color:#272c2e!important;*/
+    background-color:#990000!important;
 }
 
 .sidebar-dark .sidebar-menu{

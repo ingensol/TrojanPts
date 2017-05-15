@@ -237,14 +237,13 @@ function getfeed() {
         url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetPtsFeed',
         success: function (data, text) {
             for (i = 0; i < data.length; i++) {
-              
-                var TP_Row = '<tr>';
-                var TP_Details = "<td><strong>" + data[i].Employee + " - " + data[i].TotalPts + "Pts</strong><br>" + data[i].Message + "<br>From:<i>" + data[i].Sender + "</i></td>";
-                TP_Row = TP_Row + TP_Details;
-                TP_Row = TP_Row + '</tr>';
 
-                $('#TP_List > tbody:last').append(TP_Row);
-            }            
+                var TP_Row = '<a href="#" class="tasklist-item tasklist-green">';
+                var TP_Details = "<h5>" + data[i].Employee + " - " + data[i].TotalPts + "Pts</h5><br>" + data[i].Message + "<br>From:<i>" + data[i].Sender + "</i>";
+                TP_Row = TP_Row + TP_Details;
+                TP_Row = TP_Row + '<div class="decoration"></div>';
+                 var mainFeedDiv = document.getElementById("TP_List");
+            }
         },
         error: function (jqXHR, exception, err) {
             // console.log(data);
@@ -291,15 +290,15 @@ $(document).ready(function () {
   
 
     $('form').submit(function (e) {
-        alert("submit");
+        //alert("submit");
         e.preventDefault();
         var ptsawarded = document.getElementById("pts").value;
         //alert("Pts awarded = " + ptsawarded + " - Pts left - " + Ptsleft);
         if (ptsawarded < Ptsleft) {
             var submitdata = true;
-            document.getElementById("peerreq").style.display = "none"
-            document.getElementById("attrireq").style.display = "none"
-            document.getElementById("messagereq").style.display = "none"
+            document.getElementById("peerreq").style.display = "none";
+            document.getElementById("attrireq").style.display = "none";
+            document.getElementById("messagereq").style.display = "none";
             if (!validateemail(document.getElementById("peer").value)) {
                 document.getElementById("peer").value = "";
                 document.getElementById("peerreq").style.display = "block";
@@ -427,7 +426,7 @@ $(document).ready(function () {
 function CloseDoneDiv() {
     document.getElementById("donediv").style.display = "none";
     //document.getElementById("mainview").style.display = "block";
-    window.location = 'feed.html';
+    window.location = 'feed2.html';
 }
 function toggleMenu1() {
     // menu must be always shown on desktop/tablet

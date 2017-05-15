@@ -45,11 +45,13 @@
 
 .header-dark{
     height:60px;
-    background-color:#212429;
+   /*background-color:#212429;*/
+    background-color:#990000;
 }
 
 .header-dark .header-menu-overlay{
-    background-color:#212429;
+    /*background-color:#212429;*/
+    background-color:#990000;
 }
 
 .header-dark .header-icon-left, .header-dark .header-icon-right, .header-dark .header-icon-two, .header-dark .header-icon-three{
@@ -1131,7 +1133,8 @@
 }
 
 .sidebar-dark-clean, .sidebar-dark-clean .snap-drawer{
-    background-color:#272c2e!important;
+   /* background-color:#272c2e!important; */
+   background-color:#990000!important; 
 }
 
 .sidebar-dark-clean .sidebar-menu{

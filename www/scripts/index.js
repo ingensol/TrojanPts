@@ -358,10 +358,14 @@ function getmypointsfeed() {
 
             for (i = 0; i < data.length; i++) {
                 var rowclass = "";
-                if (data[i].Employee == userID)
+                var emplyname = data[i].Employee;
+                emplyname = emplyname.toLowerCase();
+                var username = userID.toLowerCase();
+                if (emplyname == username)
                     rowclass = "tasklist-item2a tasklist-red2";
                 else
                     rowclass = "tasklist-item2 tasklist-yellow2";
+
                 var TP_Row = '<div class="' +  rowclass + '">';
                 var TP_Details = "<h5>" + data[i].Employee + " - " + data[i].TotalPts + "Pts<br>" + data[i].Message + "<br>From:<i>" + data[i].Sender + "<br>" + data[i].Created + "</i></h5>";
                 TP_Row = TP_Row + TP_Details + "</div>";

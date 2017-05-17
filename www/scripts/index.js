@@ -240,8 +240,8 @@ function getfeed() {
             var mainFeedDiv = document.getElementById("TP_List");
             var maindivcontent = mainFeedDiv.innerHTML;
             for (i = 0; i < data.length; i++) {
-                var TP_Row = '<div class="tasklist-item2 tasklist-green">';
-                var TP_Details = "<h5>" + data[i].Employee + " - " + data[i].TotalPts + "Pts<br>" + data[i].Message + "<br>From:<i>" + data[i].Sender + "</i></h5>";
+                var TP_Row = '<div class="tasklist-item2 tasklist-red">';
+                var TP_Details = "<h5>" + data[i].Employee + " - " + data[i].TotalPts + "Pts<br>" + data[i].Message + "<br>From:<i>" + data[i].Sender + "<br>"+data[i].Created+"</i></h5>";
                 TP_Row = TP_Row + TP_Details + "</div>";
                 TP_Row = TP_Row + '<div class="decoration"></div>';
                 maindivcontent = maindivcontent + TP_Row;
@@ -293,22 +293,23 @@ function getmypoints() {
         success: function (data, text) {
             //alert("success " + data.RecievedTotalPts);
 
-            var TP_Row = '<div class="tasklist-item2 tasklist-green">';
-            //var TP_Details = "<h5>Trojan Points I have recieved: " + data.RecievedTotalPts + "</h5>";
-            var TP_Details = "<h5>Trojan Points I have recieved: 22</h5>";
+            var TP_Row = '<div class="tasklist-item2a tasklist-red2" align="center">';
+            var TP_Details = "<h5>Trojan Points I have recieved: " + data.RecievedTotalPts + "</h5>";
+            //var TP_Details = "<h5>Trojan Points I have recieved: 22</h5>";
             TP_Row = TP_Row + TP_Details + "</div>";
             TP_Row = TP_Row + '<div class="decoration"></div>';
             maindivcontent = maindivcontent + TP_Row;
 
-            var TP_Row = '<div class="tasklist-item2 tasklist-green">';
-            //var TP_Details = "<h5>Trojan Points I have awarded: " + data.AwardedTotalPts + "</h5>";
-            var TP_Details = "<h5>Trojan Points I have awarded: 29</h5>";
+            var TP_Row = '<div class="tasklist-item2 tasklist-yellow2" align="center">';
+            var TP_Details = "<h5>Trojan Points I have awarded: " + data.AwardedTotalPts + "</h5>";
+            //var TP_Details = "<h5>Trojan Points I have awarded: 29</h5>";
             TP_Row = TP_Row + TP_Details + "</div>";
             TP_Row = TP_Row + '<div class="decoration"></div>';
             maindivcontent = maindivcontent + TP_Row;
            
            // alert(maindivcontent);
             mainFeedDiv.innerHTML = maindivcontent;
+            getmypointsfeed();
         },
         error: function (jqXHR, exception, err) {
             // console.log(data);
@@ -337,6 +338,67 @@ function getmypoints() {
 
         }
     });    
+}
+function getmypointsfeed() {
+    //alert("getPtsAwardedTtoday");
+    var userID = getQueryVariable("id");
+    //  alert(userID);
+    var mainFeedDiv = document.getElementById("TP_List");
+    var maindivcontent = mainFeedDiv.innerHTML;
+
+    mainFeedDiv.innerHTML = maindivcontent;
+    $.ajax({
+        type: 'GET',
+        dataType: "jsonp",
+        data: { sender: userID },
+        crossDomain: true,
+        url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetMyPtsFeed',
+        success: function (data, text) {
+            //alert("success " + data.RecievedTotalPts);
+
+            for (i = 0; i < data.length; i++) {
+                var rowclass = "";
+                if (data[i].Employee == userID)
+                    rowclass = "tasklist-item2a tasklist-red2";
+                else
+                    rowclass = "tasklist-item2 tasklist-yellow2";
+                var TP_Row = '<div class="' +  rowclass + '">';
+                var TP_Details = "<h5>" + data[i].Employee + " - " + data[i].TotalPts + "Pts<br>" + data[i].Message + "<br>From:<i>" + data[i].Sender + "<br>" + data[i].Created + "</i></h5>";
+                TP_Row = TP_Row + TP_Details + "</div>";
+                TP_Row = TP_Row + '<div class="decoration"></div>';
+                maindivcontent = maindivcontent + TP_Row;
+            }
+
+            // alert(maindivcontent);
+            mainFeedDiv.innerHTML = maindivcontent;
+        },
+        error: function (jqXHR, exception, err) {
+            // console.log(data);
+            var msg = '';
+            if (jqXHR.status === 0) {
+                msg = 'Not connect.\n Verify Network.';
+            } else if (jqXHR.status == 404) {
+                msg = 'Requested page not found. [404]';
+            } else if (jqXHR.status == 500) {
+                msg = 'Internal Server Error [500].';
+            } else if (exception === 'parsererror') {
+                msg = 'Requested JSON parse failed.';
+                alert(err);
+            } else if (exception === 'timeout') {
+                msg = 'Time out error.';
+            } else if (exception === 'abort') {
+                msg = 'Ajax request aborted.';
+            } else if (jqXHR.status == 200) {
+                msg = 'You successfully awarded Trojan Pts!';
+            }
+            else {
+                msg = 'Uncaught Error.\n' + jqXHR.responseText;
+            }
+            //$('#post').html(msg);
+            alert(msg);
+
+        }
+    });
 }
 function getQueryVariable(variable) {
     var query = window.location.search.substring(1);

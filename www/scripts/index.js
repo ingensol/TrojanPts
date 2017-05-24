@@ -166,8 +166,113 @@ var app = {
         }, function (err) {
             app.error("Failed to clear token cache: " + pre(err));
         });
-    }
+    },
+    // Makes Api call to receive user list.
+    requestData: function (authResult, searchText) {
+        var req = new XMLHttpRequest();
+        var url = resourceUri + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion;
+        url = searchText ? url + "&$filter=mailNickname eq '" + searchText + "'" : url + "&$top=10";
 
+        req.open("GET", url, true);
+        req.setRequestHeader('Authorization', 'Bearer ' + authResult.accessToken);
+
+        req.onload = function (e) {
+            if (e.target.status >= 200 && e.target.status < 300) {
+                app.renderData(JSON.parse(e.target.response));
+                return;
+            }
+            app.error('Data request failed: ' + e.target.response);
+        };
+        req.onerror = function (e) {
+            app.error('Data request failed: ' + e.error);
+        }
+
+        req.send();
+    },
+    // Renders user list.
+    renderData: function (data) {
+        var users = data && data.value;
+        if (users.length === 0) {
+            app.error("No users found");
+            return;
+        }
+
+    //    var userlist = document.getElementById('userlist');
+     //   userlist.innerHTML = "";
+
+        // Helper function for generating HTML
+        function $new(eltName, classlist, innerText, children, attributes) {
+            var elt = document.createElement(eltName);
+           // classlist.forEach(function (className) {
+                
+               // elt.classList.add(className);
+            //});
+
+           // if (innerText) {
+           //     elt.innerText = innerText;
+           // }
+
+           // if (children && children.constructor === Array) {
+           //     children.forEach(function (child) {
+            //        elt.appendChild(child);
+            //    });
+          //  } else if (children instanceof HTMLElement) {
+         //       elt.appendChild(children);
+          //  }
+
+            if (attributes && attributes.constructor === Object) {
+                for (var attrName in attributes) {
+                    elt.setAttribute(attrName, attributes[attrName]);
+                    alert("attrName = "+attributes[attrName]);
+                }
+            }
+
+            return elt;
+        }
+
+        users.map(function (userInfo) {
+            return $new('li', ['topcoat-list__item'], null, [
+                $new('div', [], null, [
+                    $new('p', ['userinfo-label'], 'First name: '),
+                    $new('input', ['topcoat-text-input', 'userinfo-data-field'], null, null, {
+                        type: 'text',
+                        readonly: '',
+                        placeholder: '',
+                        value: userInfo.givenName || ''
+                    })
+                ]),
+                $new('div', [], null, [
+                    $new('p', ['userinfo-label'], 'Last name: '),
+                    $new('input', ['topcoat-text-input', 'userinfo-data-field'], null, null, {
+                        type: 'text',
+                        readonly: '',
+                        placeholder: '',
+                        value: userInfo.surname || ''
+                    })
+                ]),
+                $new('div', [], null, [
+                    $new('p', ['userinfo-label'], 'UPN: '),
+                    $new('input', ['topcoat-text-input', 'userinfo-data-field'], null, null, {
+                        type: 'text',
+                        readonly: '',
+                        placeholder: '',
+                        value: userInfo.userPrincipalName || ''
+                    })
+                ]),
+                $new('div', [], null, [
+                    $new('p', ['userinfo-label'], 'Phone: '),
+                    $new('input', ['topcoat-text-input', 'userinfo-data-field'], null, null, {
+                        type: 'text',
+                        readonly: '',
+                        placeholder: '',
+                        value: userInfo.telephoneNumber || ''
+                    })
+                ])
+            ]);
+        }).forEach(function (userListItem) {
+            userlist.appendChild(userListItem);
+        });
+    }
 };
 //alert("past app");
 var Ptsleft = 5;

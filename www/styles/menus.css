@@ -60,12 +60,12 @@
 
 .header-dark .header-logo{
     background-image:url(../images/logo-light.png);
-    background-size:267px 28px;
+    background-size:214px 23px;
     margin-left:auto;
     margin-right:auto;
     margin-top:21px;
-    width:267px;
-    height:28px;
+    width:214px;
+    height:23px;
     z-index:12;
 }
 
@@ -87,12 +87,12 @@
 
 .header-light .header-logo{
     background-image:url(../images/logo-dark.png);
-    background-size:267px 28px;
+    background-size:214px 23px;
     margin-left:auto;
     margin-right:auto;
     margin-top:21px;
-    width:267px;
-    height:28px;
+    width:214px;
+    height:23px;
     z-index:12;
 }
 

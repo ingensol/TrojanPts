@@ -5867,7 +5867,7 @@ ul.tabs li.active-tab{
     transition:all 200ms ease;
     color:white;
 }
-.tasklist-yellow2{        border-left:solid 4px #c0392b;background-color:yellow    }
+.tasklist-yellow2{        border-left:solid 4px #c0392b;background-color:#FFCC00    }
 .tasklist-red2{        border-left:solid 4px #c0392b;background-color:#990000    }
 .tasklist-red{        border-left:solid 4px #c0392b;    }
 .tasklist-green{      border-left:solid 4px #27ae60;    }
@@ -8561,6 +8561,22 @@ input[type="checkbox"] {
     margin-bottom: -2rem;
     margin-left: 0;
 }
+@font-face { 
+	font-family: 'National'; src: url('//web-app.usc.edu/assets/fonts/NationalWeb-Regular.eot'); src: local(':)'), url('//web-app.usc.edu/assets/fonts/NationalWeb-Regular.woff') format('woff'), url('//web-app.usc.edu/assets/fonts/NationalWeb-Regular.ttf') format('truetype'), url('//web-app.usc.edu/assets/fonts/NationalWeb-Regular.svg') format('svg'); 
+	font-weight: 500; 
+	font-style: normal; 
+}
+/* <h1> tags in National Extrabold */ 
+h1 { font-family: National; font-weight: 900; } 
+
+/* <h2> tags in National Semibold */
+h2 { font-family: National; font-weight: 700; }
+
+/* <h3> tags in National Light */
+h3 { font-family: National; font-weight: 200; }  
+
+/* <p> tags in National Regular */
+p { font-family: National; font-weight: 500; }  
 
 
 

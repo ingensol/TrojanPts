@@ -374,7 +374,8 @@ textarea{
 .color-night-dark{color: #2c3e50;}
 
 .bg-yellow-light{background-color: #E67E22!important;}
-.bg-yellow-dark{background-color: #F27935!important;}
+/*.bg-yellow-dark{background-color: #F27935!important;}*/
+.bg-yellow-dark{background-color: #FFCC00!important;}
 .bg-hover-yellow-light:hover{background-color: #f1c40f!important; color:#FFFFFF!important; transition:all 200ms ease;}
 .bg-hover-yellow-dark:hover{background-color: #f39c12!important; color:#FFFFFF!important; transition:all 200ms ease;}
 .color-yellow-light{color: #f1c40f;}

@@ -472,7 +472,10 @@ function getmypointsfeed() {
                     rowclass = "tasklist-item2 tasklist-yellow2";
 
                 var TP_Row = '<div class="' +  rowclass + '">';
-                var TP_Details = "<h5>" + data[i].Employee + " - " + data[i].TotalPts + "Pts<br>" + data[i].Message + "<br>From:<i>" + data[i].Sender + "<br>" + data[i].Created + "</i></h5>";
+              //  var TP_Details = "<h5>" + data[i].Employee + " - " + data[i].TotalPts + "Pts<br>" + data[i].Message + "<br>From:<i>" + data[i].Sender + "<br>" + data[i].Created + "</i></h5>";                var TP_Details = "<h5>" + data[i].Employee + " - " + data[i].TotalPts + "Points<br>" + data[i].Message + "<br>From:<i>" + data[i].Sender + "</i></h5><span style='font-size:9px;padding-left:10px'><i>"+data[i].Created+"</i></span>";
+
+                var TP_Details = "<h5>" + data[i].Employee + " - " + data[i].TotalPts + "Points<br>" + data[i].Message + "<br>From:<i>" + data[i].Sender + "</i></h5><span style='font-size:9px;padding-left:10px'><i>" + data[i].Created + "</i></span>";
+
                 TP_Row = TP_Row + TP_Details + "</div>";
                 TP_Row = TP_Row + '<div class="decoration"></div>';
                 maindivcontent = maindivcontent + TP_Row;

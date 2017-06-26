@@ -342,6 +342,7 @@ $(document).ready(function () {
                         document.getElementById("known").checked = false;
                         document.getElementById("loadingdiv").style.display = "none";
                         document.getElementById("donediv").style.display = "block";
+                        document.getElementById("mainview").style.display = "block";
                         
                     },
                     error: function (jqXHR, exception) {

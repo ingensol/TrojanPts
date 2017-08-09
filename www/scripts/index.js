@@ -57,7 +57,7 @@ var app = {
         // app.receivedEvent('deviceready');
       //  app.logArea = document.getElementById("log-area");
         // app.log("Cordova initialized, 'deviceready' event was fired");
-        document.getElementById('peer').addEventListener('onkeyup', app.search);
+        document.getElementById('peer').addEventListener('keyup', app.search);
         AuthenticationContext = Microsoft.ADAL.AuthenticationContext;
       //  alert("go create context");
         app.createContext();

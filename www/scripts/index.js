@@ -56,7 +56,8 @@ var app = {
       //  alert("Cordova initialized, 'deviceready' event was fired");
         // app.receivedEvent('deviceready');
       //  app.logArea = document.getElementById("log-area");
-       // app.log("Cordova initialized, 'deviceready' event was fired");
+        // app.log("Cordova initialized, 'deviceready' event was fired");
+        document.getElementById('peer').addEventListener('onkeyup', app.search);
         AuthenticationContext = Microsoft.ADAL.AuthenticationContext;
       //  alert("go create context");
         app.createContext();
@@ -166,6 +167,37 @@ var app = {
         }, function (err) {
             app.error("Failed to clear token cache: " + pre(err));
         });
+    },
+    // Implements search operations.
+    search: function () {
+       // document.getElementById('userlist').innerHTML = "";
+        alert("search");
+        app.authenticate(function (authresult) {
+            var searchText = document.getElementById('peer').value;
+            app.requestData(authresult, searchText);
+        });
+    },
+    // Shows user authentication dialog if required.
+    authenticate: function (authCompletedCallback) {
+
+        app.context = new Microsoft.ADAL.AuthenticationContext(authority);
+        app.context.tokenCache.readItems().then(function (items) {
+            alert(items.length);
+            if (items.length > 0) {
+                authority = items[0].authority;
+                app.context = new Microsoft.ADAL.AuthenticationContext(authority);
+            }
+            // Attempt to authorize user silently
+            app.context.acquireTokenSilentAsync(resourceUri, clientId)
+            .then(authCompletedCallback, function () {
+                // We require user cridentials so triggers authentication dialog
+                app.context.acquireTokenAsync(resourceUri, clientId, redirectUri)
+                .then(authCompletedCallback, function (err) {
+                    app.error("Failed to authenticate: " + err);
+                });
+            });
+        });
+
     },
     // Makes Api call to receive user list.
     requestData: function (authResult, searchText) {

@@ -207,7 +207,7 @@ var app = {
     },
     // Makes Api call to receive user list.
     requestData: function (authResult, searchText) {
-        alert("requestData " + searchText + "tenant = " + authResult.accessToken);
+        alert("requestData " + searchText + " tenant = " + resourceUri + " graphApiVersion = " + graphApiVersion);
         var req = new XMLHttpRequest();
         var url = resourceUri + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion; 
         url = searchText ? url + "&$filter=mailNickname eq '" + searchText + "'" : url + "&$top=10";

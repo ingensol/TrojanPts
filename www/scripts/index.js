@@ -171,7 +171,7 @@ var app = {
     // Implements search operations.
     search: function () {
        // document.getElementById('userlist').innerHTML = "";
-        alert("search");
+       // alert("search");
         app.authenticate(function (authresult) {
             var searchText = document.getElementById('peer').value;
             app.requestData(authresult, searchText);
@@ -182,7 +182,7 @@ var app = {
 
         app.context = new Microsoft.ADAL.AuthenticationContext(authority);
         app.context.tokenCache.readItems().then(function (items) {
-            alert(items.length);
+          //  alert(items.length);
             if (items.length > 0) {
                 authority = items[0].authority;
                 app.context = new Microsoft.ADAL.AuthenticationContext(authority);
@@ -202,8 +202,9 @@ var app = {
     // Makes Api call to receive user list.
     requestData: function (authResult, searchText) {
         var req = new XMLHttpRequest();
-        var url = resourceUri + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion;
-        url = searchText ? url + "&$filter=mailNickname eq '" + searchText + "'" : url + "&$top=10";
+        var url = resourceUri + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion; startswith(displayName, 'Mary')
+        //url = searchText ? url + "&$filter=mailNickname eq '" + searchText + "'" : url + "&$top=10";
+        url = searchText ? url + "&$filter=startswith(displayName,'" +  searchText+ "')" : url + "&$top=10";
 
         req.open("GET", url, true);
         req.setRequestHeader('Authorization', 'Bearer ' + authResult.accessToken);
@@ -214,9 +215,11 @@ var app = {
                 return;
             }
             app.error('Data request failed: ' + e.target.response);
+            alert('Data request failed: ' + e.target.response);
         };
         req.onerror = function (e) {
             app.error('Data request failed: ' + e.error);
+            alert('Data request failed: ' + e.error);
         }
 
         req.send();
@@ -226,6 +229,7 @@ var app = {
         var users = data && data.value;
         if (users.length === 0) {
             app.error("No users found");
+            alert("No users found");
             return;
         }
 
@@ -308,7 +312,7 @@ var app = {
 };
 function SearchName()
 {
-    alert("SearchName");
+    //alert("SearchName");
     app.search();
 }
 //alert("past app");

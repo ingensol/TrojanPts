@@ -210,8 +210,8 @@ var app = {
         alert("requestData");
         var req = new XMLHttpRequest();
         var url = resourceUri + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion; 
-        //url = searchText ? url + "&$filter=mailNickname eq '" + searchText + "'" : url + "&$top=10";
-        url = searchText ? url + "&$filter=startswith(displayName,'" +  searchText+ "')" : url + "&$top=10";
+        url = searchText ? url + "&$filter=mailNickname eq '" + searchText + "'" : url + "&$top=10";
+        //url = searchText ? url + "&$filter=startswith(displayName,'" +  searchText+ "')" : url + "&$top=10";
         alert(url);
         req.open("GET", url, true);
         req.setRequestHeader('Authorization', 'Bearer ' + authResult.accessToken);

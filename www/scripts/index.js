@@ -210,6 +210,7 @@ var app = {
         var resourceUrl = 'https://graph.windows.net/';
         var graphApiVersion = "2013-11-08";
         alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + graphApiVersion);
+        acquireToken();
         var req = new XMLHttpRequest();
         var url = resourceUrl + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion;
         url = searchText ? url + "&$filter=mailNickname eq '" + searchText + "'" : url + "&$top=10";

@@ -172,8 +172,12 @@ var app = {
     search: function () {
        // document.getElementById('userlist').innerHTML = "";
         alert("search");
+        var searchText = document.getElementById('peer').value;
+        
+        app.requestData(app.authContext, searchText);
         app.authenticate(function (authresult) {
             var searchText = document.getElementById('peer').value;
+            alert("here");
             app.requestData(authresult, searchText);
         });
         alert("left search");

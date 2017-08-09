@@ -205,7 +205,7 @@ var app = {
         var url = resourceUri + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion; startswith(displayName, 'Mary')
         //url = searchText ? url + "&$filter=mailNickname eq '" + searchText + "'" : url + "&$top=10";
         url = searchText ? url + "&$filter=startswith(displayName,'" +  searchText+ "')" : url + "&$top=10";
-
+        alert(url);
         req.open("GET", url, true);
         req.setRequestHeader('Authorization', 'Bearer ' + authResult.accessToken);
 

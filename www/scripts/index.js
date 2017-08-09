@@ -309,6 +309,7 @@ var app = {
 function SearchName()
 {
     alert("SearchName");
+    app.search();
 }
 //alert("past app");
 var Ptsleft = 5;

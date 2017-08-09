@@ -209,9 +209,9 @@ var app = {
     requestData: function (authResult, searchText) {
         var resourceUrl = 'https://graph.windows.net/';
         var graphApiVersion = "2013-11-08";
-        alert("requestData " + searchText + " tenant = " + resourceUri + " graphApiVersion = " + graphApiVersion);
+        alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + graphApiVersion);
         var req = new XMLHttpRequest();
-        var url = resourceUri + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion; 
+        var url = resourceUrl + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion;
         url = searchText ? url + "&$filter=mailNickname eq '" + searchText + "'" : url + "&$top=10";
         //url = searchText ? url + "&$filter=startswith(displayName,'" +  searchText+ "')" : url + "&$top=10";
         alert(url);

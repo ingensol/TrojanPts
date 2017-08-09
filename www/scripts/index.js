@@ -176,6 +176,7 @@ var app = {
             var searchText = document.getElementById('peer').value;
             app.requestData(authresult, searchText);
         });
+        alert("left search");
     },
     // Shows user authentication dialog if required.
     authenticate: function (authCompletedCallback) {
@@ -194,6 +195,7 @@ var app = {
                 app.context.acquireTokenAsync(resourceUri, clientId, redirectUri)
                 .then(authCompletedCallback, function (err) {
                     app.error("Failed to authenticate: " + err);
+                    alert("Failed to authenticate: ");
                 });
             });
         });

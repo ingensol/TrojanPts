@@ -171,7 +171,7 @@ var app = {
     // Implements search operations.
     search: function () {
        // document.getElementById('userlist').innerHTML = "";
-       // alert("search");
+        alert("search");
         app.authenticate(function (authresult) {
             var searchText = document.getElementById('peer').value;
             app.requestData(authresult, searchText);
@@ -313,7 +313,7 @@ var app = {
 };
 function SearchName()
 {
-    //alert("SearchName");
+    alert("SearchName");
     app.search();
 }
 //alert("past app");

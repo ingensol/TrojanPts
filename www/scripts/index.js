@@ -306,6 +306,10 @@ var app = {
         });
     }
 };
+function SearchName()
+{
+    alert("SearchName");
+}
 //alert("past app");
 var Ptsleft = 5;
 function getPtsAwardedTtoday() {

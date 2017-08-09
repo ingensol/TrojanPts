@@ -208,7 +208,7 @@ var app = {
     // Makes Api call to receive user list.
     requestData: function (authResult, searchText) {
         var resourceUrl = 'https://graph.windows.net/';
-        var graphApiVersion = '"2013-11-08";
+        var graphApiVersion = "2013-11-08";
         alert("requestData " + searchText + " tenant = " + resourceUri + " graphApiVersion = " + graphApiVersion);
         var req = new XMLHttpRequest();
         var url = resourceUri + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion; 

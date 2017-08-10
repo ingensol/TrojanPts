@@ -208,14 +208,14 @@ var app = {
     },
     // Makes Api call to receive user list.
     requestData: function (authResult, searchText) {
-        var resourceUrl = 'https://graph.windows.net/';
+        var resourceUrl = 'https://graph.windows.net';
         var graphApiVersion = "2013-11-08";
         alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + authResult.tenantId);
        // app.acquireToken();
         var req = new XMLHttpRequest();
         var url = resourceUrl + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion;
         //url = searchText ? url + "&$filter=mailNickname eq '" + searchText + "'" : url + "&$top=10";
-        url = url + "&$filter=startswith(displayName,'" +  searchText+ "')&$top=10";
+        url = url + "&$filter=startswith(displayName,'" +  searchText+ "')&$top=50";
         alert(url);
         req.open("GET", url, true);
         req.setRequestHeader('Authorization', 'Bearer ' + authResult.accessToken);

@@ -172,7 +172,7 @@ var app = {
     // Implements search operations.
     search: function () {
        // document.getElementById('userlist').innerHTML = "";
-     //   alert("search");
+        alert("search");
         var searchText = "Juan";//document.getElementById('peer').value;
         
         app.requestData(app.authContext, searchText);
@@ -210,7 +210,7 @@ var app = {
     requestData: function (authResult, searchText) {
         var resourceUrl = 'https://graph.windows.net/';
         var graphApiVersion = "2013-11-08";
-      //  alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + graphApiVersion);
+        alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + graphApiVersion);
        // app.acquireToken();
         var req = new XMLHttpRequest();
         var url = resourceUrl + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion;
@@ -222,7 +222,8 @@ var app = {
 
         req.onload = function (e) {
             if (e.target.status >= 200 && e.target.status < 300) {
-                app.renderData(JSON.parse(e.target.response));
+                //app.renderData(JSON.parse(e.target.response));
+                alert("got result");
                 return;
             }
             app.error('Data request failed: ' + e.target.response);

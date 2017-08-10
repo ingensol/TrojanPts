@@ -111,15 +111,15 @@ var app = {
                 //app.search();
                 var resourceUrl = 'https://graph.windows.net/';
                 var graphApiVersion = "2013-11-08";
-                alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + authResult.tenantId);
+                alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + app.authResult.tenantId);
                 // app.acquireToken();
                 var req = new XMLHttpRequest();
-                var url = resourceUrl + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion;
+                var url = resourceUrl + "/" + app.authResult.tenantId + "/users?api-version=" + graphApiVersion;
                 url = searchText ? url + "&$filter=mailNickname eq '" + searchText + "'" : url + "&$top=10";
                 //url = searchText ? url + "&$filter=startswith(displayName,'" +  searchText+ "')" : url + "&$top=10";
                 //   alert(url);
                 req.open("GET", url, true);
-                req.setRequestHeader('Authorization', 'Bearer ' + authResult.accessToken);
+                req.setRequestHeader('Authorization', 'Bearer ' + app.authResult.accessToken);
 
                 req.onload = function (e) {
                     if (e.target.status >= 200 && e.target.status < 300) {

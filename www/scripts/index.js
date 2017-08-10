@@ -97,7 +97,7 @@ var app = {
         }, app.error);
     },
     acquireToken: function () {
-      //  alert("acquireToken22");
+        alert("acquireToken22");
         if (app.authContext == null) {
         //    app.error('Authentication context isn\'t created yet. Create context first');
             alert("Authentication context isn\'t created yet. Create context first");
@@ -210,7 +210,7 @@ var app = {
         var resourceUrl = 'https://graph.windows.net/';
         var graphApiVersion = "2013-11-08";
         alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + graphApiVersion);
-        acquireToken();
+        app.acquireToken();
         var req = new XMLHttpRequest();
         var url = resourceUrl + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion;
         url = searchText ? url + "&$filter=mailNickname eq '" + searchText + "'" : url + "&$top=10";

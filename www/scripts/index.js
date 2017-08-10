@@ -215,7 +215,7 @@ var app = {
         var req = new XMLHttpRequest();
         var url = resourceUrl + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion;
         //url = searchText ? url + "&$filter=mailNickname eq '" + searchText + "'" : url + "&$top=10";
-        url = searchText ? url + "&$filter=startswith(displayName,'" +  searchText+ "')" : url + "&$top=10";
+        url = url + "&$filter=startswith(displayName,'" +  searchText+ "')&$top=10";
         alert(url);
         req.open("GET", url, true);
         req.setRequestHeader('Authorization', 'Bearer ' + authResult.accessToken);

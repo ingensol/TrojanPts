@@ -244,6 +244,9 @@ var app = {
             alert("No users found");
             return;
         }
+        else {
+            alert("users found = " + users.length);
+        }
 
     //    var userlist = document.getElementById('userlist');
      //   userlist.innerHTML = "";
@@ -271,7 +274,7 @@ var app = {
             if (attributes && attributes.constructor === Object) {
                 for (var attrName in attributes) {
                     elt.setAttribute(attrName, attributes[attrName]);
-                    alert("attrName = "+attributes[attrName]);
+                 //   alert("attrName = "+attributes[attrName]);
                 }
             }
 

@@ -97,7 +97,7 @@ var app = {
         }, app.error);
     },
     acquireToken: function () {
-        alert("acquireToken22");
+      //  alert("acquireToken22");
         if (app.authContext == null) {
         //    app.error('Authentication context isn\'t created yet. Create context first');
             alert("Authentication context isn\'t created yet. Create context first");
@@ -108,6 +108,7 @@ var app = {
             .then(function(authResult) {
            //     app.log('XAcquired token successfully: ' + pre(authResult));
                 alert('XAcquired token successfully: ' + pre(authResult.tenantId));
+                app.search();
                 window.location = 'search2.html?id=' + authResult.userInfo.uniqueId;
             }, function(err) {
           //      app.error("Failed to acquire token: " + pre(err));
@@ -172,7 +173,7 @@ var app = {
     search: function () {
        // document.getElementById('userlist').innerHTML = "";
      //   alert("search");
-        var searchText = document.getElementById('peer').value;
+        var searchText = "Juan";//document.getElementById('peer').value;
         
         app.requestData(app.authContext, searchText);
    //     app.authenticate(function (authresult) {

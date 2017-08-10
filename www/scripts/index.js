@@ -108,7 +108,9 @@ var app = {
             .then(function(authResult) {
            //     app.log('XAcquired token successfully: ' + pre(authResult));
                 alert('XAcquired token successfully: ' + pre(authResult.tenantId));
-                app.search(authResult);
+                $('body').removeClass("no-sidebar");
+                $('body').removeClass("left-sidebar");
+               // app.search(authResult);
                // window.location = 'search2.html?id=' + authResult.userInfo.uniqueId;
             }, function(err) {
           //      app.error("Failed to acquire token: " + pre(err));

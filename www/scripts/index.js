@@ -97,7 +97,7 @@ var app = {
         }, app.error);
     },
     acquireToken: function () {
-        alert("acquireToken22");
+      //  alert("acquireToken22");
         if (app.authContext == null) {
         //    app.error('Authentication context isn\'t created yet. Create context first');
             alert("Authentication context isn\'t created yet. Create context first");
@@ -171,16 +171,16 @@ var app = {
     // Implements search operations.
     search: function () {
        // document.getElementById('userlist').innerHTML = "";
-        alert("search");
+     //   alert("search");
         var searchText = document.getElementById('peer').value;
         
         app.requestData(app.authContext, searchText);
-        app.authenticate(function (authresult) {
-            var searchText = document.getElementById('peer').value;
-            alert("here");
-            app.requestData(authresult, searchText);
-        });
-        alert("left search");
+   //     app.authenticate(function (authresult) {
+  //          var searchText = document.getElementById('peer').value;
+  //          alert("here");
+  //          app.requestData(authresult, searchText);
+   //     });
+   //     alert("left search");
     },
     // Shows user authentication dialog if required.
     authenticate: function (authCompletedCallback) {
@@ -209,13 +209,13 @@ var app = {
     requestData: function (authResult, searchText) {
         var resourceUrl = 'https://graph.windows.net/';
         var graphApiVersion = "2013-11-08";
-        alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + graphApiVersion);
-        app.acquireToken();
+      //  alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + graphApiVersion);
+       // app.acquireToken();
         var req = new XMLHttpRequest();
         var url = resourceUrl + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion;
         url = searchText ? url + "&$filter=mailNickname eq '" + searchText + "'" : url + "&$top=10";
         //url = searchText ? url + "&$filter=startswith(displayName,'" +  searchText+ "')" : url + "&$top=10";
-        alert(url);
+     //   alert(url);
         req.open("GET", url, true);
         req.setRequestHeader('Authorization', 'Bearer ' + authResult.accessToken);
 

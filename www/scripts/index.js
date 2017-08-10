@@ -222,7 +222,7 @@ var app = {
 
         req.onload = function (e) {
             if (e.target.status >= 200 && e.target.status < 300) {
-                //app.renderData(JSON.parse(e.target.response));
+                app.renderData(JSON.parse(e.target.response));
                 alert("got result");
                 return;
             }

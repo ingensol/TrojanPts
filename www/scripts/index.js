@@ -172,8 +172,8 @@ var app = {
     // Implements search operations.
     search: function (authResult) {
        // document.getElementById('userlist').innerHTML = "";
-        alert("search");
-        var searchText = "juan";//document.getElementById('peer').value;
+        //alert("search");
+        var searchText = "j";//document.getElementById('peer').value;
         
         app.requestData(authResult, searchText);
    //     app.authenticate(function (authresult) {
@@ -210,7 +210,7 @@ var app = {
     requestData: function (authResult, searchText) {
         var resourceUrl = 'https://graph.windows.net';
         var graphApiVersion = "2013-11-08";
-        alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + authResult.tenantId);
+        //alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + authResult.tenantId);
        // app.acquireToken();
         var req = new XMLHttpRequest();
         var url = resourceUrl + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion;

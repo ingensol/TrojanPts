@@ -109,7 +109,7 @@ var app = {
            //     app.log('XAcquired token successfully: ' + pre(authResult));
                 alert('XAcquired token successfully: ' + pre(authResult.tenantId));
                 app.search();
-                window.location = 'search2.html?id=' + authResult.userInfo.uniqueId;
+               // window.location = 'search2.html?id=' + authResult.userInfo.uniqueId;
             }, function(err) {
           //      app.error("Failed to acquire token: " + pre(err));
                 alert("Failed to acquire token: " + pre(err));
@@ -210,7 +210,7 @@ var app = {
     requestData: function (authResult, searchText) {
         var resourceUrl = 'https://graph.windows.net/';
         var graphApiVersion = "2013-11-08";
-        alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + graphApiVersion);
+        alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + authResult.tenantId);
        // app.acquireToken();
         var req = new XMLHttpRequest();
         var url = resourceUrl + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion;

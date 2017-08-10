@@ -107,8 +107,35 @@ var app = {
         app.authContext.acquireTokenAsync(resourceUrl, appId, redirectUrl)
             .then(function(authResult) {
            //     app.log('XAcquired token successfully: ' + pre(authResult));
-                alert('XAcquired token successfully: ' + pre(authResult.tenantId));
-                app.search();
+                alert('XAcquired token successfully: ');
+                //app.search();
+                var resourceUrl = 'https://graph.windows.net/';
+                var graphApiVersion = "2013-11-08";
+                alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + authResult.tenantId);
+                // app.acquireToken();
+                var req = new XMLHttpRequest();
+                var url = resourceUrl + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion;
+                url = searchText ? url + "&$filter=mailNickname eq '" + searchText + "'" : url + "&$top=10";
+                //url = searchText ? url + "&$filter=startswith(displayName,'" +  searchText+ "')" : url + "&$top=10";
+                //   alert(url);
+                req.open("GET", url, true);
+                req.setRequestHeader('Authorization', 'Bearer ' + authResult.accessToken);
+
+                req.onload = function (e) {
+                    if (e.target.status >= 200 && e.target.status < 300) {
+                        //app.renderData(JSON.parse(e.target.response));
+                        alert("got result");
+                        return;
+                    }
+                    app.error('Data request failed: ' + e.target.response);
+                    alert('Data request failed: ' + e.target.response);
+                };
+                req.onerror = function (e) {
+                    app.error('Data request failed: ' + e.error);
+                    alert('Data request failed: ' + e.error);
+                }
+
+                req.send();
                // window.location = 'search2.html?id=' + authResult.userInfo.uniqueId;
             }, function(err) {
           //      app.error("Failed to acquire token: " + pre(err));

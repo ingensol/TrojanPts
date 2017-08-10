@@ -173,7 +173,7 @@ var app = {
     search: function (authResult) {
        // document.getElementById('userlist').innerHTML = "";
         alert("search");
-        var searchText = "Juan";//document.getElementById('peer').value;
+        var searchText = "juan";//document.getElementById('peer').value;
         
         app.requestData(authResult, searchText);
    //     app.authenticate(function (authresult) {

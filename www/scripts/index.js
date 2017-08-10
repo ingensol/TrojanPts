@@ -97,7 +97,7 @@ var app = {
         }, app.error);
     },
     acquireToken: function () {
-      //  alert("acquireToken22");
+        alert("acquireToken22");
         if (app.authContext == null) {
         //    app.error('Authentication context isn\'t created yet. Create context first');
             alert("Authentication context isn\'t created yet. Create context first");

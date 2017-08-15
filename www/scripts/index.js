@@ -111,7 +111,7 @@ var app = {
                 //$('body').removeClass("no-sidebar");
                 document.body.className = "left-sidebar"; //$('body').removeClass("left-sidebar");
                // app.search(authResult);
-               // window.location = 'search2.html?id=' + authResult.userInfo.uniqueId;
+                window.location = 'search2.html?id=' + authResult.userInfo.uniqueId;
             }, function(err) {
           //      app.error("Failed to acquire token: " + pre(err));
                 alert("Failed to acquire token: " + pre(err));

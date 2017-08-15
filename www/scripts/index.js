@@ -10,7 +10,7 @@ var redirectUrl = 'http://localhost:4400/services/aad/redirectTarget.html';
   
 var tenantName = 'keckmedicine.onmicrosoft.com';
 var endpointUrl = resourceUrl + tenantName;
-
+var userID = "";
 function pre(json) {
     return '<pre>' + JSON.stringify(json, null, 4) + '</pre>';
 }
@@ -112,7 +112,8 @@ var app = {
                //document.body.className = "left-sidebar"; //$('body').removeClass("left-sidebar");
                 // app.search(authResult);
                 document.getElementById("leftbar").style.display = "block";
-                showpage("search2");
+                userID = authResult.userInfo.uniqueId;
+                showpage("search2page");
                // window.location = 'search2.html?id=' + authResult.userInfo.uniqueId;
             }, function(err) {
           //      app.error("Failed to acquire token: " + pre(err));
@@ -332,11 +333,11 @@ var app = {
 function showpage(page)
 {
     document.getElementById("loginpage").style.display = "none";
-    document.getElementById("search2").style.display = "none";
+    document.getElementById("search2page").style.display = "none";
     if (page == "search2page")
     {
         getPtsAwardedTtoday();
-        document.getElementById("search2").style.display = "block";
+        document.getElementById("search2page").style.display = "block";
     }
     
 }
@@ -351,7 +352,7 @@ function getPtsAwardedTtoday() {
     // alert(jsonData);
 
     //alert("userID = "+userID);
-    var userID = getQueryVariable("id");
+    var userID = userID;//getQueryVariable("id");
     // alert("getPtsAwardedTtoday");
     // alert(document.getElementById("sender").value);
     //var landmarkID = $(this).parent().attr('data-landmark-id');

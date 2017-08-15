@@ -128,7 +128,7 @@
 
             <div id="content" class="snap-content">
                 <div class="header-clear"></div>
-                <div class="pageapp-login bg-5 cover-screen">
+                <div class="pageapp-login bg-5 cover-screen" id="loginpage">
                     <div class="pageapp-login-content cover-center">
                         <div class="unboxed-layout">
                             <a class="pageapp-login-logo" href="#"></a>
@@ -137,6 +137,73 @@
                         </div>
                     </div>
                     <div class="overlay bg-black"></div>
+                </div>
+                <div class="content" id="search2page" style="display:none">
+                    <div class="container heading-style-5">
+                        <h4 class="heading-title">Award Trojan Points</h4>
+                        <i class="fa fa-thumbs-up heading-icon"></i>
+                        <div class="line bg-black"></div>
+                        <p class="heading-subtitle">
+                            Reward a colleague for going above and beyond.
+                        </p>
+                    </div>
+
+                    <div class="decoration"></div>
+
+                    <div class="full full-bottom" id="mainview">
+                        <form id="trojanPtform" name="trojanPtform">
+                            <span id="donediv" style="display:none;color:red">Trojan Point Sent!</span>
+                            <span id="PtsAllowed" style="display:block;color:red"></span>
+                            <span id="peerreq" style="display:none;color:red">Please enter a valid employee email</span>
+                            <input type="text" id="peer" name="peer" placeholder="Peer Med Email" class="contactField requiredField requiredEmailField" onkeyup="SearchName()"><br />
+                            <span id="attrireq" style="display:none;color:red">Please select one from the following:</span>
+                            <input type="checkbox" id="authenticity" name="authenticity" value="1" />
+                            <input type="hidden" id="authenticity" name="authenticity" value="0" class="checklist-square" /><label style="margin-left: 40px">Authenticity</label><br />
+                            <input type="checkbox" id="innovative" name="innovative" value="1" /><label style="margin-left: 40px">Innovative</label>
+                            <input type="hidden" id="innovative" name="innovative" value="0" /><br />
+                            <input type="checkbox" id="compassion" name="compassion" value="1" /><label style="margin-left: 40px">Compassion</label>
+                            <input type="hidden" id="compassion" name="compassion" value="0" /><br />
+                            <input type="checkbox" id="professionalism" name="professionalism" value="1" /><label style="margin-left: 40px">Professionalism</label>
+                            <input type="hidden" id="professionalism" name="professionalism" value="0" /><br />
+                            <input type="checkbox" id="collegiality" name="collegiality" value="1" /><label style="margin-left: 40px">Collegiality</label>
+                            <input type="hidden" id="collegiality" name="collegiality" value="0" /><br />
+                            <input type="checkbox" id="courtesy" name="courtesy" value="1" /><label style="margin-left: 40px">Courtesy</label>
+                            <input type="hidden" id="courtesy" name="courtesy" value="0" /><br />
+                            <input type="checkbox" id="efficiency" name="efficiency" value="1" /><label style="margin-left: 40px">Efficiency</label>
+                            <input type="hidden" id="efficiency" name="efficiency" value="0" /><br />
+                            <input type="checkbox" id="communication" name="communication" value="1" /><label style="margin-left: 40px">Communication</label>
+                            <input type="hidden" id="communication" name="communication" value="0" /><br />
+                            <input type="checkbox" id="leadership" name="leadership" value="1" /> <label style="margin-left: 40px">Leadership</label>
+                            <input type="hidden" id="leadership" name="leadership" value="0" /><br />
+                            <input type="checkbox" id="teamwork" name="teamwork" value="1" /><label style="margin-left: 40px">Teamwork</label>
+                            <input type="hidden" id="teamwork" name="teamwork" value="0" /><br />
+                            <input type="checkbox" id="known" name="known" value="1" /><label style="margin-left: 40px">KNOWN Services Standards</label>
+                            <label class="field-title contactEmailField" for="pts">Trojan Points to award: <span>(required)</span></label>
+                            <input type="hidden" id="known" name="known" value="0" />
+                            <select id="pts" name="pts">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select><br />
+                            <label class="field-title contactEmailField" for="message">Message: <span>(required)</span></label>
+                            <span id="messagereq" style="display:none;color:red">Please enter a short description</span>
+                            <textarea id="message" name="message" placeholder="Message" style=" border: solid 1px #cacaca;" rows="5" cols="50"></textarea>
+                            <br />
+                            <input type="hidden" id="sender" name="sender" value="">
+                            <br />
+                            <input type="submit" class="button-red contactSubmitButton" id="sendMessage" value="Send Trojan Point">
+                        </form>
+                    </div>
+                    <div id="loadingdiv" class="main-content" style="display:none;margin-top:50px" align="center"><img src="img/cargando_mega_mini.gif"><p align="center">Sending Trojan Point</p></div>
+                    <div id="donediv2" class="main-content" style="display:none;margin-top:50px" align="center"><img src="img/emoji_thumbs_up-200x200.gif"><p align="center"><button onclick="CloseDoneDiv()">Close</button></p></div>
+
+                    <div class="decoration"></div>
+
+
+                    <div class="footer-clear disabled"></div>
+
                 </div>
             </div>
         </div>

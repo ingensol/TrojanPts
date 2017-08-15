@@ -112,6 +112,7 @@ var app = {
                //document.body.className = "left-sidebar"; //$('body').removeClass("left-sidebar");
                 // app.search(authResult);
                 document.getElementById("leftbar").style.display = "block";
+                showpage("search2");
                // window.location = 'search2.html?id=' + authResult.userInfo.uniqueId;
             }, function(err) {
           //      app.error("Failed to acquire token: " + pre(err));
@@ -328,6 +329,17 @@ var app = {
         });
     }
 };
+function showpage(page)
+{
+    document.getElementById("loginpage").style.display = "none";
+    document.getElementById("search2").style.display = "none";
+    if (page == "search2page")
+    {
+        getPtsAwardedTtoday();
+        document.getElementById("search2").style.display = "block";
+    }
+    
+}
 function SearchName()
 {
     alert("SearchName");

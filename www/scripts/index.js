@@ -352,9 +352,9 @@ function showpage(page)
         document.getElementById("profilepage").style.display = "block";
     }
     if (page == "contactuspage") {
-        getmypoints();
         document.getElementById("contactuspage").style.display = "block";
     }
+    document.getElementById("leftmenu").style.display = "none";
     $('.close-sidebar a').trigger('click');
 }
 function SearchName()

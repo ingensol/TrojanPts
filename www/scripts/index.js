@@ -354,8 +354,8 @@ function showpage(page)
     if (page == "contactuspage") {
         document.getElementById("contactuspage").style.display = "block";
     }
-    document.getElementById('closeleftsb').click();
-    // $('#closeleftsb a').trigger('click');
+    //document.getElementById('closeleftsb').click();
+     $('#closeleftsb i').trigger('click');
 }
 function SearchName()
 {

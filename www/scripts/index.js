@@ -355,6 +355,7 @@ function showpage(page)
         getmypoints();
         document.getElementById("contactuspage").style.display = "block";
     }
+    $('.close-sidebar a').trigger('click');
 }
 function SearchName()
 {
@@ -531,9 +532,9 @@ function getmypoints() {
     });    
 }
 function getmypointsfeed() {
-    //alert("getPtsAwardedTtoday");
+    alert("getPtsAwardedTtoday");
     var userID = userID1;//getQueryVariable("id");
-    //  alert(userID);
+      alert(userID);
     var mainFeedDiv = document.getElementById("TP_List");
     var maindivcontent = mainFeedDiv.innerHTML;
 

@@ -11,6 +11,7 @@ var redirectUrl = 'http://localhost:4400/services/aad/redirectTarget.html';
 var tenantName = 'keckmedicine.onmicrosoft.com';
 var endpointUrl = resourceUrl + tenantName;
 var userID1 = "";
+var authResult1;
 function pre(json) {
     return '<pre>' + JSON.stringify(json, null, 4) + '</pre>';
 }
@@ -113,7 +114,7 @@ var app = {
                 // app.search(authResult);
                 document.getElementById("leftbar").style.display = "block";
                 userID1 = authResult.userInfo.uniqueId;
-                
+                authResult1 = authResult;
                 showpage("search2page");
                // window.location = 'search2.html?id=' + authResult.userInfo.uniqueId;
             }, function(err) {
@@ -176,12 +177,12 @@ var app = {
         });
     },
     // Implements search operations.
-    search: function (authResult) {
+    search: function () {
        // document.getElementById('userlist').innerHTML = "";
         //alert("search");
         var searchText = "j";//document.getElementById('peer').value;
         
-        app.requestData(authResult, searchText);
+        app.requestData(searchText);
    //     app.authenticate(function (authresult) {
   //          var searchText = document.getElementById('peer').value;
   //          alert("here");
@@ -213,18 +214,18 @@ var app = {
 
     },
     // Makes Api call to receive user list.
-    requestData: function (authResult, searchText) {
+    requestData: function (searchText) {
         var resourceUrl = 'https://graph.windows.net';
         var graphApiVersion = "2013-11-08";
         //alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + authResult.tenantId);
        // app.acquireToken();
         var req = new XMLHttpRequest();
-        var url = resourceUrl + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion;
+        var url = resourceUrl + "/" + authResult1.tenantId + "/users?api-version=" + graphApiVersion;
         //url = searchText ? url + "&$filter=mailNickname eq '" + searchText + "'" : url + "&$top=10";
         url = url + "&$filter=startswith(displayName,'" +  searchText+ "')&$top=50";
         alert(url);
         req.open("GET", url, true);
-        req.setRequestHeader('Authorization', 'Bearer ' + authResult.accessToken);
+        req.setRequestHeader('Authorization', 'Bearer ' + authResult1.accessToken);
 
         req.onload = function (e) {
             if (e.target.status >= 200 && e.target.status < 300) {
@@ -354,12 +355,11 @@ function showpage(page)
     if (page == "contactuspage") {
         document.getElementById("contactuspage").style.display = "block";
     }
-    //document.getElementById('closeleftsb').click();
      $('#closeleftsb i').trigger('click');
 }
 function SearchName()
 {
-    alert("SearchName");
+   // alert("SearchName");
     app.search();
 }
 //alert("past app");
@@ -532,7 +532,7 @@ function getmypoints() {
     });    
 }
 function getmypointsfeed() {
-    alert("getPtsAwardedTtoday");
+   // alert("getPtsAwardedTtoday");
     var userID = userID1;//getQueryVariable("id");
       alert(userID);
     var mainFeedDiv = document.getElementById("TP_List");
@@ -546,7 +546,7 @@ function getmypointsfeed() {
         crossDomain: true,
         url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetMyPtsFeed',
         success: function (data, text) {
-            //alert("success " + data.RecievedTotalPts);
+            alert("success " + data.RecievedTotalPts);
 
             for (i = 0; i < data.length; i++) {
                 var rowclass = "";

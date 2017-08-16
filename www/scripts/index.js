@@ -332,15 +332,29 @@ var app = {
     }
 };
 function showpage(page)
-{
+{    
     document.getElementById("loginpage").style.display = "none";
     document.getElementById("search2page").style.display = "none";
+    document.getElementById("feed2page").style.display = "none";
+    document.getElementById("Profilepage").style.display = "none";
+    document.getElementById("contactUspage").style.display = "none";
     if (page == "search2page")
     {
         getPtsAwardedTtoday();
         document.getElementById("search2page").style.display = "block";
     }
-    
+    if (page == "feed2page") {
+        getfeed();
+        document.getElementById("feed2page").style.display = "block";
+    } 
+    if (page == "profilepage") {
+        getmypoints();
+        document.getElementById("Profilepage").style.display = "block";
+    }
+    if (page == "contactuspage") {
+        getmypoints();
+        document.getElementById("contactUspage").style.display = "block";
+    }
 }
 function SearchName()
 {
@@ -351,8 +365,7 @@ function SearchName()
 var Ptsleft = 5;
 function getPtsAwardedTtoday() {
     // alert(jsonData);
-
-    alert("userID = " + userID1);
+    
     var userID = userID1;//getQueryVariable("id");
     // alert("getPtsAwardedTtoday");
     // alert(document.getElementById("sender").value);
@@ -456,7 +469,7 @@ function getfeed() {
 }
 function getmypoints() {
     //alert("getPtsAwardedTtoday");
-    var userID = getQueryVariable("id");
+    var userID = userID1;//getQueryVariable("id");
   //  alert(userID);
     var mainFeedDiv = document.getElementById("TP_List");
     var maindivcontent = mainFeedDiv.innerHTML;
@@ -519,7 +532,7 @@ function getmypoints() {
 }
 function getmypointsfeed() {
     //alert("getPtsAwardedTtoday");
-    var userID = getQueryVariable("id");
+    var userID = userID1;//getQueryVariable("id");
     //  alert(userID);
     var mainFeedDiv = document.getElementById("TP_List");
     var maindivcontent = mainFeedDiv.innerHTML;
@@ -597,7 +610,7 @@ function getQueryVariable(variable) {
 $(document).ready(function () {
     // alert("ready");
    
-    var userID = getQueryVariable("id");
+    var userID = userID1;//getQueryVariable("id");
    // alert("UserID = " + userID);
   
 

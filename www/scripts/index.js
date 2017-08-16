@@ -336,8 +336,8 @@ function showpage(page)
     document.getElementById("loginpage").style.display = "none";
     document.getElementById("search2page").style.display = "none";
     document.getElementById("feed2page").style.display = "none";
-    document.getElementById("Profilepage").style.display = "none";
-    document.getElementById("contactUspage").style.display = "none";
+    document.getElementById("profilepage").style.display = "none";
+    document.getElementById("contactuspage").style.display = "none";
     if (page == "search2page")
     {
         getPtsAwardedTtoday();
@@ -349,11 +349,11 @@ function showpage(page)
     } 
     if (page == "profilepage") {
         getmypoints();
-        document.getElementById("Profilepage").style.display = "block";
+        document.getElementById("profilepage").style.display = "block";
     }
     if (page == "contactuspage") {
         getmypoints();
-        document.getElementById("contactUspage").style.display = "block";
+        document.getElementById("contactuspage").style.display = "block";
     }
 }
 function SearchName()
@@ -610,11 +610,12 @@ function getQueryVariable(variable) {
 $(document).ready(function () {
     // alert("ready");
    
-    var userID = userID1;//getQueryVariable("id");
+    //var userID = userID1;//getQueryVariable("id");
    // alert("UserID = " + userID);
   
 
     $('form').submit(function (e) {
+        var userID = userID1;
         //alert("submit");
         e.preventDefault();
         var ptsawarded = document.getElementById("pts").value;

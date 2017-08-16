@@ -113,7 +113,7 @@ var app = {
                 // app.search(authResult);
                 document.getElementById("leftbar").style.display = "block";
                 userID1 = authResult.userInfo.uniqueId;
-                alert(userID1);
+                
                 showpage("search2page");
                // window.location = 'search2.html?id=' + authResult.userInfo.uniqueId;
             }, function(err) {
@@ -353,7 +353,7 @@ function getPtsAwardedTtoday() {
     // alert(jsonData);
 
     alert("userID = " + userID1);
-    var userID = userID;//getQueryVariable("id");
+    var userID = userID1;//getQueryVariable("id");
     // alert("getPtsAwardedTtoday");
     // alert(document.getElementById("sender").value);
     //var landmarkID = $(this).parent().attr('data-landmark-id');

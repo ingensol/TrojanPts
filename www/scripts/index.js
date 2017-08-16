@@ -10,7 +10,7 @@ var redirectUrl = 'http://localhost:4400/services/aad/redirectTarget.html';
   
 var tenantName = 'keckmedicine.onmicrosoft.com';
 var endpointUrl = resourceUrl + tenantName;
-var userID = "";
+var userID1 = "";
 function pre(json) {
     return '<pre>' + JSON.stringify(json, null, 4) + '</pre>';
 }
@@ -112,7 +112,8 @@ var app = {
                //document.body.className = "left-sidebar"; //$('body').removeClass("left-sidebar");
                 // app.search(authResult);
                 document.getElementById("leftbar").style.display = "block";
-                userID = authResult.userInfo.uniqueId;
+                userID1 = authResult.userInfo.uniqueId;
+                alert(userID1);
                 showpage("search2page");
                // window.location = 'search2.html?id=' + authResult.userInfo.uniqueId;
             }, function(err) {
@@ -351,7 +352,7 @@ var Ptsleft = 5;
 function getPtsAwardedTtoday() {
     // alert(jsonData);
 
-    alert("userID = "+userID);
+    alert("userID = " + userID1);
     var userID = userID;//getQueryVariable("id");
     // alert("getPtsAwardedTtoday");
     // alert(document.getElementById("sender").value);

@@ -351,7 +351,7 @@ var Ptsleft = 5;
 function getPtsAwardedTtoday() {
     // alert(jsonData);
 
-    //alert("userID = "+userID);
+    alert("userID = "+userID);
     var userID = userID;//getQueryVariable("id");
     // alert("getPtsAwardedTtoday");
     // alert(document.getElementById("sender").value);

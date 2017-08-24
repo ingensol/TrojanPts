@@ -158,7 +158,7 @@
                             <input type="text" id="peer" name="peer" placeholder="Peer Med Email" class="contactField requiredField requiredEmailField" onkeyup="SearchName()"><br />
                             <span id="peerlocreq" style="display:none;color:red">Please select peer's location</span>
                             <label class="field-title contactEmailField" for="pts">Peer Location (i.e Soto, HC1, HC2, Keck Hospital) <span>(required)</span></label>
-                            <select id="receiverloc" name="receiverloc"><option value="-1" selected="selected">Select peer location</option></select><br /><br /><br />
+                            <select id="receiverloc" name="receiverloc"><option value="-1" selected="selected">Select location</option></select><br /><br /><br />
                             <label class="field-title contactEmailField" for="pts">Peer Department <span>(required)</span></label>
                             <span id="peerdeptreq" style="display:none;color:red">Please select peer's department</span>
                             <select id="receiverdept" name="receiverdept"><option value="-1" selected="selected">Select peer department</option></select><br /><br /><br />
@@ -1170,7 +1170,7 @@
                 { "dept": "AC Westside Cancer" }
             ]
         };
-        var ModelListItems = "<option value='-1'>Select peer location</option>";
+        var ModelListItems = "<option value='-1'>Select location</option>";
         for (var i = 0; i < modelMakeJsonList.modelMakeTable.length; i++) {
             ModelListItems += "<option value='" + modelMakeJsonList.modelMakeTable[i].location + "'>" + modelMakeJsonList.modelMakeTable[i].location + "</option>";
         }

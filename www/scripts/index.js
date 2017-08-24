@@ -341,6 +341,7 @@ function showpage(page)
     document.getElementById("contactuspage").style.display = "none";
     if (page == "search2page")
     {
+        document.getElementById("donediv").style.display = "none";
         getPtsAwardedTtoday();
         document.getElementById("search2page").style.display = "block";
     }
@@ -626,6 +627,8 @@ $(document).ready(function () {
             document.getElementById("peerreq").style.display = "none";
             document.getElementById("attrireq").style.display = "none";
             document.getElementById("messagereq").style.display = "none";
+            document.getElementById("peerlocreq").style.display = "none";
+            document.getElementById("mylocreq").style.display = "none";
             if (!validateemail(document.getElementById("peer").value)) {
                 document.getElementById("peer").value = "";
                 document.getElementById("peerreq").style.display = "block";
@@ -633,6 +636,14 @@ $(document).ready(function () {
             }
             if (document.getElementById("message").value == "") {
                 document.getElementById("messagereq").style.display = "block";
+                submitdata = false;
+            }
+            if (document.getElementById("receiverloc").value == "-1") {
+                document.getElementById("peerlocreq").style.display = "block";
+                submitdata = false;
+            }
+            if (document.getElementById("senderloc").value == "-1") {
+                document.getElementById("mylocreq").style.display = "block";
                 submitdata = false;
             }
             if (document.getElementById("authenticity").checked == false && document.getElementById("innovative").checked == false
@@ -681,6 +692,7 @@ $(document).ready(function () {
                         document.getElementById("teamwork").checked = false;
                         document.getElementById("known").checked = false;
                         document.getElementById("loadingdiv").style.display = "none";
+                        getPtsAwardedTtoday();
                         document.getElementById("donediv").style.display = "block";
                         document.getElementById("mainview").style.display = "block";
                         

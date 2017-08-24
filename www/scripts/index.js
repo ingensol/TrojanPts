@@ -85,7 +85,7 @@ var app = {
         app.logArea.insertBefore(logItem, app.logArea.firstChild);
     },
     error: function (message) {
-        alert(message);
+       // alert(message);
         app.log(message, true);
     },
     createContext: function () {
@@ -223,22 +223,22 @@ var app = {
         var url = resourceUrl + "/" + authResult1.tenantId + "/users?api-version=" + graphApiVersion;
         //url = searchText ? url + "&$filter=mailNickname eq '" + searchText + "'" : url + "&$top=10";
         url = url + "&$filter=startswith(displayName,'" +  searchText+ "')&$top=50";
-        alert(url);
+        //alert(url);
         req.open("GET", url, true);
         req.setRequestHeader('Authorization', 'Bearer ' + authResult1.accessToken);
 
         req.onload = function (e) {
             if (e.target.status >= 200 && e.target.status < 300) {
                 app.renderData(JSON.parse(e.target.response));
-                alert("got result");
+              //  alert("got result");
                 return;
             }
             app.error('Data request failed: ' + e.target.response);
-            alert('Data request failed: ' + e.target.response);
+           // alert('Data request failed: ' + e.target.response);
         };
         req.onerror = function (e) {
             app.error('Data request failed: ' + e.error);
-            alert('Data request failed: ' + e.error);
+          //  alert('Data request failed: ' + e.error);
         }
 
         req.send();
@@ -248,11 +248,11 @@ var app = {
         var users = data && data.value;
         if (users.length === 0) {
             app.error("No users found");
-            alert("No users found");
+           // alert("No users found");
             return;
         }
         else {
-            alert("users found = " + users.length);
+           // alert("users found = " + users.length);
         }
 
     //    var userlist = document.getElementById('userlist');

@@ -101,7 +101,7 @@ var app = {
       //  alert("acquireToken22");
         if (app.authContext == null) {
         //    app.error('Authentication context isn\'t created yet. Create context first');
-            alert("Authentication context isn\'t created yet. Create context first");
+         //   alert("Authentication context isn\'t created yet. Create context first");
             return;
         }      
 
@@ -119,7 +119,7 @@ var app = {
                // window.location = 'search2.html?id=' + authResult.userInfo.uniqueId;
             }, function(err) {
           //      app.error("Failed to acquire token: " + pre(err));
-                alert("Failed to acquire token: " + pre(err));
+              //  alert("Failed to acquire token: " + pre(err));
             });
     },
     acquireTokenSilent: function() {
@@ -207,7 +207,7 @@ var app = {
                 app.context.acquireTokenAsync(resourceUri, clientId, redirectUri)
                 .then(authCompletedCallback, function (err) {
                     app.error("Failed to authenticate: " + err);
-                    alert("Failed to authenticate: ");
+                 //   alert("Failed to authenticate: ");
                 });
             });
         });
@@ -401,7 +401,7 @@ function getPtsAwardedTtoday() {
                 msg = 'Internal Server Error [500].';
             } else if (exception === 'parsererror') {
                 msg = 'Requested JSON parse failed.';
-                alert(err);
+               // alert(err);
             } else if (exception === 'timeout') {
                 msg = 'Time out error.';
             } else if (exception === 'abort') {
@@ -451,7 +451,7 @@ function getfeed() {
                 msg = 'Internal Server Error [500].';
             } else if (exception === 'parsererror') {
                 msg = 'Requested JSON parse failed.';
-                alert(err);
+               // alert(err);
             } else if (exception === 'timeout') {
                 msg = 'Time out error.';
             } else if (exception === 'abort') {
@@ -514,7 +514,7 @@ function getmypoints() {
                 msg = 'Internal Server Error [500].';
             } else if (exception === 'parsererror') {
                 msg = 'Requested JSON parse failed.';
-                alert(err);
+               // alert(err);
             } else if (exception === 'timeout') {
                 msg = 'Time out error.';
             } else if (exception === 'abort') {
@@ -526,7 +526,7 @@ function getmypoints() {
                 msg = 'Uncaught Error.\n' + jqXHR.responseText;
             }
             //$('#post').html(msg);
-             alert(msg);
+          //   alert(msg);
 
         }
     });    
@@ -534,7 +534,7 @@ function getmypoints() {
 function getmypointsfeed() {
    // alert("getPtsAwardedTtoday");
     var userID = userID1;//getQueryVariable("id");
-      alert(userID);
+     // alert(userID);
     var mainFeedDiv = document.getElementById("TP_List");
     var maindivcontent = mainFeedDiv.innerHTML;
 
@@ -546,7 +546,7 @@ function getmypointsfeed() {
         crossDomain: true,
         url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetMyPtsFeed',
         success: function (data, text) {
-            alert("success " + data.RecievedTotalPts);
+           // alert("success " + data.RecievedTotalPts);
 
             for (i = 0; i < data.length; i++) {
                 var rowclass = "";
@@ -582,7 +582,7 @@ function getmypointsfeed() {
                 msg = 'Internal Server Error [500].';
             } else if (exception === 'parsererror') {
                 msg = 'Requested JSON parse failed.';
-                alert(err);
+               // alert(err);
             } else if (exception === 'timeout') {
                 msg = 'Time out error.';
             } else if (exception === 'abort') {
@@ -594,7 +594,7 @@ function getmypointsfeed() {
                 msg = 'Uncaught Error.\n' + jqXHR.responseText;
             }
             //$('#post').html(msg);
-            alert(msg);
+           // alert(msg);
 
         }
     });
@@ -707,7 +707,7 @@ $(document).ready(function () {
                             msg = 'Uncaught Error.\n' + jqXHR.responseText;
                         }
                         //$('#post').html(msg);
-                        alert(msg);
+                       // alert(msg);
                        
                     }
                 });

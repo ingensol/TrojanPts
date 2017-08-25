@@ -475,7 +475,7 @@ function getfeed() {
 function getmypoints() {
     //alert("getPtsAwardedTtoday");
     var userID = userID1;//getQueryVariable("id");
-  //  alert(userID);
+    alert(userID);
     var mainFeedDiv = document.getElementById("TP_List");
     var maindivcontent = mainFeedDiv.innerHTML;
 
@@ -538,7 +538,7 @@ function getmypoints() {
 function getmypointsfeed() {
    // alert("getPtsAwardedTtoday");
     var userID = userID1;//getQueryVariable("id");
-    alert(userID);
+    //alert(userID);
     var mainFeedDiv = document.getElementById("TP_List");
     var maindivcontent = mainFeedDiv.innerHTML;
 
@@ -550,7 +550,7 @@ function getmypointsfeed() {
         crossDomain: true,
         url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetMyPtsFeed',
         success: function (data, text) {
-            alert("success " + data.length);
+            //alert("success " + data.length);
 
             for (i = 0; i < data.length; i++) {
                 var rowclass = "";
@@ -698,7 +698,8 @@ $(document).ready(function () {
                         document.getElementById("donediv").style.display = "block";
                         document.getElementById("mainview").style.display = "block";
                         Ptsleft = numofPts - 1;
-                        var messege = "You have awarded " + Number(data) + " point(s) today. You have " + Ptsleft + " to award.";
+                        Ptsawarded = 5 - Ptsleft;
+                        var messege = "You have awarded " + Number(Ptsawarded) + " point(s) today. You have " + Ptsleft + " to award.";
 
                         document.getElementById("PtsAllowed").innerHTML = messege;
                     },

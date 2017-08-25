@@ -12,6 +12,8 @@ var tenantName = 'keckmedicine.onmicrosoft.com';
 var endpointUrl = resourceUrl + tenantName;
 var userID1 = "";
 var authResult1;
+var numofPts;
+
 function pre(json) {
     return '<pre>' + JSON.stringify(json, null, 4) + '</pre>';
 }
@@ -384,6 +386,7 @@ function getPtsAwardedTtoday() {
         success: function (data, text) {
             //console.log(data);
             Ptsleft = 5 - Number(data);
+            numofPts = Ptsleft;
             //alert(Ptsleft);
             var messege = "You have awarded " + Number(data) + " point(s) today. You have " + Ptsleft + " to award.";
             
@@ -535,7 +538,7 @@ function getmypoints() {
 function getmypointsfeed() {
    // alert("getPtsAwardedTtoday");
     var userID = userID1;//getQueryVariable("id");
-     // alert(userID);
+    alert(userID);
     var mainFeedDiv = document.getElementById("TP_List");
     var maindivcontent = mainFeedDiv.innerHTML;
 
@@ -547,7 +550,7 @@ function getmypointsfeed() {
         crossDomain: true,
         url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetMyPtsFeed',
         success: function (data, text) {
-           // alert("success " + data.RecievedTotalPts);
+            alert("success " + data.length);
 
             for (i = 0; i < data.length; i++) {
                 var rowclass = "";
@@ -693,7 +696,11 @@ $(document).ready(function () {
                         document.getElementById("known").checked = false;
                         document.getElementById("loadingdiv").style.display = "none";                        
                         document.getElementById("donediv").style.display = "block";
-                        document.getElementById("mainview").style.display = "block";                        
+                        document.getElementById("mainview").style.display = "block";
+                        Ptsleft = numofPts - 1;
+                        var messege = "You have awarded " + Number(data) + " point(s) today. You have " + Ptsleft + " to award.";
+
+                        document.getElementById("PtsAllowed").innerHTML = messege;
                     },
                     error: function (jqXHR, exception) {
                         // console.log(data);
@@ -721,7 +728,7 @@ $(document).ready(function () {
                        
                     }
                 });
-                showpage("search2page");
+                //showpage("search2page");
             }
         }
         else

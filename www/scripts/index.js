@@ -503,7 +503,7 @@ function getmypoints() {
             TP_Row = TP_Row + '<div class="decoration"></div>';
             maindivcontent = maindivcontent + TP_Row;
            
-           // alert(maindivcontent);
+            alert(maindivcontent);
             mainFeedDiv.innerHTML = maindivcontent;
             getmypointsfeed();
         },

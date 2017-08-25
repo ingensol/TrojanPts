@@ -487,7 +487,7 @@ function getmypoints() {
         crossDomain: true,
         url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetMyPts',
         success: function (data, text) {
-            //alert("success " + data.RecievedTotalPts);
+            alert("success " + data.AwardedTotalPts);
 
             var TP_Row = '<div class="tasklist-item2a tasklist-red2" align="center">';
             var TP_Details = "<h5>Trojan Points I have recieved: " + data.RecievedTotalPts + "</h5>";
@@ -518,7 +518,7 @@ function getmypoints() {
                 msg = 'Internal Server Error [500].';
             } else if (exception === 'parsererror') {
                 msg = 'Requested JSON parse failed.';
-               // alert(err);
+                alert(err);
             } else if (exception === 'timeout') {
                 msg = 'Time out error.';
             } else if (exception === 'abort') {
@@ -530,7 +530,7 @@ function getmypoints() {
                 msg = 'Uncaught Error.\n' + jqXHR.responseText;
             }
             //$('#post').html(msg);
-          //   alert(msg);
+             alert(msg);
 
         }
     });    

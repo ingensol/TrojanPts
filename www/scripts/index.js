@@ -434,7 +434,7 @@ function getfeed() {
         url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetPtsFeed',
         success: function (data, text) {
             var mainFeedDiv = document.getElementById("TP_List");
-            var maindivcontent = mainFeedDiv.innerHTML;
+            var maindivcontent = "";
             for (i = 0; i < data.length; i++) {
                 var TP_Row = '<div class="tasklist-item2 tasklist-red">';
                 var TP_Details = "<h5>" + data[i].Employee + " - " + data[i].TotalPts + "Points<br>" + data[i].Message + "<br>From:<i>" + data[i].Sender + "</i></h5><span style='font-size:9px;padding-left:10px'><i>"+data[i].Created+"</i></span>";
@@ -477,9 +477,9 @@ function getmypoints() {
     var userID = userID1;//getQueryVariable("id");
    // alert(userID);
     var mainFeedDiv = document.getElementById("TP_List2");
-    var maindivcontent = mainFeedDiv.innerHTML;
+    var maindivcontent = "";
 
-    mainFeedDiv.innerHTML = maindivcontent;
+    //mainFeedDiv.innerHTML = maindivcontent;
     $.ajax({
         type: 'GET',
         dataType: "jsonp",

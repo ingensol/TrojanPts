@@ -359,7 +359,7 @@ $(function () {
       "Scala",
       "Scheme"
     ];
-    $("#tags").autocomplete({
+    $("#peer").autocomplete({
         source: availableTags
     });
 });

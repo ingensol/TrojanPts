@@ -296,7 +296,7 @@ var app = {
         }
       //  alert(availableTags.length);
         users.map(function (userInfo) {
-            availableTags[availableTags.length] = userInfo.mail;
+            availableTags[0] = userInfo.mail;
 
             return $new('li', ['topcoat-list__item'], null, [
                 $new('div', [], null, [

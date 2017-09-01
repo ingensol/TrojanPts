@@ -365,8 +365,7 @@ $(function () {
             data = availableTags;
             
             response(data);
-        },
-        minLength: 3
+        }
     });
 });
 function queryDB(request, response) {

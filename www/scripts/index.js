@@ -251,15 +251,15 @@ var app = {
     },
     // Renders user list.
     renderData: function (data) {
-        //var users = data && data.value;
+        var users = data && data.value;
         if (data.length === 0) {
             app.error("No users found");
             alert("No users found");
             return;
         }
         else {
-            alert("users found = " + data.length);
-            alert(data.value)
+            alert("users found = " + users.length);
+          //  alert(users.value)
         }
 
     //    var userlist = document.getElementById('userlist');
@@ -296,6 +296,7 @@ var app = {
         }
         
         users.map(function (userInfo) {
+            alert("here");
             return $new('li', ['topcoat-list__item'], null, [
                 $new('div', [], null, [
                     $new('p', ['userinfo-label'], 'First name: '),

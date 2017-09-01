@@ -294,7 +294,8 @@ var app = {
         }
       //  alert(availableTags.length);
         users.map(function (userInfo) {
-           // availableTags[0] = userInfo.mail;
+            availableTags[0] = userInfo.mail;
+            availableTags[1] = userInfo.mail;
 
             return {
                 label: userInfo.displayName,
@@ -308,10 +309,10 @@ $(function () {
     $("#peer").autocomplete({
         source: function (request, response) {
            // availableTags = [];
-            //app.search(request.term);
-           // data = availableTags;
+           app.search(request.term);
+           data = availableTags;
            // alert(availableTags.length);
-            response(app.search(request.term));
+            response(data);
         }
     });
 });

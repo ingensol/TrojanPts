@@ -337,9 +337,13 @@ var app = {
 $(function () {
 
     $("#peer").autocomplete({
-        
-
-        source: queryDB
+        source: function (request, response) {
+    
+            data = ["one@abc.de", "onf@abc.de", "ong@abc.de"];
+            
+            response(data);
+        },
+        minLength: 3
     });
 });
 function queryDB(request, response) {

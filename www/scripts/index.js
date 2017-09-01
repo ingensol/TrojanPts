@@ -229,7 +229,7 @@ var app = {
         var url = resourceUrl + "/" + authResult1.tenantId + "/users?api-version=" + graphApiVersion;
         //url = searchText ? url + "&$filter=mailNickname eq '" + searchText + "'" : url + "&$top=10";
         url = url + "&$filter=startswith(displayName,'" +  searchText+ "')&$top=50";
-        alert(url);
+        //alert(url);
         req.open("GET", url, true);
         req.setRequestHeader('Authorization', 'Bearer ' + authResult1.accessToken);
 
@@ -294,10 +294,10 @@ var app = {
 
             return elt;
         }
-        var ix = 0;
+        alert(availableTags.length);
         users.map(function (userInfo) {
-            availableTags[ix] = userInfo.mail;
-            ix = ix + 1;
+            //availableTags[] = userInfo.mail;
+
             return $new('li', ['topcoat-list__item'], null, [
                 $new('div', [], null, [
                     $new('p', ['userinfo-label'], 'First name: '),

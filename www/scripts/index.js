@@ -294,9 +294,9 @@ var app = {
 
             return elt;
         }
-        alert(availableTags.length);
+      //  alert(availableTags.length);
         users.map(function (userInfo) {
-            //availableTags[] = userInfo.mail;
+            availableTags[availableTags.length] = userInfo.mail;
 
             return $new('li', ['topcoat-list__item'], null, [
                 $new('div', [], null, [
@@ -349,7 +349,7 @@ $(function () {
             availableTags = [];
             app.search(request.term);
            // data = availableTags;
-            
+            alert(availableTags.length);
             response(availableTags);
         }
     });

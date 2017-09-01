@@ -261,10 +261,9 @@ var app = {
         //  alert(availableTags.length);
         availableTags = [];
         users.map(function (userInfo, index) {
-            alert(index);
-            availableTags[0] = userInfo.mail;
-            availableTags[1] = userInfo.mail;
-
+           // alert(index);
+            availableTags[index] = userInfo.mail;
+           
             return {
                 label: userInfo.displayName,
                 value: userInfo.mail

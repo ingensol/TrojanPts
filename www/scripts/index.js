@@ -14,9 +14,7 @@ var userID1 = "";
 var authResult1;
 var numofPts;
 var availableTags = [
- "ActionScript",
-      "AppleScript",
-      "Asp"
+ "ActionScript"
 ];
 function pre(json) {
     return '<pre>' + JSON.stringify(json, null, 4) + '</pre>';
@@ -296,49 +294,12 @@ var app = {
         }
       //  alert(availableTags.length);
         users.map(function (userInfo) {
-            availableTags[0] = userInfo.mail;
+           // availableTags[0] = userInfo.mail;
 
-            return $new('li', ['topcoat-list__item'], null, [
-                $new('div', [], null, [
-                    $new('p', ['userinfo-label'], 'First name: '),
-                    $new('input', ['topcoat-text-input', 'userinfo-data-field'], null, null, {
-                        type: 'text',
-                        readonly: '',
-                        placeholder: '',
-                        value: userInfo.givenName || ''
-                    })
-                ]),
-                $new('div', [], null, [
-                    $new('p', ['userinfo-label'], 'Last name: '),
-                    $new('input', ['topcoat-text-input', 'userinfo-data-field'], null, null, {
-                        type: 'text',
-                        readonly: '',
-                        placeholder: '',
-                        value: userInfo.surname || ''
-                    })
-                ]),
-                $new('div', [], null, [
-                    $new('p', ['userinfo-label'], 'UPN: '),
-                    $new('input', ['topcoat-text-input', 'userinfo-data-field'], null, null, {
-                        type: 'text',
-                        readonly: '',
-                        placeholder: '',
-                        value: userInfo.userPrincipalName || ''
-                    })
-                ]),
-                $new('div', [], null, [
-                    $new('p', ['userinfo-label'], 'Phone: '),
-                    $new('input', ['topcoat-text-input', 'userinfo-data-field'], null, null, {
-                        type: 'text',
-                        readonly: '',
-                        placeholder: '',
-                        value: userInfo.telephoneNumber || ''
-                    })
-                ])
-            ]);
-        }).forEach(function (userListItem) {
-            userlist.appendChild(userListItem);
-            
+            return {
+                label: userInfo.displayName,
+                value: userInfo.mail
+            };
         });
     }
 };
@@ -347,10 +308,10 @@ $(function () {
     $("#peer").autocomplete({
         source: function (request, response) {
            // availableTags = [];
-            app.search(request.term);
+            //app.search(request.term);
            // data = availableTags;
-            alert(availableTags.length);
-            response(availableTags);
+           // alert(availableTags.length);
+            response(app.search(request.term));
         }
     });
 });

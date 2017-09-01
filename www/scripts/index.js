@@ -260,40 +260,9 @@ var app = {
           //  alert(users.value)
         }
 
-    //    var userlist = document.getElementById('userlist');
-     //   userlist.innerHTML = "";
-
-        // Helper function for generating HTML
-        function $new(eltName, classlist, innerText, children, attributes) {
-            var elt = document.createElement(eltName);
-           // classlist.forEach(function (className) {
-                
-               // elt.classList.add(className);
-            //});
-
-           // if (innerText) {
-           //     elt.innerText = innerText;
-           // }
-
-           // if (children && children.constructor === Array) {
-           //     children.forEach(function (child) {
-            //        elt.appendChild(child);
-            //    });
-          //  } else if (children instanceof HTMLElement) {
-         //       elt.appendChild(children);
-          //  }
-
-            if (attributes && attributes.constructor === Object) {
-                for (var attrName in attributes) {
-                    elt.setAttribute(attrName, attributes[attrName]);
-                 //   alert("attrName = "+attributes[attrName]);
-                }
-            }
-
-            return elt;
-        }
-      //  alert(availableTags.length);
-        users.map(function (userInfo) {
+        //  alert(availableTags.length);
+        availableTags = [];
+        users.map(function (userInfo,index) {
             availableTags[0] = userInfo.mail;
             availableTags[1] = userInfo.mail;
 

@@ -13,9 +13,7 @@ var endpointUrl = resourceUrl + tenantName;
 var userID1 = "";
 var authResult1;
 var numofPts;
-var availableTags = [
- "ActionScript"
-];
+var availableTags = [];
 function pre(json) {
     return '<pre>' + JSON.stringify(json, null, 4) + '</pre>';
 }

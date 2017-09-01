@@ -311,7 +311,7 @@ var app = {
 
             return elt;
         }
-        alert("here");
+        
         users.map(function (userInfo) {
             return $new('li', ['topcoat-list__item'], null, [
                 $new('div', [], null, [
@@ -353,6 +353,7 @@ var app = {
             ]);
         }).forEach(function (userListItem) {
             userlist.appendChild(userListItem);
+            availableTags[availableTags.length] = userInfo.givenName;
         });
     }
 };

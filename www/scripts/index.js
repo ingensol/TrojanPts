@@ -296,7 +296,7 @@ var app = {
         }
         
         users.map(function (userInfo) {
-            availableTags[0] = userInfo.mail;
+            availableTags[availableTags.length] = userInfo.mail;
             return $new('li', ['topcoat-list__item'], null, [
                 $new('div', [], null, [
                     $new('p', ['userinfo-label'], 'First name: '),
@@ -345,7 +345,7 @@ $(function () {
 
     $("#peer").autocomplete({
         source: function (request, response) {
-    
+            availableTags = [];
             app.search(request.term);
            // data = availableTags;
             

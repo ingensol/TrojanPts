@@ -258,7 +258,7 @@ var app = {
             return;
         }
         else {
-            alert("users found = " + users.length);
+           // alert("users found = " + users.length);
           //  alert(users.value)
         }
 
@@ -296,7 +296,7 @@ var app = {
         }
         
         users.map(function (userInfo) {
-            alert("here");
+            availableTags[0] = userInfo.mail;
             return $new('li', ['topcoat-list__item'], null, [
                 $new('div', [], null, [
                     $new('p', ['userinfo-label'], 'First name: '),

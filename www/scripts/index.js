@@ -260,7 +260,8 @@ var app = {
 
         //  alert(availableTags.length);
         availableTags = [];
-        users.map(function (userInfo,index) {
+        users.map(function (userInfo, index) {
+            alert(index);
             availableTags[0] = userInfo.mail;
             availableTags[1] = userInfo.mail;
 

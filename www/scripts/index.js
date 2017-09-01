@@ -17,25 +17,7 @@ var availableTags = [
  "ActionScript",
       "AppleScript",
       "Asp",
-      "BASIC",
-      "C",
-      "C++",
-      "Clojure",
-      "COBOL",
-      "ColdFusion",
-      "Erlang",
-      "Fortran",
-      "Groovy",
-      "Haskell",
-      "Java",
-      "JavaScript",
-      "Lisp",
-      "Perl",
-      "PHP",
-      "Python",
-      "Ruby",
-      "Scala",
-      "Scheme"];
+];
 function pre(json) {
     return '<pre>' + JSON.stringify(json, null, 4) + '</pre>';
 }
@@ -269,15 +251,15 @@ var app = {
     },
     // Renders user list.
     renderData: function (data) {
-        var users = data && data.value;
-        if (users.length === 0) {
+        //var users = data && data.value;
+        if (data.length === 0) {
             app.error("No users found");
             alert("No users found");
             return;
         }
         else {
-            alert("users found = " + users.length);
-            alert(users)
+            alert("users found = " + data.length);
+            alert(data.value)
         }
 
     //    var userlist = document.getElementById('userlist');

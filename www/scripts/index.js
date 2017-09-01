@@ -16,7 +16,7 @@ var numofPts;
 var availableTags = [
  "ActionScript",
       "AppleScript",
-      "Asp",
+      "Asp"
 ];
 function pre(json) {
     return '<pre>' + JSON.stringify(json, null, 4) + '</pre>';

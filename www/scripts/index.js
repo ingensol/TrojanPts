@@ -13,30 +13,7 @@ var endpointUrl = resourceUrl + tenantName;
 var userID1 = "";
 var authResult1;
 var numofPts;
-var availableTags = [
-  "ActionScript",
-  "AppleScript",
-  "Asp",
-  "BASIC",
-  "C",
-  "C++",
-  "Clojure",
-  "COBOL",
-  "ColdFusion",
-  "Erlang",
-  "Fortran",
-  "Groovy",
-  "Haskell",
-  "Java",
-  "JavaScript",
-  "Lisp",
-  "Perl",
-  "PHP",
-  "Python",
-  "Ruby",
-  "Scala",
-  "Scheme"
-];
+var availableTags = [];
 function pre(json) {
     return '<pre>' + JSON.stringify(json, null, 4) + '</pre>';
 }
@@ -362,9 +339,14 @@ $(function () {
     $("#peer").autocomplete({
         
 
-        source: availableTags
+        source: queryDB
     });
 });
+function queryDB(request, response) {
+   // var query = request.term;
+    var data = "juan,test,monte";
+    response(data); //puts the results on the UI
+}
 function showpage(page)
 {    
     document.getElementById("loginpage").style.display = "none";

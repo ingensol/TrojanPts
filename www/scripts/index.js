@@ -359,14 +359,16 @@ var app = {
 $(function () {
 
     $("#peer").autocomplete({
-        source: availableTags
+        source: function (request, response) {
+    
+            app.search();
+           // data = availableTags;
+            
+            response(availableTags);
+        }
     });
 });
-function queryDB(request, response) {
-   // var query = request.term;
-    var data = "juan,test,monte";
-    response(data); //puts the results on the UI
-}
+
 function showpage(page)
 {    
     document.getElementById("loginpage").style.display = "none";

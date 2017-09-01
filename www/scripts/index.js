@@ -201,12 +201,12 @@ var app = {
         });
     },
     // Implements search operations.
-    search: function () {
+    search: function (term) {
        // document.getElementById('userlist').innerHTML = "";
         //alert("search");
         var searchText = "j";//document.getElementById('peer').value;
         
-        app.requestData(searchText);
+        app.requestData(term);
    //     app.authenticate(function (authresult) {
   //          var searchText = document.getElementById('peer').value;
   //          alert("here");
@@ -272,11 +272,11 @@ var app = {
         var users = data && data.value;
         if (users.length === 0) {
             app.error("No users found");
-           // alert("No users found");
+            alert("No users found");
             return;
         }
         else {
-           // alert("users found = " + users.length);
+            alert("users found = " + users.length);
         }
 
     //    var userlist = document.getElementById('userlist');
@@ -311,7 +311,7 @@ var app = {
 
             return elt;
         }
-
+        alert("here");
         users.map(function (userInfo) {
             return $new('li', ['topcoat-list__item'], null, [
                 $new('div', [], null, [
@@ -361,7 +361,7 @@ $(function () {
     $("#peer").autocomplete({
         source: function (request, response) {
     
-            app.search();
+            app.search(request.term);
            // data = availableTags;
             
             response(availableTags);

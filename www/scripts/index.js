@@ -353,7 +353,7 @@ var app = {
             ]);
         }).forEach(function (userListItem) {
             userlist.appendChild(userListItem);
-            availableTags[availableTags.length] = userInfo.givenName;
+            availableTags[0] = userInfo.givenName;
         });
     }
 };

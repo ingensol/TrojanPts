@@ -277,6 +277,7 @@ var app = {
         }
         else {
             alert("users found = " + users.length);
+            alert(users)
         }
 
     //    var userlist = document.getElementById('userlist');
@@ -353,7 +354,7 @@ var app = {
             ]);
         }).forEach(function (userListItem) {
             userlist.appendChild(userListItem);
-            availableTags[0] = userInfo.givenName;
+            
         });
     }
 };

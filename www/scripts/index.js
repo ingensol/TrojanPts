@@ -359,13 +359,7 @@ var app = {
 $(function () {
 
     $("#peer").autocomplete({
-        source: function (request, response) {
-    
-            app.search();
-            data = availableTags;
-            
-            response(data);
-        }
+        source: availableTags
     });
 });
 function queryDB(request, response) {

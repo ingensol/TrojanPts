@@ -353,9 +353,10 @@ $(function () {
             url = url + "&$filter=startswith(displayName,'" + searchText + "')&$top=50";
             req.open("GET", url, true);
             req.setRequestHeader('Authorization', 'Bearer ' + authResult1.accessToken);
-
+            alert("here");
             req.onload = function (e) {
                 if (e.target.status >= 200 && e.target.status < 300) {
+                    alert("here2");
                     //app.renderData(JSON.parse(e.target.response));
                     jdata = JSON.parse(e.target.response);
                     var users = jdata && jdata.value;

@@ -223,7 +223,7 @@ var app = {
     requestData: function (searchText) {
         alert("requestData");
         var resourceUrl = 'https://graph.windows.net';
-        var graphApiVersion = "2013-11-08";
+        var graphApiVersion = "1.6";//;"2013-11-08";
         //alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + authResult1.tenantId);
        // app.acquireToken();
         var req = new XMLHttpRequest();
@@ -296,8 +296,8 @@ var app = {
           //  return elt;
       //  }
       //  alert(availableTags.length);
-        users.map(function (userInfo) {
-            availableTags[0] = userInfo.mail;
+        users.map(function (userInfo,index) {
+            availableTags[index] = userInfo.mail;
 
           /*  return $new('li', ['topcoat-list__item'], null, [
                 $new('div', [], null, [

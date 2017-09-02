@@ -295,9 +295,14 @@ var app = {
 
           //  return elt;
       //  }
-      //  alert(availableTags.length);
+        //  alert(availableTags.length);
+        var availableTags2 = [
+ "ActionScriptsssssss",
+      "AppleScript232321321",
+      "Asp213213213123"
+        ];
         users.map(function (userInfo,index) {
-            availableTags[0] = userInfo.mail;
+            //availableTags[0] = userInfo.mail;
 
           /*  return $new('li', ['topcoat-list__item'], null, [
                 $new('div', [], null, [
@@ -337,7 +342,8 @@ var app = {
                     })
                 ])
             ]);*/
-        });//.forEach(function (userListItem) {
+        });
+        availableTags = availableTags2;//.forEach(function (userListItem) {
           //  userlist.appendChild(userListItem);
             
         //});

@@ -185,8 +185,8 @@ var app = {
     // Implements search operations.
     search: function (term) {
        // document.getElementById('userlist').innerHTML = "";
-        //alert("search");
-        var searchText = "j";//document.getElementById('peer').value;
+        alert("search");
+        //var searchText = "j";//document.getElementById('peer').value;
         
         app.requestData(term);
    //     app.authenticate(function (authresult) {

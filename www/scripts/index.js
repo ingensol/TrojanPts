@@ -13,7 +13,11 @@ var endpointUrl = resourceUrl + tenantName;
 var userID1 = "";
 var authResult1;
 var numofPts;
-var availableTags = [];
+var availableTags = [
+ "ActionScript",
+      "AppleScript",
+      "Asp"
+];
 function pre(json) {
     return '<pre>' + JSON.stringify(json, null, 4) + '</pre>';
 }
@@ -258,16 +262,83 @@ var app = {
           //  alert(users.value)
         }
 
-        //  alert(availableTags.length);
-        availableTags = [];
-        users.map(function (userInfo, index) {
-           // alert(index);
-            availableTags[index] = userInfo.mail;
-           
-            return {
-                label: userInfo.displayName,
-                value: userInfo.mail
-            };
+    //    var userlist = document.getElementById('userlist');
+     //   userlist.innerHTML = "";
+
+        // Helper function for generating HTML
+        function $new(eltName, classlist, innerText, children, attributes) {
+            var elt = document.createElement(eltName);
+           // classlist.forEach(function (className) {
+                
+               // elt.classList.add(className);
+            //});
+
+           // if (innerText) {
+           //     elt.innerText = innerText;
+           // }
+
+           // if (children && children.constructor === Array) {
+           //     children.forEach(function (child) {
+            //        elt.appendChild(child);
+            //    });
+          //  } else if (children instanceof HTMLElement) {
+         //       elt.appendChild(children);
+          //  }
+
+            if (attributes && attributes.constructor === Object) {
+                for (var attrName in attributes) {
+                    elt.setAttribute(attrName, attributes[attrName]);
+                 //   alert("attrName = "+attributes[attrName]);
+                }
+            }
+
+            return elt;
+        }
+      //  alert(availableTags.length);
+        users.map(function (userInfo) {
+            availableTags[0] = userInfo.mail;
+
+            return $new('li', ['topcoat-list__item'], null, [
+                $new('div', [], null, [
+                    $new('p', ['userinfo-label'], 'First name: '),
+                    $new('input', ['topcoat-text-input', 'userinfo-data-field'], null, null, {
+                        type: 'text',
+                        readonly: '',
+                        placeholder: '',
+                        value: userInfo.givenName || ''
+                    })
+                ]),
+                $new('div', [], null, [
+                    $new('p', ['userinfo-label'], 'Last name: '),
+                    $new('input', ['topcoat-text-input', 'userinfo-data-field'], null, null, {
+                        type: 'text',
+                        readonly: '',
+                        placeholder: '',
+                        value: userInfo.surname || ''
+                    })
+                ]),
+                $new('div', [], null, [
+                    $new('p', ['userinfo-label'], 'UPN: '),
+                    $new('input', ['topcoat-text-input', 'userinfo-data-field'], null, null, {
+                        type: 'text',
+                        readonly: '',
+                        placeholder: '',
+                        value: userInfo.userPrincipalName || ''
+                    })
+                ]),
+                $new('div', [], null, [
+                    $new('p', ['userinfo-label'], 'Phone: '),
+                    $new('input', ['topcoat-text-input', 'userinfo-data-field'], null, null, {
+                        type: 'text',
+                        readonly: '',
+                        placeholder: '',
+                        value: userInfo.telephoneNumber || ''
+                    })
+                ])
+            ]);
+        }).forEach(function (userListItem) {
+            userlist.appendChild(userListItem);
+            
         });
     }
 };
@@ -275,11 +346,42 @@ $(function () {
 
     $("#peer").autocomplete({
         source: function (request, response) {
-           // availableTags = [];
-           app.search(request.term);
-           data = availableTags;
+            var resourceUrl = 'https://graph.windows.net';
+            var graphApiVersion = "1.6";
+            var req = new XMLHttpRequest();
+            var url = resourceUrl + "/" + authResult1.tenantId + "/users?api-version=" + graphApiVersion;
+            url = url + "&$filter=startswith(displayName,'" + searchText + "')&$top=50";
+            req.open("GET", url, true);
+            req.setRequestHeader('Authorization', 'Bearer ' + authResult1.accessToken);
+
+            req.onload = function (e) {
+                if (e.target.status >= 200 && e.target.status < 300) {
+                    //app.renderData(JSON.parse(e.target.response));
+                    jdata = JSON.parse(e.target.response);
+                    var users = jdata && jdata.value;
+                    var pluginArrayArg = new Array();
+                    users.map(function (userInfo) {
+                        var jsonArg1 = new Object();
+                        jsonArg1.item = userInfo.displayName;
+                        jsonArg1.value = userInfo.mail;
+                        pluginArrayArg.push(jsonArg1);
+                    });
+                    alert(JSON.parse(JSON.stringify(pluginArrayArg)));
+                    response(JSON.parse(JSON.stringify(pluginArrayArg)));
+                    return;
+                }
+                app.error('Data request failed: ' + e.target.response);              
+            };
+            req.onerror = function (e) {
+                app.error('Data request failed: ' + e.error);              
+            }
+
+            req.send();
+
+           // app.search(request.term);
+           // data = availableTags;
            // alert(availableTags.length);
-            response(data);
+            
         }
     });
 });

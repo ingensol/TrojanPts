@@ -261,8 +261,8 @@ var app = {
            // alert("users found = " + users.length);
           //  alert(users.value)
         }
-        jdata = JSON.parse(e.target.response);
-        var users = jdata && jdata.value;
+        
+        var users = data && data.value;
         var pluginArrayArg = new Array();
         users.map(function (userInfo) {
             var jsonArg1 = new Object();
@@ -271,7 +271,7 @@ var app = {
             pluginArrayArg.push(jsonArg1);
         });
         alert(JSON.parse(JSON.stringify(pluginArrayArg)));
-        response(JSON.parse(JSON.stringify(pluginArrayArg)));
+       
 
     //    var userlist = document.getElementById('userlist');
      //   userlist.innerHTML = "";
@@ -357,9 +357,8 @@ $(function () {
 
     $("#peer").autocomplete({
         source: function (request, response) {
-
-
-              app.search(request.term);
+            response(availableTags);
+           // app.search(request.term);
            // data = availableTags;
            // alert(availableTags.length);
             

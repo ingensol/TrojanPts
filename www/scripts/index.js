@@ -223,7 +223,7 @@ var app = {
     requestData: function (searchText) {
         var resourceUrl = 'https://graph.windows.net';
         var graphApiVersion = "1.6";
-        //alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + authResult.tenantId);
+        alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + authResult.tenantId);
        // app.acquireToken();
         var req = new XMLHttpRequest();
         var url = resourceUrl + "/" + authResult1.tenantId + "/users?api-version=" + graphApiVersion;
@@ -258,11 +258,11 @@ var app = {
             return;
         }
         else {
-           // alert("users found = " + users.length);
+            alert("users found = " + users.length);
           //  alert(users.value)
         }
         
-        var users = data && data.value;
+        //var users = data && data.value;
         var pluginArrayArg = new Array();
         users.map(function (userInfo) {
             var jsonArg1 = new Object();

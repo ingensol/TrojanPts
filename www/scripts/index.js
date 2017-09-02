@@ -185,7 +185,7 @@ var app = {
     // Implements search operations.
     search: function (term) {
        // document.getElementById('userlist').innerHTML = "";
-        alert("search");
+       // alert("search");
         var searchText = "j";//document.getElementById('peer').value;
         
         app.requestData(term);
@@ -221,7 +221,7 @@ var app = {
     },
     // Makes Api call to receive user list.
     requestData: function (searchText) {
-        alert("requestData");
+       // alert("requestData");
         var resourceUrl = 'https://graph.windows.net';
         var graphApiVersion = "1.6";//;"2013-11-08";
         //alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + authResult1.tenantId);
@@ -259,7 +259,7 @@ var app = {
             return;
         }
         else {
-            alert("users found = " + users.length);
+         //   alert("users found = " + users.length);
           //  alert(users.value)
         }
 
@@ -297,7 +297,7 @@ var app = {
       //  }
       //  alert(availableTags.length);
         users.map(function (userInfo,index) {
-            availableTags[index] = userInfo.mail;
+            availableTags[0] = userInfo.mail;
 
           /*  return $new('li', ['topcoat-list__item'], null, [
                 $new('div', [], null, [
@@ -353,7 +353,8 @@ $(function () {
             response(data);
            // alert(availableTags.length);
             
-        }
+        },
+        minLength: 0
     });
 });
 

@@ -224,7 +224,7 @@ var app = {
         alert("requestData");
         var resourceUrl = 'https://graph.windows.net';
         var graphApiVersion = "2013-11-08";
-        alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + authResult.tenantId);
+        alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + authResult1.tenantId);
        // app.acquireToken();
         var req = new XMLHttpRequest();
         var url = resourceUrl + "/" + authResult1.tenantId + "/users?api-version=" + graphApiVersion;

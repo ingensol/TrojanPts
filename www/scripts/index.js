@@ -262,7 +262,7 @@ var app = {
           //  alert(users.value)
         }
         
-        //var users = data && data.value;
+        /*var users = data && data.value;
         var pluginArrayArg = new Array();
         users.map(function (userInfo) {
             var jsonArg1 = new Object();
@@ -271,7 +271,7 @@ var app = {
             pluginArrayArg.push(jsonArg1);
         });
         alert(JSON.parse(JSON.stringify(pluginArrayArg)));
-       
+       */
 
     //    var userlist = document.getElementById('userlist');
      //   userlist.innerHTML = "";

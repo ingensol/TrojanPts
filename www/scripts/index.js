@@ -224,7 +224,7 @@ var app = {
         alert("requestData");
         var resourceUrl = 'https://graph.windows.net';
         var graphApiVersion = "2013-11-08";
-        alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + authResult1.tenantId);
+        //alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + authResult1.tenantId);
        // app.acquireToken();
         var req = new XMLHttpRequest();
         var url = resourceUrl + "/" + authResult1.tenantId + "/users?api-version=" + graphApiVersion;
@@ -267,8 +267,8 @@ var app = {
      //   userlist.innerHTML = "";
 
         // Helper function for generating HTML
-        function $new(eltName, classlist, innerText, children, attributes) {
-            var elt = document.createElement(eltName);
+     //   function $new(eltName, classlist, innerText, children, attributes) {
+     //       var elt = document.createElement(eltName);
            // classlist.forEach(function (className) {
                 
                // elt.classList.add(className);
@@ -286,20 +286,20 @@ var app = {
          //       elt.appendChild(children);
           //  }
 
-            if (attributes && attributes.constructor === Object) {
-                for (var attrName in attributes) {
-                    elt.setAttribute(attrName, attributes[attrName]);
+     //       if (attributes && attributes.constructor === Object) {
+         //       for (var attrName in attributes) {
+       //             elt.setAttribute(attrName, attributes[attrName]);
                  //   alert("attrName = "+attributes[attrName]);
-                }
-            }
+           //     }
+          //  }
 
-            return elt;
-        }
+          //  return elt;
+      //  }
       //  alert(availableTags.length);
         users.map(function (userInfo) {
             availableTags[0] = userInfo.mail;
 
-            return $new('li', ['topcoat-list__item'], null, [
+          /*  return $new('li', ['topcoat-list__item'], null, [
                 $new('div', [], null, [
                     $new('p', ['userinfo-label'], 'First name: '),
                     $new('input', ['topcoat-text-input', 'userinfo-data-field'], null, null, {
@@ -336,11 +336,11 @@ var app = {
                         value: userInfo.telephoneNumber || ''
                     })
                 ])
-            ]);
-        }).forEach(function (userListItem) {
-            userlist.appendChild(userListItem);
+            ]);*/
+        });//.forEach(function (userListItem) {
+          //  userlist.appendChild(userListItem);
             
-        });
+        //});
     }
 };
 $(function () {
@@ -350,6 +350,7 @@ $(function () {
 
             app.search(request.term);
             data = availableTags;
+            response(data);
            // alert(availableTags.length);
             
         }

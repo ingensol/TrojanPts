@@ -185,7 +185,7 @@ var app = {
     // Implements search operations.
     search: function (term) {
        // document.getElementById('userlist').innerHTML = "";
-        //alert("search");
+        alert("search");
         var searchText = "j";//document.getElementById('peer').value;
         
         app.requestData(term);
@@ -221,6 +221,7 @@ var app = {
     },
     // Makes Api call to receive user list.
     requestData: function (searchText) {
+        alert("requestData");
         var resourceUrl = 'https://graph.windows.net';
         var graphApiVersion = "2013-11-08";
         alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + authResult.tenantId);

@@ -296,13 +296,9 @@ var app = {
           //  return elt;
       //  }
         //  alert(availableTags.length);
-        var availableTags2 = [
- "ActionScriptsssssss",
-      "AppleScript232321321",
-      "Asp213213213123"
-        ];
+        var availableTags2 = [];
         users.map(function (userInfo,index) {
-            //availableTags[0] = userInfo.mail;
+            availableTags2[availableTags2.length] = userInfo.mail;
 
           /*  return $new('li', ['topcoat-list__item'], null, [
                 $new('div', [], null, [

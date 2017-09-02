@@ -185,8 +185,8 @@ var app = {
     // Implements search operations.
     search: function (term) {
        // document.getElementById('userlist').innerHTML = "";
-        alert("search");
-        //var searchText = "j";//document.getElementById('peer').value;
+        //alert("search");
+        var searchText = "j";//document.getElementById('peer').value;
         
         app.requestData(term);
    //     app.authenticate(function (authresult) {
@@ -222,7 +222,7 @@ var app = {
     // Makes Api call to receive user list.
     requestData: function (searchText) {
         var resourceUrl = 'https://graph.windows.net';
-        var graphApiVersion = "1.6";
+        var graphApiVersion = "2013-11-08";
         alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + authResult.tenantId);
        // app.acquireToken();
         var req = new XMLHttpRequest();
@@ -261,24 +261,13 @@ var app = {
             alert("users found = " + users.length);
           //  alert(users.value)
         }
-        
-        /*var users = data && data.value;
-        var pluginArrayArg = new Array();
-        users.map(function (userInfo) {
-            var jsonArg1 = new Object();
-            jsonArg1.item = userInfo.displayName;
-            jsonArg1.value = userInfo.mail;
-            pluginArrayArg.push(jsonArg1);
-        });
-        alert(JSON.parse(JSON.stringify(pluginArrayArg)));
-       */
 
     //    var userlist = document.getElementById('userlist');
      //   userlist.innerHTML = "";
 
         // Helper function for generating HTML
-    //    function $new(eltName, classlist, innerText, children, attributes) {
-       //     var elt = document.createElement(eltName);
+        function $new(eltName, classlist, innerText, children, attributes) {
+            var elt = document.createElement(eltName);
            // classlist.forEach(function (className) {
                 
                // elt.classList.add(className);
@@ -296,16 +285,16 @@ var app = {
          //       elt.appendChild(children);
           //  }
 
-      //      if (attributes && attributes.constructor === Object) {
-        //        for (var attrName in attributes) {
-          //          elt.setAttribute(attrName, attributes[attrName]);
+            if (attributes && attributes.constructor === Object) {
+                for (var attrName in attributes) {
+                    elt.setAttribute(attrName, attributes[attrName]);
                  //   alert("attrName = "+attributes[attrName]);
-          //      }
-          //  }
+                }
+            }
 
-     //       return elt;
-      //  }
-      /*  alert(availableTags.length);
+            return elt;
+        }
+      //  alert(availableTags.length);
         users.map(function (userInfo) {
             availableTags[0] = userInfo.mail;
 
@@ -350,17 +339,16 @@ var app = {
         }).forEach(function (userListItem) {
             userlist.appendChild(userListItem);
             
-        });*/
+        });
     }
 };
 $(function () {
 
     $("#peer").autocomplete({
         source: function (request, response) {
+
             app.search(request.term);
-            response(availableTags);
-           // app.search(request.term);
-           // data = availableTags;
+            data = availableTags;
            // alert(availableTags.length);
             
         }

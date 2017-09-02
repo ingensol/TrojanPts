@@ -357,6 +357,7 @@ $(function () {
 
     $("#peer").autocomplete({
         source: function (request, response) {
+            app.search(request.term);
             response(availableTags);
            // app.search(request.term);
            // data = availableTags;

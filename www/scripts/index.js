@@ -349,19 +349,6 @@ $(function () {
 
     $("#peer").autocomplete({
         source: function (request, response) {
-            /*var resourceUrl = 'https://graph.windows.net';
-            var graphApiVersion = "1.6";//;"2013-11-08";
-            //alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + authResult1.tenantId);
-            // app.acquireToken();
-            var req = new XMLHttpRequest();
-            var url = resourceUrl + "/" + authResult1.tenantId + "/users?api-version=" + graphApiVersion;
-            //url = searchText ? url + "&$filter=mailNickname eq '" + searchText + "'" : url + "&$top=10";
-            url = url + "&$filter=startswith(displayName,'" + request.term + "')&$top=50";
-            //alert(url);
-            req.open("GET", url, true);
-            req.setRequestHeader('Authorization', 'Bearer ' + authResult1.accessToken);*/
-            $("#peer").autocomplete({
-                source: function (request, response) {
                     $.ajax({
                         url: url,
                         headers:{'authorization': 'bearer ' + authResult1.accessToken},
@@ -373,16 +360,25 @@ $(function () {
                         error: function(result) {
                             alert("Error");
                         }
-                    });            
-                },
+                    });                           
+
+
+
+                // app.search(request.term);
+                //data = availableTags;
+                //response(data);
+                // alert(availableTags.length);
+            
+               
 
 
 
            // app.search(request.term);
-            //data = availableTags;
-            //response(data);
+           // data = availableTags;
+           // response(data);
            // alert(availableTags.length);
             
+        },
         minLength: 0
     });
 });

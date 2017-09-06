@@ -350,16 +350,13 @@ $(function () {
     $("#peer").autocomplete({
         source: function (request, response) {
             var resourceUrl = 'https://graph.windows.net';
-            var graphApiVersion = "1.6";//;"2013-11-08";
-            //alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + authResult1.tenantId);
-            // app.acquireToken();
+            var graphApiVersion = "1.6";
             var req = new XMLHttpRequest();
-            var url = resourceUrl + "/" + authResult1.tenantId + "/users?api-version=" + graphApiVersion;
-            //url = searchText ? url + "&$filter=mailNickname eq '" + searchText + "'" : url + "&$top=10";
-            url = url + "&$filter=startswith(displayName,'" + searchText + "')&$top=50";
-            alert(url);
+            var url2 = resourceUrl + "/" + authResult1.tenantId + "/users?api-version=" + graphApiVersion;
+            url2 = url2 + "&$filter=startswith(displayName,'" + request.term + "')&$top=50";
+            alert(url2);
                     $.ajax({
-                        url: url,
+                        url: url2,
                         headers:{'authorization': 'bearer ' + authResult1.accessToken},
                         success: function (data) {
                             if (data != null) {
@@ -370,22 +367,6 @@ $(function () {
                             alert("Error");
                         }
                     });                           
-
-
-
-                // app.search(request.term);
-                //data = availableTags;
-                //response(data);
-                // alert(availableTags.length);
-            
-               
-
-
-
-           // app.search(request.term);
-           // data = availableTags;
-           // response(data);
-           // alert(availableTags.length);
             
         },
         minLength: 0

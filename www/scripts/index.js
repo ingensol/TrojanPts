@@ -361,16 +361,22 @@ $(function () {
                         success: function (data) {
                             if (data != null) {
                                 var users = data && data.value;
+                                response(function (item) {
+                                    return {
+                                        label: item.displayName,
+                                        value: userInfo.mail
+                                    }
+                                });
                                // alert("users found = " + users.length);
                                // alert("users = " + users);
-                                var availableTags2 = [];
-                                users.map(function (userInfo, index) {
-                                    if (index == 1)
-                                        alert(userInfo.mail);
-                                    availableTags2[availableTags2.length] = userInfo.mail;
-                                });
-                                availableTags = availableTags2;
-                                response(availableTags2);
+                                //var availableTags2 = [];
+                               // users.map(function (userInfo, index) {
+                                //    if (index == 1)
+                                //        alert(userInfo.mail);
+                                //    availableTags2[availableTags2.length] = userInfo.mail;
+                               // });
+                              //  availableTags = availableTags2;
+                              //  response(availableTags2);
 
                             }
                         },

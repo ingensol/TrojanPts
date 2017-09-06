@@ -355,7 +355,7 @@ $(function () {
             // var url2 = resourceUrl + "/" + authResult1.tenantId + "/users?api-version=" + graphApiVersion;
             var url2 = endpointUrl + "/users?api-version=" + graphApiVersion;
             url2 = url2 + "&$filter=startswith(displayName,'" + request.term + "')&$top=50";
-            alert(authResult1.tenantId);
+            alert(url2);
                     $.ajax({
                         url: url2,
                         headers:{'authorization': 'bearer ' + authResult1.accessToken},

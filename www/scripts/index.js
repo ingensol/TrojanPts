@@ -360,7 +360,9 @@ $(function () {
                         headers:{'authorization': 'bearer ' + authResult1.accessToken},
                         success: function (data) {
                             if (data != null) {
+                                alert("success");
                                 response(data.d);
+
                             }
                         },
                         error: function(result) {

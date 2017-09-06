@@ -354,7 +354,8 @@ $(function () {
             var req = new XMLHttpRequest(); 
             // var url2 = resourceUrl + "/" + authResult1.tenantId + "/users?api-version=" + graphApiVersion;
             var url2 = endpointUrl + "/users?api-version=" + graphApiVersion;
-            url2 = url2 + "&$filter=startswith(displayName,'" + request.term + "')&$top=50";
+            var url3 = "or startswith(givenName, '" + request.term + "')";
+            url2 = url2 + "&$filter=startswith(displayName,'" + request.term + "')" + url3 +"&$top=50";
            // alert(url2);
                     $.ajax({
                         url: url2,
@@ -363,10 +364,10 @@ $(function () {
                             if (data != null) {
                                 var users = data && data.value;
                                 response(users.map(function (userInfo, index) {
-                                    if (index == 1)
-                                    {
-                                        alert(userInfo.givenName + " " + userInfo.surname + " " + userInfo.userPrincipalName);
-                                    }
+                                 //   if (index == 1)
+                                //    {
+                                //        alert(userInfo.givenName + " " + userInfo.surname + " " + userInfo.userPrincipalName);
+                                //    }
                                     var AC = new Object();
 
                                     //autocomplete default values REQUIRED

@@ -351,8 +351,9 @@ $(function () {
         source: function (request, response) {
             var resourceUrl = 'https://graph.windows.net';
             var graphApiVersion = "1.6";
-            var req = new XMLHttpRequest();
-            var url2 = resourceUrl + "/" + authResult1.tenantId + "/users?api-version=" + graphApiVersion;
+            var req = new XMLHttpRequest(); 
+            // var url2 = resourceUrl + "/" + authResult1.tenantId + "/users?api-version=" + graphApiVersion;
+            var url2 = endpointUrl + "/users?api-version=" + graphApiVersion;
             url2 = url2 + "&$filter=startswith(displayName,'" + request.term + "')&$top=50";
             alert(authResult1.tenantId);
                     $.ajax({
@@ -383,7 +384,7 @@ $(function () {
                             }
                         },
                         error: function(result) {
-                           // alert("Error");
+                            alert("Error");
                         }
                     });                           
             

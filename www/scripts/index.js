@@ -13,20 +13,16 @@ var endpointUrl = resourceUrl + tenantName;
 var userID1 = "";
 var authResult1;
 var numofPts;
-var availableTags = [
- "ActionScript",
-      "AppleScript",
-      "Asp"
-];
+
 function pre(json) {
     return '<pre>' + JSON.stringify(json, null, 4) + '</pre>';
 }
-//alert("before app");
+
 var app = {
    
     // Application Constructor
     initialize: function () {
-       // alert("app init");
+
         this.bindEvents();
     },
     // Bind Event Listeners
@@ -34,39 +30,15 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function () {
-       // alert("bindEvents");
-        document.addEventListener('deviceready', app.onDeviceReady, false);
-
-       // document.getElementById('create-context').addEventListener('click', app.createContext);
-        //document.getElementById('acquire-token').addEventListener('click', app.acquireToken);
+        document.addEventListener('deviceready', app.onDeviceReady, false); 
         document.getElementById('loginbutton').addEventListener('click', app.acquireToken);
-       // document.getElementById('acquire-token-silent').addEventListener('click', app.acquireTokenSilent);
-       // document.getElementById('read-tokencache').addEventListener('click', app.readTokenCache);
-      //  document.getElementById('clear-tokencache').addEventListener('click', app.clearTokenCache);
-
-        /*function toggleMenu() {
-            // menu must be always shown on desktop/tablet
-            //alert("toggleMenu");
-            if (document.body.clientWidth > 480) return;
-            var cl = document.body.classList;
-            if (cl.contains('left-nav')) { cl.remove('left-nav'); }
-            else { cl.add('left-nav'); }
-        }
-
-        document.getElementById('slide-menu-button').addEventListener('click', toggleMenu);*/
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
-      //  alert("Cordova initialized, 'deviceready' event was fired");
-        // app.receivedEvent('deviceready');
-      //  app.logArea = document.getElementById("log-area");
-        // app.log("Cordova initialized, 'deviceready' event was fired");
-       // document.getElementById('peer').addEventListener('keyup', app.search);
         AuthenticationContext = Microsoft.ADAL.AuthenticationContext;
-      //  alert("go create context");
         app.createContext();
     },
     // Update DOM on a Received Event
@@ -91,41 +63,26 @@ var app = {
         app.logArea.insertBefore(logItem, app.logArea.firstChild);
     },
     error: function (message) {
-       // alert(message);
         app.log(message, true);
     },
     createContext: function () {
-       // alert("createContext");
         AuthenticationContext.createAsync(authority)
         .then(function (context) {
             app.authContext = context;
-          //  app.log("Created authentication context for authority URL: " + context.authority);
-         //   alert("Created authentication context for authority URL: " + context.authority);
         }, app.error);
     },
     acquireToken: function () {
-      //  alert("acquireToken22");
         if (app.authContext == null) {
-        //    app.error('Authentication context isn\'t created yet. Create context first');
-         //   alert("Authentication context isn\'t created yet. Create context first");
             return;
         }      
 
         app.authContext.acquireTokenAsync(resourceUrl, appId, redirectUrl)
             .then(function(authResult) {
-           //     app.log('XAcquired token successfully: ' + pre(authResult));
-               // alert('XAcquired token successfully: ' + pre(authResult.tenantId));
-                //$('body').removeClass("no-sidebar");
-               //document.body.className = "left-sidebar"; //$('body').removeClass("left-sidebar");
-                // app.search(authResult);
                 document.getElementById("leftbar").style.display = "block";
                 userID1 = authResult.userInfo.uniqueId;
                 authResult1 = authResult;
                 showpage("search2page");
-               // window.location = 'search2.html?id=' + authResult.userInfo.uniqueId;
             }, function(err) {
-          //      app.error("Failed to acquire token: " + pre(err));
-              //  alert("Failed to acquire token: " + pre(err));
             });
     },
     acquireTokenSilent: function() {
@@ -144,7 +101,6 @@ var app = {
 
             app.authContext.acquireTokenSilentAsync(resourceUrl, appId, testUserId).then(function (authResult) {
                 app.log('YAcquired token successfully: ' + pre(authResult));
-              //  window.location = 'search.html?id=' + testUserId;
             }, function(err) {
                 app.error("Failed to acquire token silently: " + pre(err));
             });
@@ -183,25 +139,15 @@ var app = {
         });
     },
     // Implements search operations.
-    search: function (term) {
-       // document.getElementById('userlist').innerHTML = "";
-       // alert("search");
-        var searchText = "j";//document.getElementById('peer').value;
-        
+    search: function (term) {   
         app.requestData(term);
-   //     app.authenticate(function (authresult) {
-  //          var searchText = document.getElementById('peer').value;
-  //          alert("here");
-  //          app.requestData(authresult, searchText);
-   //     });
-   //     alert("left search");
     },
     // Shows user authentication dialog if required.
     authenticate: function (authCompletedCallback) {
 
         app.context = new Microsoft.ADAL.AuthenticationContext(authority);
         app.context.tokenCache.readItems().then(function (items) {
-          //  alert(items.length);
+          
             if (items.length > 0) {
                 authority = items[0].authority;
                 app.context = new Microsoft.ADAL.AuthenticationContext(authority);
@@ -213,7 +159,7 @@ var app = {
                 app.context.acquireTokenAsync(resourceUri, clientId, redirectUri)
                 .then(authCompletedCallback, function (err) {
                     app.error("Failed to authenticate: " + err);
-                 //   alert("Failed to authenticate: ");
+       
                 });
             });
         });
@@ -221,31 +167,27 @@ var app = {
     },
     // Makes Api call to receive user list.
     requestData: function (searchText) {
-       // alert("requestData");
-        var resourceUrl = 'https://graph.windows.net';
-        var graphApiVersion = "1.6";//;"2013-11-08";
-        //alert("requestData " + searchText + " tenant = " + resourceUrl + " graphApiVersion = " + authResult1.tenantId);
-       // app.acquireToken();
+        var graphApiVersion = "1.6";
         var req = new XMLHttpRequest();
         var url = resourceUrl + "/" + authResult1.tenantId + "/users?api-version=" + graphApiVersion;
-        //url = searchText ? url + "&$filter=mailNickname eq '" + searchText + "'" : url + "&$top=10";
+     
         url = url + "&$filter=startswith(displayName,'" +  searchText+ "')&$top=50";
-        //alert(url);
+      
         req.open("GET", url, true);
         req.setRequestHeader('Authorization', 'Bearer ' + authResult1.accessToken);
 
         req.onload = function (e) {
             if (e.target.status >= 200 && e.target.status < 300) {
                 app.renderData(JSON.parse(e.target.response));
-              //  alert("got result");
+            
                 return;
             }
             app.error('Data request failed: ' + e.target.response);
-           // alert('Data request failed: ' + e.target.response);
+          
         };
         req.onerror = function (e) {
             app.error('Data request failed: ' + e.error);
-          //  alert('Data request failed: ' + e.error);
+         
         }
 
         req.send();
@@ -258,91 +200,11 @@ var app = {
             alert("No users found");
             return;
         }
-        else {
-         //   alert("users found = " + users.length);
-          //  alert(users.value)
-        }
 
-    //    var userlist = document.getElementById('userlist');
-     //   userlist.innerHTML = "";
-
-        // Helper function for generating HTML
-     //   function $new(eltName, classlist, innerText, children, attributes) {
-     //       var elt = document.createElement(eltName);
-           // classlist.forEach(function (className) {
-                
-               // elt.classList.add(className);
-            //});
-
-           // if (innerText) {
-           //     elt.innerText = innerText;
-           // }
-
-           // if (children && children.constructor === Array) {
-           //     children.forEach(function (child) {
-            //        elt.appendChild(child);
-            //    });
-          //  } else if (children instanceof HTMLElement) {
-         //       elt.appendChild(children);
-          //  }
-
-     //       if (attributes && attributes.constructor === Object) {
-         //       for (var attrName in attributes) {
-       //             elt.setAttribute(attrName, attributes[attrName]);
-                 //   alert("attrName = "+attributes[attrName]);
-           //     }
-          //  }
-
-          //  return elt;
-      //  }
-        //  alert(availableTags.length);
-        var availableTags2 = [];
         users.map(function (userInfo,index) {
-            availableTags2[availableTags2.length] = userInfo.mail;
-
-          /*  return $new('li', ['topcoat-list__item'], null, [
-                $new('div', [], null, [
-                    $new('p', ['userinfo-label'], 'First name: '),
-                    $new('input', ['topcoat-text-input', 'userinfo-data-field'], null, null, {
-                        type: 'text',
-                        readonly: '',
-                        placeholder: '',
-                        value: userInfo.givenName || ''
-                    })
-                ]),
-                $new('div', [], null, [
-                    $new('p', ['userinfo-label'], 'Last name: '),
-                    $new('input', ['topcoat-text-input', 'userinfo-data-field'], null, null, {
-                        type: 'text',
-                        readonly: '',
-                        placeholder: '',
-                        value: userInfo.surname || ''
-                    })
-                ]),
-                $new('div', [], null, [
-                    $new('p', ['userinfo-label'], 'UPN: '),
-                    $new('input', ['topcoat-text-input', 'userinfo-data-field'], null, null, {
-                        type: 'text',
-                        readonly: '',
-                        placeholder: '',
-                        value: userInfo.userPrincipalName || ''
-                    })
-                ]),
-                $new('div', [], null, [
-                    $new('p', ['userinfo-label'], 'Phone: '),
-                    $new('input', ['topcoat-text-input', 'userinfo-data-field'], null, null, {
-                        type: 'text',
-                        readonly: '',
-                        placeholder: '',
-                        value: userInfo.telephoneNumber || ''
-                    })
-                ])
-            ]);*/
+ 
         });
-        availableTags = availableTags2;//.forEach(function (userListItem) {
-          //  userlist.appendChild(userListItem);
-            
-        //});
+
     }
 };
 $(function () {
@@ -351,12 +213,10 @@ $(function () {
         source: function (request, response) {
             var resourceUrl = 'https://graph.windows.net';
             var graphApiVersion = "1.6";
-            var req = new XMLHttpRequest(); 
-            // var url2 = resourceUrl + "/" + authResult1.tenantId + "/users?api-version=" + graphApiVersion;
+            var req = new XMLHttpRequest();   
             var url2 = endpointUrl + "/users?api-version=" + graphApiVersion;
             var url3 = "or startswith(givenName, '" + request.term + "')";
             url2 = url2 + "&$filter=startswith(displayName,'" + request.term + "')" + url3 +"&$top=50";
-           // alert(url2);
                     $.ajax({
                         url: url2,
                         headers:{'authorization': 'bearer ' + authResult1.accessToken},
@@ -364,10 +224,6 @@ $(function () {
                             if (data != null) {
                                 var users = data && data.value;
                                 response(users.map(function (userInfo, index) {
-                                 //   if (index == 1)
-                                //    {
-                                //        alert(userInfo.givenName + " " + userInfo.surname + " " + userInfo.userPrincipalName);
-                                //    }
                                     var AC = new Object();
 
                                     //autocomplete default values REQUIRED
@@ -375,17 +231,6 @@ $(function () {
                                     AC.value = userInfo.mail;
                                     return AC;
                                 }));
-                               // alert("users found = " + users.length);
-                               // alert("users = " + users);
-                                //var availableTags2 = [];
-                               // users.map(function (userInfo, index) {
-                                //    if (index == 1)
-                                //        alert(userInfo.mail);
-                                //    availableTags2[availableTags2.length] = userInfo.mail;
-                               // });
-                              //  availableTags = availableTags2;
-                              //  response(availableTags2);
-
                             }
                         },
                         error: function(result) {
@@ -408,6 +253,12 @@ function showpage(page)
     if (page == "search2page")
     {
         document.getElementById("donediv").style.display = "none";
+        document.getElementById("peerreq").style.display = "none";
+        document.getElementById("attrireq").style.display = "none";
+        document.getElementById("messagereq").style.display = "none";
+        document.getElementById("peerlocreq").style.display = "none";
+        document.getElementById("mylocreq").style.display = "none";
+        $("#peer").autocomplete("enable");
         getPtsAwardedTtoday();
         document.getElementById("search2page").style.display = "block";
     }
@@ -720,6 +571,7 @@ $(document).ready(function () {
                 && document.getElementById("leadership").checked == false && document.getElementById("teamwork").checked == false
                 && document.getElementById("known").checked == false) {
                 document.getElementById("attrireq").style.display = "block";
+                $("#peer").autocomplete("enable");
                 submitdata = false;
             }
 

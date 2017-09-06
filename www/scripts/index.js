@@ -360,13 +360,17 @@ $(function () {
                         headers:{'authorization': 'bearer ' + authResult1.accessToken},
                         success: function (data) {
                             if (data != null) {
-                                var users = data && data.value;
-                                response(function (item) {
-                                    return {
-                                        label: item.displayName,
-                                        value: userInfo.mail
-                                    }
-                                });
+                                response($.map($.parseJSON(data), function (item) {                                
+                                    var AC = new Object();
+
+                                    //autocomplete default values REQUIRED
+                                    AC.label = item.displayName;
+                                    AC.value = item.mail;
+
+                    
+
+                                    return AC;
+                                }));
                                // alert("users found = " + users.length);
                                // alert("users = " + users);
                                 //var availableTags2 = [];

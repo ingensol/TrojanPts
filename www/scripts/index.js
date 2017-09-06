@@ -239,8 +239,7 @@ $(function () {
                     });                           
             
         },
-        minLength: 0,
-        appendTo: "#peer"
+        minLength: 0
 
     });
 });

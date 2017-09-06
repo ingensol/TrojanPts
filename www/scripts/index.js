@@ -257,7 +257,21 @@ function showpage(page)
         document.getElementById("attrireq").style.display = "none";
         document.getElementById("messagereq").style.display = "none";
         document.getElementById("peerlocreq").style.display = "none";
-        document.getElementById("mylocreq").style.display = "none";
+        document.getElementById("mylocreq").style.display = "none";       
+        document.getElementById("peer").value = "";
+        document.getElementById("message").value = "";
+        document.getElementById("authenticity").checked = false;
+        document.getElementById("innovative").checked = false;
+        document.getElementById("compassion").checked = false;
+        document.getElementById("professionalism").checked = false;
+        document.getElementById("collegiality").checked = false;
+        document.getElementById("courtesy").checked = false;
+        document.getElementById("efficiency").checked = false;
+        document.getElementById("communication").checked = false;
+        document.getElementById("leadership").checked == false;
+        document.getElementById("teamwork").checked = false;
+        document.getElementById("known").checked = false;
+        
         $("#peer").autocomplete("enable");
         getPtsAwardedTtoday();
         document.getElementById("search2page").style.display = "block";

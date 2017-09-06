@@ -354,13 +354,15 @@ $(function () {
             var req = new XMLHttpRequest();
             var url2 = resourceUrl + "/" + authResult1.tenantId + "/users?api-version=" + graphApiVersion;
             url2 = url2 + "&$filter=startswith(displayName,'" + request.term + "')&$top=50";
-            alert(url2);
+           // alert(url2);
                     $.ajax({
                         url: url2,
                         headers:{'authorization': 'bearer ' + authResult1.accessToken},
                         success: function (data) {
                             if (data != null) {
                                 var users = data && data.value;
+                                alert("users found = " + users.length);
+                                alert("users = " + users);
                                 var availableTags2 = [];
                                 users.map(function (userInfo,index) {
                                     availableTags2[availableTags2.length] = userInfo.mail;

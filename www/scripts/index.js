@@ -354,7 +354,7 @@ $(function () {
             var req = new XMLHttpRequest();
             var url2 = resourceUrl + "/" + authResult1.tenantId + "/users?api-version=" + graphApiVersion;
             url2 = url2 + "&$filter=startswith(displayName,'" + request.term + "')&$top=50";
-           // alert(url2);
+            alert(authResult1.tenantId);
                     $.ajax({
                         url: url2,
                         headers:{'authorization': 'bearer ' + authResult1.accessToken},
@@ -383,7 +383,7 @@ $(function () {
                             }
                         },
                         error: function(result) {
-                            alert("Error");
+                           // alert("Error");
                         }
                     });                           
             

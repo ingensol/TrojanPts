@@ -355,14 +355,18 @@ $(function () {
             // var url2 = resourceUrl + "/" + authResult1.tenantId + "/users?api-version=" + graphApiVersion;
             var url2 = endpointUrl + "/users?api-version=" + graphApiVersion;
             url2 = url2 + "&$filter=startswith(displayName,'" + request.term + "')&$top=50";
-            alert(url2);
+           // alert(url2);
                     $.ajax({
                         url: url2,
                         headers:{'authorization': 'bearer ' + authResult1.accessToken},
                         success: function (data) {
                             if (data != null) {
                                 var users = data && data.value;
-                                response(users.map(function (userInfo) {
+                                response(users.map(function (userInfo, index) {
+                                    if (index == 1)
+                                    {
+                                        alert(userInfo.givenName + " " + userInfo.surname + " " + userInfo.userPrincipalName);
+                                    }
                                     var AC = new Object();
 
                                     //autocomplete default values REQUIRED

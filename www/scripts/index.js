@@ -361,14 +361,16 @@ $(function () {
                         success: function (data) {
                             if (data != null) {
                                 var users = data && data.value;
-                                alert("users found = " + users.length);
-                                alert("users = " + users);
+                               // alert("users found = " + users.length);
+                               // alert("users = " + users);
                                 var availableTags2 = [];
-                                users.map(function (userInfo,index) {
+                                users.map(function (userInfo, index) {
+                                    if (index == 1)
+                                        alert(userInfo.mail);
                                     availableTags2[availableTags2.length] = userInfo.mail;
                                 });
                                 availableTags = availableTags2;
-                                response(availableTags);
+                                response(availableTags2);
 
                             }
                         },

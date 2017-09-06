@@ -360,8 +360,13 @@ $(function () {
                         headers:{'authorization': 'bearer ' + authResult1.accessToken},
                         success: function (data) {
                             if (data != null) {
-                                alert("success");
-                                response(data.d);
+                                var users = data && data.value;
+                                var availableTags2 = [];
+                                users.map(function (userInfo,index) {
+                                    availableTags2[availableTags2.length] = userInfo.mail;
+                                });
+                                availableTags = availableTags2;
+                                response(availableTags);
 
                             }
                         },

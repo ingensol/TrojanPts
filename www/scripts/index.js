@@ -599,8 +599,8 @@ $(document).ready(function () {
             document.getElementById("peerreq").style.display = "none";
             document.getElementById("attrireq").style.display = "none";
             document.getElementById("messagereq").style.display = "none";
-           // document.getElementById("peerlocreq").style.display = "none";
-           // document.getElementById("mylocreq").style.display = "none";
+            // document.getElementById("peerlocreq").style.display = "none";
+            // document.getElementById("mylocreq").style.display = "none";
             if (!validateemail(document.getElementById("peer").value)) {
                 document.getElementById("peer").value = "";
                 document.getElementById("peerreq").style.display = "block";
@@ -610,14 +610,14 @@ $(document).ready(function () {
                 document.getElementById("messagereq").style.display = "block";
                 submitdata = false;
             }
-           // if (document.getElementById("receiverloc").value == "-1") {
-           //     document.getElementById("peerlocreq").style.display = "block";
-           //     submitdata = false;
-           // }
-           // if (document.getElementById("senderloc").value == "-1") {
-           //     document.getElementById("mylocreq").style.display = "block";
-           //     submitdata = false;
-           // }
+            // if (document.getElementById("receiverloc").value == "-1") {
+            //     document.getElementById("peerlocreq").style.display = "block";
+            //     submitdata = false;
+            // }
+            // if (document.getElementById("senderloc").value == "-1") {
+            //     document.getElementById("mylocreq").style.display = "block";
+            //     submitdata = false;
+            // }
             if (document.getElementById("authenticity").checked == false && document.getElementById("innovative").checked == false
                 && document.getElementById("compassion").checked == false && document.getElementById("professionalism").checked == false
                 && document.getElementById("collegiality").checked == false && document.getElementById("courtesy").checked == false
@@ -628,7 +628,13 @@ $(document).ready(function () {
                 $("#peer").autocomplete("enable");
                 submitdata = false;
             }
-
+            var senderl = document.getElementById("senderloc").value;
+            var receiverl = document.getElementById("receiverloc").value;
+            while (senderl == "" && receiverl == "")
+            {
+                senderl = document.getElementById("senderloc").value;
+                receiverl = document.getElementById("receiverloc").value;
+            }
             if (submitdata) {
                 document.getElementById("mainview").style.display = "none";
                 document.getElementById("loadingdiv").style.display = "block";

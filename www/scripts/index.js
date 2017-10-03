@@ -81,6 +81,26 @@ var app = {
                 document.getElementById("leftbar").style.display = "block";
                 userID1 = authResult.userInfo.uniqueId;          
                 authResult1 = authResult;
+                var resourceUrl = 'https://graph.windows.net';
+                var graphApiVersion = "1.6";
+                var req = new XMLHttpRequest();
+                var url2 = endpointUrl + "/users/" + userID1;
+                url2 = url2 + "?api-version=" + graphApiVersion;
+                $.ajax({
+                    url: url2,
+                    headers: { 'authorization': 'bearer ' + authResult1.accessToken },
+                    success: function (data) {
+                        //var users = data && data.value;
+                        senderlocation = data.department;
+                        senderdept = data.physicalDeliveryOfficeName;
+                        document.getElementById("senderloc").value = senderlocation;
+                        document.getElementById("senderdept").value = senderdept;
+                        //alert(recieverlocation + " " + recieverdept);
+                    },
+                    error: function (result) {
+                        //   alert("Error");
+                    }
+                });
                 showpage("search2page");
             }, function(err) {
             });
@@ -239,7 +259,29 @@ $(function () {
                     });                           
             
         },
-        minLength: 0
+        minLength: 0,
+        select: function (e, ui) {
+            var resourceUrl = 'https://graph.windows.net';
+            var graphApiVersion = "1.6";
+            var req = new XMLHttpRequest();
+            var url2 = endpointUrl + "/users/" + ui.item.value;
+            url2 = url2 + "?api-version=" + graphApiVersion;
+            $.ajax({
+                url: url2,
+                headers: { 'authorization': 'bearer ' + authResult1.accessToken },
+                success: function (data) {
+                    //var users = data && data.value;
+                    receiverlocation = data.department;
+                    receiverdept = data.physicalDeliveryOfficeName;
+                    document.getElementById("receiverloc").value = receiverlocation;
+                    document.getElementById("receiverdept").value = receiverdept;
+                    //alert(recieverlocation + " " + recieverdept);
+                },
+                error: function (result) {
+                    //   alert("Error");
+                }
+            });         
+        }
     });
 });
 
@@ -557,44 +599,7 @@ $(document).ready(function () {
         e.preventDefault();
         var ptsawarded = document.getElementById("pts").value;
         //alert("Pts awarded = " + ptsawarded + " - Pts left - " + Ptsleft);
-        if (ptsawarded < Ptsleft) {
-            var resourceUrl = 'https://graph.windows.net';
-            var graphApiVersion = "1.6";
-            var req = new XMLHttpRequest();
-            var url2 = endpointUrl + "/users/" + document.getElementById("peer").value;
-            url2 = url2 + "?api-version=" + graphApiVersion;
-            $.ajax({
-                url: url2,
-                headers: { 'authorization': 'bearer ' + authResult1.accessToken },
-                success: function (data) {
-                    //var users = data && data.value;
-                    receiverlocation = data.department;
-                    receiverdept = data.physicalDeliveryOfficeName;
-                    document.getElementById("receiverloc").value = receiverlocation;
-                    document.getElementById("receiverdept").value = receiverdept;
-                    //alert(recieverlocation + " " + recieverdept);
-                },
-                error: function (result) {
-                    //   alert("Error");
-                }
-            });
-            var url2 = endpointUrl + "/users/" + document.getElementById("sender").value;
-            url2 = url2 + "?api-version=" + graphApiVersion;
-            $.ajax({
-                url: url2,
-                headers: { 'authorization': 'bearer ' + authResult1.accessToken },
-                success: function (data) {
-                    //var users = data && data.value;
-                    senderlocation = data.department;
-                    senderdept = data.physicalDeliveryOfficeName;
-                    document.getElementById("senderloc").value = senderlocation;
-                    document.getElementById("senderdept").value = senderdept;
-                    //alert(recieverlocation + " " + recieverdept);
-                },
-                error: function (result) {
-                    //   alert("Error");
-                }
-            });
+        if (ptsawarded < Ptsleft) {           
             var submitdata = true;
             document.getElementById("peerreq").style.display = "none";
             document.getElementById("attrireq").style.display = "none";
@@ -627,14 +632,7 @@ $(document).ready(function () {
                 document.getElementById("attrireq").style.display = "block";
                 $("#peer").autocomplete("enable");
                 submitdata = false;
-            }
-            var senderl = document.getElementById("senderloc").value;
-            var receiverl = document.getElementById("receiverloc").value;
-            while (senderl.length == 0 || receiverl.length == 0)
-            {
-                senderl = document.getElementById("senderloc").value;
-                receiverl = document.getElementById("receiverloc").value;
-            }
+            }           
             if (submitdata) {
                 document.getElementById("mainview").style.display = "none";
                 document.getElementById("loadingdiv").style.display = "block";

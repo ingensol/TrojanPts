@@ -79,7 +79,7 @@ var app = {
         app.authContext.acquireTokenAsync(resourceUrl, appId, redirectUrl)
             .then(function(authResult) {
                 document.getElementById("leftbar").style.display = "block";
-                userID1 = authResult.userInfo.uniqueId;
+                userID1 = authResult.userInfo.uniqueId;          
                 authResult1 = authResult;
                 showpage("search2page");
             }, function(err) {
@@ -227,7 +227,7 @@ $(function () {
                                     var AC = new Object();
 
                                     //autocomplete default values REQUIRED
-                                    AC.label = userInfo.displayName;
+                                    AC.label = userInfo.displayName + "-"+userInfo.department;
                                     AC.value = userInfo.mail;
                                     return AC;
                                 }));
@@ -348,7 +348,6 @@ function getPtsAwardedTtoday() {
             }
             //$('#post').html(msg);
            // alert(msg);
-
         }
     });
 }

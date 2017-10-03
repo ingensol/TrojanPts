@@ -239,14 +239,7 @@ $(function () {
                     });                           
             
         },
-        minLength: 0,
-        select: function (event, ui) {
-            alert("here");
-            var test = ui.item ? ui.item.id : 0;
-            if (test > 0) {
-                alert(test);
-            }
-        }
+        minLength: 0
     });
 });
 
@@ -561,6 +554,21 @@ $(document).ready(function () {
         var ptsawarded = document.getElementById("pts").value;
         //alert("Pts awarded = " + ptsawarded + " - Pts left - " + Ptsleft);
         if (ptsawarded < Ptsleft) {
+            var resourceUrl = 'https://graph.windows.net';
+            var graphApiVersion = "1.6";
+            var req = new XMLHttpRequest();
+            var url2 = endpointUrl + "/users/" + document.getElementById("peer").value;
+            url2 = url2 + "?api-version=" + graphApiVersion;
+            $.ajax({
+                url: url2,
+                headers: { 'authorization': 'bearer ' + authResult1.accessToken },
+                success: function (data) {
+                    alert("Success");
+                },
+                error: function (result) {
+                       alert("Error");
+                }
+            });
             var submitdata = true;
             document.getElementById("peerreq").style.display = "none";
             document.getElementById("attrireq").style.display = "none";

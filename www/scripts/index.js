@@ -563,10 +563,14 @@ $(document).ready(function () {
                 url: url2,
                 headers: { 'authorization': 'bearer ' + authResult1.accessToken },
                 success: function (data) {
-                    alert("Success");
+                    //var users = data && data.value;
+                    recieverlocation = data.department;
+                    recieverdept = data.physicalDeliveryOfficeName;
+
+                    alert(recieverlocation + " " + recieverdept);
                 },
                 error: function (result) {
-                       alert("Error");
+                    //   alert("Error");
                 }
             });
             var submitdata = true;

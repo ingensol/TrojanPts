@@ -651,7 +651,7 @@ $(document).ready(function () {
                     type: 'POST',
                     dataType: "jsonp",
                     data: postData,
-                    url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/AwardTrojanPt',
+                    url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/AwardTrojanPt3',
                     success: function (data, text) {
                         //console.log(data);
                         //alert('Your comment was successfully added');

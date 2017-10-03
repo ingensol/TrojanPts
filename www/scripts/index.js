@@ -549,8 +549,8 @@ $(document).ready(function () {
 
     $('form').submit(function (e) {
         var userID = userID1;
-        var recieverlocation;
-        var recieverdept;
+        var receiverlocation;
+        var receiverdept;
         var senderlocation;
         var senderdept;
         //alert("submit");
@@ -568,9 +568,10 @@ $(document).ready(function () {
                 headers: { 'authorization': 'bearer ' + authResult1.accessToken },
                 success: function (data) {
                     //var users = data && data.value;
-                    recieverlocation = data.department;
-                    recieverdept = data.physicalDeliveryOfficeName;
-
+                    receiverlocation = data.department;
+                    receiverdept = data.physicalDeliveryOfficeName;
+                    document.getElementById("receiverloc").value = receiverlocation;
+                    document.getElementById("receiverdept").value = receiverdept;
                     //alert(recieverlocation + " " + recieverdept);
                 },
                 error: function (result) {
@@ -586,7 +587,8 @@ $(document).ready(function () {
                     //var users = data && data.value;
                     senderlocation = data.department;
                     senderdept = data.physicalDeliveryOfficeName;
-
+                    document.getElementById("senderloc").value = senderlocation;
+                    document.getElementById("senderdept").value = senderdept;
                     //alert(recieverlocation + " " + recieverdept);
                 },
                 error: function (result) {

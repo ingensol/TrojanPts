@@ -227,7 +227,7 @@ $(function () {
                                     var AC = new Object();
 
                                     //autocomplete default values REQUIRED
-                                    AC.label = userInfo.displayName + "-"+userInfo.department;
+                                    AC.label = userInfo.displayName + "/" + userInfo.department + "/" + userInfo.jobTitle + "/" + userInfo.physicalDeliveryOfficeName;
                                     AC.value = userInfo.mail;
                                     return AC;
                                 }));

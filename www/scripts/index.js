@@ -630,7 +630,7 @@ $(document).ready(function () {
             }
             var senderl = document.getElementById("senderloc").value;
             var receiverl = document.getElementById("receiverloc").value;
-            while (senderl == "" && receiverl == "")
+            while (senderl.length == 0 || receiverl.length == 0)
             {
                 senderl = document.getElementById("senderloc").value;
                 receiverl = document.getElementById("receiverloc").value;

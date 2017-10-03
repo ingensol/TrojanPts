@@ -239,8 +239,13 @@ $(function () {
                     });                           
             
         },
-        minLength: 0
-
+        minLength: 0,
+        select: function (event, ui) {
+            var test = ui.item ? ui.item.id : 0;
+            if (test > 0) {
+                alert(test);
+            }
+        }
     });
 });
 

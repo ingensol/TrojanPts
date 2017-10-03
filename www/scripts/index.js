@@ -256,8 +256,8 @@ function showpage(page)
         document.getElementById("peerreq").style.display = "none";
         document.getElementById("attrireq").style.display = "none";
         document.getElementById("messagereq").style.display = "none";
-        document.getElementById("peerlocreq").style.display = "none";
-        document.getElementById("mylocreq").style.display = "none";       
+       // document.getElementById("peerlocreq").style.display = "none";
+       // document.getElementById("mylocreq").style.display = "none";       
         document.getElementById("peer").value = "";
         document.getElementById("message").value = "";
         document.getElementById("authenticity").checked = false;

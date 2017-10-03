@@ -227,7 +227,7 @@ $(function () {
                                     var AC = new Object();
 
                                     //autocomplete default values REQUIRED
-                                    AC.label = userInfo.displayName + "/" + userInfo.department + "/" + userInfo.jobTitle + "/" + userInfo.physicalDeliveryOfficeName;
+                                    AC.label = userInfo.displayName + "/" + userInfo.jobTitle;
                                     AC.value = userInfo.mail;
                                     return AC;
                                 }));
@@ -549,6 +549,10 @@ $(document).ready(function () {
 
     $('form').submit(function (e) {
         var userID = userID1;
+        var recieverlocation;
+        var recieverdept;
+        var senderlocation;
+        var senderdept;
         //alert("submit");
         e.preventDefault();
         var ptsawarded = document.getElementById("pts").value;
@@ -567,7 +571,23 @@ $(document).ready(function () {
                     recieverlocation = data.department;
                     recieverdept = data.physicalDeliveryOfficeName;
 
-                    alert(recieverlocation + " " + recieverdept);
+                    //alert(recieverlocation + " " + recieverdept);
+                },
+                error: function (result) {
+                    //   alert("Error");
+                }
+            });
+            var url2 = endpointUrl + "/users/" + document.getElementById("sender").value;
+            url2 = url2 + "?api-version=" + graphApiVersion;
+            $.ajax({
+                url: url2,
+                headers: { 'authorization': 'bearer ' + authResult1.accessToken },
+                success: function (data) {
+                    //var users = data && data.value;
+                    senderlocation = data.department;
+                    senderdept = data.physicalDeliveryOfficeName;
+
+                    //alert(recieverlocation + " " + recieverdept);
                 },
                 error: function (result) {
                     //   alert("Error");
@@ -577,8 +597,8 @@ $(document).ready(function () {
             document.getElementById("peerreq").style.display = "none";
             document.getElementById("attrireq").style.display = "none";
             document.getElementById("messagereq").style.display = "none";
-            document.getElementById("peerlocreq").style.display = "none";
-            document.getElementById("mylocreq").style.display = "none";
+           // document.getElementById("peerlocreq").style.display = "none";
+           // document.getElementById("mylocreq").style.display = "none";
             if (!validateemail(document.getElementById("peer").value)) {
                 document.getElementById("peer").value = "";
                 document.getElementById("peerreq").style.display = "block";
@@ -588,14 +608,14 @@ $(document).ready(function () {
                 document.getElementById("messagereq").style.display = "block";
                 submitdata = false;
             }
-            if (document.getElementById("receiverloc").value == "-1") {
-                document.getElementById("peerlocreq").style.display = "block";
-                submitdata = false;
-            }
-            if (document.getElementById("senderloc").value == "-1") {
-                document.getElementById("mylocreq").style.display = "block";
-                submitdata = false;
-            }
+           // if (document.getElementById("receiverloc").value == "-1") {
+           //     document.getElementById("peerlocreq").style.display = "block";
+           //     submitdata = false;
+           // }
+           // if (document.getElementById("senderloc").value == "-1") {
+           //     document.getElementById("mylocreq").style.display = "block";
+           //     submitdata = false;
+           // }
             if (document.getElementById("authenticity").checked == false && document.getElementById("innovative").checked == false
                 && document.getElementById("compassion").checked == false && document.getElementById("professionalism").checked == false
                 && document.getElementById("collegiality").checked == false && document.getElementById("courtesy").checked == false

@@ -599,7 +599,7 @@ $(document).ready(function () {
         e.preventDefault();
         var ptsawarded = document.getElementById("pts").value;
         //alert("Pts awarded = " + ptsawarded + " - Pts left - " + Ptsleft);
-        if (ptsawarded < Ptsleft) {           
+        if (ptsawarded <= Ptsleft) {           
             var submitdata = true;
             document.getElementById("peerreq").style.display = "none";
             document.getElementById("attrireq").style.display = "none";

@@ -699,7 +699,7 @@ $(document).ready(function () {
                             msg = 'Uncaught Error.\n' + jqXHR.responseText;
                         }
                         //$('#post').html(msg);
-                       // alert(msg);
+                        alert(msg);
                        
                     }
                 });

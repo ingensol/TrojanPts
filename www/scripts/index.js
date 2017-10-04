@@ -217,7 +217,7 @@ var app = {
         var users = data && data.value;
         if (data.length === 0) {
             app.error("No users found");
-            alert("No users found");
+          //  alert("No users found");
             return;
         }
 
@@ -488,7 +488,7 @@ function getmypoints() {
                 msg = 'Internal Server Error [500].';
             } else if (exception === 'parsererror') {
                 msg = 'Requested JSON parse failed.';
-                alert(err);
+            //    alert(err);
             } else if (exception === 'timeout') {
                 msg = 'Time out error.';
             } else if (exception === 'abort') {
@@ -500,7 +500,7 @@ function getmypoints() {
                 msg = 'Uncaught Error.\n' + jqXHR.responseText;
             }
             //$('#post').html(msg);
-             alert(msg);
+           //  alert(msg);
 
         }
     });    
@@ -699,7 +699,7 @@ $(document).ready(function () {
                             msg = 'Uncaught Error.\n' + jqXHR.responseText;
                         }
                         //$('#post').html(msg);
-                        alert(msg);
+                      //  alert(msg);
                        
                     }
                 });

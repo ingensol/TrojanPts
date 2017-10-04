@@ -671,9 +671,9 @@ $(document).ready(function () {
                         document.getElementById("loadingdiv").style.display = "none";                        
                         document.getElementById("donediv").style.display = "block";
                         document.getElementById("mainview").style.display = "block";
-                        Ptsleft = numofPts - 1;
-                        Ptsawarded = 5 - Ptsleft;
-                        var messege = "You have awarded " + Number(Ptsawarded) + " point(s) today. You have " + Ptsleft + " to award.";
+                        Ptsleft = numofPts - ptsawarded;
+                      //  Ptsawarded = 5 - Ptsleft;
+                        var messege = "You have awarded " + Number(ptsawarded) + " point(s) today. You have " + Ptsleft + " to award.";
 
                         document.getElementById("PtsAllowed").innerHTML = messege;
                     },

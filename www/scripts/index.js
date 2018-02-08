@@ -91,8 +91,8 @@ var app = {
                     headers: { 'authorization': 'bearer ' + authResult1.accessToken },
                     success: function (data) {
                         //var users = data && data.value;
-                        senderlocation = data.department;
-                        senderdept = data.physicalDeliveryOfficeName;
+                        senderlocation = data.physicalDeliveryOfficeName; 
+                        senderdept = data.department;
                         document.getElementById("senderloc").value = senderlocation;
                         document.getElementById("senderdept").value = senderdept;
                         //alert(recieverlocation + " " + recieverdept);
@@ -271,8 +271,8 @@ $(function () {
                 headers: { 'authorization': 'bearer ' + authResult1.accessToken },
                 success: function (data) {
                     //var users = data && data.value;
-                    receiverlocation = data.department;
-                    receiverdept = data.physicalDeliveryOfficeName;
+                    receiverlocation = data.physicalDeliveryOfficeName; 
+                    receiverdept = data.department;
                     document.getElementById("receiverloc").value = receiverlocation;
                     document.getElementById("receiverdept").value = receiverdept;
                     //alert(recieverlocation + " " + recieverdept);
@@ -651,7 +651,7 @@ $(document).ready(function () {
                     type: 'POST',
                     dataType: "jsonp",
                     data: postData,
-                    url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/AwardTrojanPt3',
+                    url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/AwardTrojanPt4',
                     success: function (data, text) {
                         //console.log(data);
                         //alert('Your comment was successfully added');

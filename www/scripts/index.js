@@ -292,6 +292,8 @@ function showpage(page)
     document.getElementById("feed2page").style.display = "none";
     document.getElementById("profilepage").style.display = "none";
     document.getElementById("contactuspage").style.display = "none";
+    document.getElementById("instructions").style.display = "none";
+
     if (page == "search2page")
     {
         document.getElementById("donediv").style.display = "none";
@@ -329,6 +331,9 @@ function showpage(page)
     if (page == "contactuspage") {
         document.getElementById("contactuspage").style.display = "block";
     }
+    if (page == "instructions") {
+        document.getElementById("instructions").style.display = "block";
+    }
      $('#closeleftsb i').trigger('click');
 }
 function SearchName()
@@ -356,10 +361,9 @@ function getPtsAwardedTtoday() {
         url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetPtsAwardedToday',
         success: function (data, text) {
             //console.log(data);
-            Ptsleft = 5 - Number(data);
-            numofPts = Ptsleft;
+            Ptsleft = 35 - Number(data);
             //alert(Ptsleft);
-            var messege = "You have awarded " + Number(data) + " point(s) today. You have " + Ptsleft + " to award.";
+            var messege = "You have awarded " + Number(data) + " point(s) this week. You have " + Ptsleft + " to award.";
             
             document.getElementById("PtsAllowed").innerHTML = messege;
             document.getElementById("sendMessage").disabled = false;

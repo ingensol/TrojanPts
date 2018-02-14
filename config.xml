@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.kmc.trojanpts" version="1.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.kmc.trojanpts" version="1.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Trojan Points</name>
     <description>Peer to Peer recognition tool</description>
     <author email="webservices@med.usc.edu.com" href="http://kecknet.usc.edu">Keck Web Services</author>

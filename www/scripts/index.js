@@ -675,9 +675,10 @@ $(document).ready(function () {
                         document.getElementById("loadingdiv").style.display = "none";                        
                         document.getElementById("donediv").style.display = "block";
                         document.getElementById("mainview").style.display = "block";
-                        Ptsleft = Ptsleft - ptsawarded;
-                      //  Ptsawarded = 5 - Ptsleft;
-                        var messege = "You have awarded " + Number(ptsawarded) + " point(s) today. You have " + Ptsleft + " to award.";
+                        Ptsleft = Ptsleft - ptsawarded;                        
+                        Ptsawarded2 = 35 - Ptsleft;
+
+                        var messege = "You have awarded " + Number(ptsawarded) + " point(s) in last 7 days. You have " + Ptsawarded2 + " to award.";
 
                         document.getElementById("PtsAllowed").innerHTML = messege;
                     },

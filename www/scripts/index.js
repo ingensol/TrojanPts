@@ -658,7 +658,7 @@ $(document).ready(function () {
                     url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/AwardTrojanPt3',
                     success: function (data, text) {
                         //console.log(data);
-                        alert('Your comment was successfully added');
+                       // alert('Your comment was successfully added');
                         document.getElementById("peer").value = "";
                         document.getElementById("message").value = "";
                         document.getElementById("authenticity").checked = false;
@@ -704,7 +704,7 @@ $(document).ready(function () {
                             msg = 'Uncaught Error.\n' + jqXHR.responseText;
                         }
                         //$('#post').html(msg);
-                        alert(msg);
+                        //alert(msg);
                        
                     }
                 });

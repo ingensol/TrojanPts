@@ -342,7 +342,7 @@ function SearchName()
     app.search();
 }
 //alert("past app");
-var Ptsleft = 5;
+var Ptsleft = 35;
 function getPtsAwardedTtoday() {
     // alert(jsonData);
     
@@ -655,7 +655,7 @@ $(document).ready(function () {
                     type: 'POST',
                     dataType: "jsonp",
                     data: postData,
-                    url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/AwardTrojanPt4',
+                    url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/AwardTrojanPt3',
                     success: function (data, text) {
                         //console.log(data);
                         alert('Your comment was successfully added');
@@ -675,7 +675,7 @@ $(document).ready(function () {
                         document.getElementById("loadingdiv").style.display = "none";                        
                         document.getElementById("donediv").style.display = "block";
                         document.getElementById("mainview").style.display = "block";
-                        Ptsleft = numofPts - ptsawarded;
+                        Ptsleft = Ptsleft - ptsawarded;
                       //  Ptsawarded = 5 - Ptsleft;
                         var messege = "You have awarded " + Number(ptsawarded) + " point(s) today. You have " + Ptsleft + " to award.";
 

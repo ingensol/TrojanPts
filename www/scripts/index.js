@@ -678,7 +678,7 @@ $(document).ready(function () {
                         Ptsleft = Ptsleft - ptsawarded;                        
                         Ptsawarded2 = 35 - Ptsleft;
 
-                        var messege = "You have awarded " + Number(ptsawarded) + " point(s) in last 7 days. You have " + Ptsawarded2 + " to award.";
+                        var messege = "You have awarded " + Number(Ptsawarded2) + " point(s) in last 7 days. You have " + Ptsleft + " to award.";
 
                         document.getElementById("PtsAllowed").innerHTML = messege;
                     },

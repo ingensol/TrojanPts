@@ -358,7 +358,7 @@ function getPtsAwardedTtoday() {
         dataType: "jsonp",
         data: { sender: userID },
         crossDomain: true,
-        url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetPtsAwardedToday',
+        url: 'https://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetPtsAwardedToday',
         success: function (data, text) {
             //console.log(data);
             Ptsleft = 35 - Number(data);
@@ -405,7 +405,7 @@ function getfeed() {
         dataType: "jsonp",
         data: { sender: "test" },
         crossDomain: true,
-        url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetPtsFeed',
+        url: 'https://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetPtsFeed',
         success: function (data, text) {
             var mainFeedDiv = document.getElementById("TP_List");
             var maindivcontent = "";
@@ -459,7 +459,7 @@ function getmypoints() {
         dataType: "jsonp",
         data: { sender: userID },
         crossDomain: true,
-        url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetMyPts',
+        url: 'https://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetMyPts',
         success: function (data, text) {
        //     alert("success " + data.AwardedTotalPts);
 
@@ -522,7 +522,7 @@ function getmypointsfeed() {
         dataType: "jsonp",
         data: { sender: userID },
         crossDomain: true,
-        url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetMyPtsFeed',
+        url: 'https://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/GetMyPtsFeed',
         success: function (data, text) {
             //alert("success " + data.length);
 
@@ -655,7 +655,7 @@ $(document).ready(function () {
                     type: 'POST',
                     dataType: "jsonp",
                     data: postData,
-                    url: 'http://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/AwardTrojanPt3',
+                    url: 'https://keckmed.usc.edu/TrojanPts/WebServices/TrojanPtsWS.asmx/AwardTrojanPt3',
                     success: function (data, text) {
                         //console.log(data);
                        // alert('Your comment was successfully added');
